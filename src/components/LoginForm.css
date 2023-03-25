@@ -1,0 +1,14 @@
+#sesionBtn {
+	color: #080cfbce;
+	border: none;
+	background-color: rgba(255, 255, 255, 0);
+	font-weight: bold;
+}
+
+.input:hover {
+	box-shadow: 0px 2px 6px 1px inset;
+}
+.input:focus {
+	box-shadow: 0px 2px 6px 1px inset;
+	border: none;
+}

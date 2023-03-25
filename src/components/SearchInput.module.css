@@ -1,0 +1,21 @@
+#searchinput {
+	position: fixed;
+	top: 25px;
+	right: 80px;
+}
+
+#input {
+	background-color: rgba(240, 248, 255, 0);
+	height: 2em;
+	border: 1px solid gray;
+	font-size: small;
+	color: azure;
+}
+
+#input:hover {
+	box-shadow: 0 0 6px 1px;
+}
+
+#input::placeholder {
+	color: azure;
+}

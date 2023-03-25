@@ -1,0 +1,15 @@
+.fileList {
+	display: flex;
+	justify-content: center;
+	text-align: center;
+	margin-top: 1rem;
+	width: 400px;
+	padding: 0;
+}
+
+.fileContainer {
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+}
