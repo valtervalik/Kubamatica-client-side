@@ -4,7 +4,7 @@ const AdminLayout = ({ children }) => {
 	return (
 		<div>
 			<svg
-				style={{ position: 'fixed', top: '-175px' }}
+				style={{ position: 'fixed', top: '-200px' }}
 				xmlns='http://www.w3.org/2000/svg'
 				viewBox='0 0 1200 320'>
 				<path

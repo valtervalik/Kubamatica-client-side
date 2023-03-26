@@ -19,9 +19,9 @@ code {
 	background: url('/Logo Kubamática.png') top no-repeat;
 	background-size: contain;
 	width: 50%;
-	height: 500px;
+	height: 200px;
 	position: absolute;
-	top: 0;
+	top: 50px;
 	left: 25%;
 }
 
