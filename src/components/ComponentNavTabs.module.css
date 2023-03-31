@@ -1,8 +1,10 @@
 #compnavtab {
 	padding-bottom: 1rem;
+	border-radius: 5px 5px 0 0;
 }
 
 .compnavtab {
 	text-decoration: none;
 	font-size: small;
+	font-weight: bold;
 }

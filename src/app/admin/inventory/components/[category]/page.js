@@ -1,13 +1,34 @@
+'use client';
+import React, { useState } from 'react';
+import { AddButton } from '@/components/AddButton';
 import ComponentNavTabs from '@/components/ComponentNavTabs';
 import DataTable from '@/components/DataTable';
+import { SpeedDialIcon, Tooltip } from '@mui/material';
+import ComponentModal from '@/components/ComponentModal';
 
-export default function CategoryPage() {
+export default function CategoryPage({ params }) {
+	const [openComponent, setOpenComponent] = useState(false);
+	const handleOpenComponent = () => setOpenComponent(true);
+	const handleCloseComponent = () => setOpenComponent(false);
 	return (
 		<div className='mainh1 px-5'>
 			<div>
-				<div>
-					<ComponentNavTabs />
-				</div>
+				<ComponentNavTabs
+					categories={[
+						'Baterías',
+						'Cargadores',
+						'Pantallas',
+						'Teclados',
+						'TouchPads',
+						'Chasis',
+						'Procesadores',
+						'RAM',
+						'Discos',
+						'Audio',
+						'Red',
+						'Motherboards',
+					]}
+				/>
 				<DataTable
 					maxHeight={420}
 					columns={[
@@ -31,6 +52,18 @@ export default function CategoryPage() {
 					]}
 				/>
 			</div>
+
+			<ComponentModal
+				handleCloseComponent={handleCloseComponent}
+				openComponent={openComponent}
+				params={params.category}
+			/>
+
+			<Tooltip title='Añadir Portátil'>
+				<AddButton onClick={handleOpenComponent}>
+					<SpeedDialIcon />
+				</AddButton>
+			</Tooltip>
 		</div>
 	);
 }

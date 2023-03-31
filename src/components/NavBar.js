@@ -14,7 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
-import styles from './NavBar.css';
+import './NavBar.css';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
@@ -67,6 +67,7 @@ const NavBar = () => {
 							id='klogo'
 							src='/Logo Kubamática.png'
 							alt=''
+							priority
 						/>
 					</Typography>
 
@@ -128,6 +129,7 @@ const NavBar = () => {
 							id='klogo2'
 							src='/Logo Kubamática.png'
 							alt=''
+							priority
 						/>
 					</Typography>
 					<Box
