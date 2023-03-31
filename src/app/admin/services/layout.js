@@ -1,5 +1,5 @@
-import SearchInput from '../../../components/SearchInput';
-import ServicesNavTabs from '../../../components/ServicesNavTabs';
+import SearchInput from '@/components/SearchInput';
+import ServicesNavTabs from '@/components/ServicesNavTabs';
 
 const Services = ({ children }) => {
 	return (

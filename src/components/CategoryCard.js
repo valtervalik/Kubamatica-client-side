@@ -5,6 +5,7 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './CategoryCard.module.css';
+import Link from 'next/link';
 
 export default function CategoryCard({ category }) {
 	return (
@@ -16,14 +17,18 @@ export default function CategoryCard({ category }) {
 				maxWidth: 350,
 				backgroundColor: '#000814',
 			}}>
-			<CardContent>
-				<Typography
-					className='text-light text-center'
-					variant='h5'
-					component='div'>
-					{category}
-				</Typography>
-			</CardContent>
+			<Link
+				style={{ textDecoration: 'none' }}
+				href={`/admin/inventory/components/${category.toLowerCase()}`}>
+				<CardContent>
+					<Typography
+						className='text-light text-center'
+						variant='h5'
+						component='div'>
+						{category}
+					</Typography>
+				</CardContent>
+			</Link>
 			<CardActions className='d-flex justify-content-around'>
 				<Button className='btn text-primary' size='small'>
 					Editar

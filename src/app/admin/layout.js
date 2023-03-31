@@ -1,10 +1,10 @@
-import NavBar from '../../components/NavBar';
+import NavBar from '@/components/NavBar';
 
 const AdminLayout = ({ children }) => {
 	return (
 		<div>
 			<svg
-				style={{ position: 'fixed', top: '-200px' }}
+				style={{ position: 'fixed', top: '-190px' }}
 				xmlns='http://www.w3.org/2000/svg'
 				viewBox='0 0 1200 320'>
 				<path

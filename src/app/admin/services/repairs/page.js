@@ -1,9 +1,9 @@
 'use client';
 import React, { useState } from 'react';
-import DataTable from '../../../../components/DataTable';
+import DataTable from '@/components/DataTable';
 import { SpeedDialIcon } from '@mui/material';
-import { AddButton } from '../../../../components/AddButton';
-import RepairsModal from '../../../../components/RepairsModal';
+import { AddButton } from '@/components/AddButton';
+import RepairsModal from '@/components/RepairsModal';
 import Tooltip from '@mui/material/Tooltip';
 
 const Repairs = () => {

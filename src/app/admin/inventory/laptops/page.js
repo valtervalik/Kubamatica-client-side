@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
-import { AddButton } from '../../../../components/AddButton';
-import ImgCard from '../../../../components/ImgCard';
+import { AddButton } from '@/components/AddButton';
+import ImgCard from '@/components/ImgCard';
 import Tooltip from '@mui/material/Tooltip';
 import LaptopModal from '@/components/LaptopModal';
 

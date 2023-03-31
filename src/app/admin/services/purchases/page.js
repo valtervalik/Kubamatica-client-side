@@ -1,8 +1,8 @@
 'use client';
 import React, { useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
-import { AddButton } from '../../../../components/AddButton';
-import DataTable from '../../../../components/DataTable';
+import { AddButton } from '@/components/AddButton';
+import DataTable from '@/components/DataTable';
 import Tooltip from '@mui/material/Tooltip';
 import PurchasesModal from '@/components/PurchasesModal';
 

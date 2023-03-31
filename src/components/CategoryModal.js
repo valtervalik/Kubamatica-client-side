@@ -49,7 +49,11 @@ export default function CategoryModal({ openCategory, handleCloseCategory }) {
 						<div className='mt-3'>
 							<form action='/admin/inventory/components'>
 								<div className='d-flex justify-content-center'>
-									<TextInput label='Nueva Categoría' name='category' />
+									<TextInput
+										label='Nueva Categoría'
+										name='category'
+										width='43ch'
+									/>
 								</div>
 								<div className='d-flex justify-content-around mt-3'>
 									<Button className='text-danger' onClick={handleCloseCategory}>
