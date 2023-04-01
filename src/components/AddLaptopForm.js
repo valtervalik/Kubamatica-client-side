@@ -62,7 +62,7 @@ const AddLaptopForm = () => {
 								<select
 									style={{
 										border: 'none',
-										backgroundColor: '#000814',
+										backgroundColor: '#00081400',
 										color: 'green',
 										marginBottom: '10px',
 										width: '70px',

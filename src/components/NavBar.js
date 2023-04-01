@@ -15,6 +15,9 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import './NavBar.css';
+import LinkMenu from './LinkMenu';
+import { Button } from '@mui/material';
+import SearchInput from './SearchInput';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
@@ -40,8 +43,9 @@ const NavBar = () => {
 		<AppBar
 			position='static'
 			sx={{
-				backgroundColor: '#000814',
+				backgroundColor: '#ffffff90',
 				boxShadow: 'none',
+				backdropFilter: 'blur(12px) saturate(180%)',
 				position: 'fixed',
 				top: 0,
 			}}>
@@ -73,6 +77,7 @@ const NavBar = () => {
 
 					<Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
 						<IconButton
+							style={{ color: 'gray' }}
 							size='large'
 							aria-label='account of current user'
 							aria-controls='menu-appbar'
@@ -138,24 +143,56 @@ const NavBar = () => {
 							flexGrow: 1,
 							display: { xs: 'none', md: 'flex' },
 						}}>
-						{pages.map((page, i) => (
+						<LinkMenu
+							pageName='Servicios'
+							linkNames={[
+								{
+									name: 'Reparaciones',
+									url: '/admin/services/repairs',
+								},
+								{
+									name: 'Ventas',
+									url: '/admin/services/sells',
+								},
+								{
+									name: 'Compras',
+									url: '/admin/services/purchases',
+								},
+							]}
+						/>
+						<LinkMenu
+							pageName='Inventario'
+							linkNames={[
+								{
+									name: 'Portátiles',
+									url: '/admin/inventory/laptops',
+								},
+								{
+									name: 'Componentes',
+									url: '/admin/inventory/components',
+								},
+							]}
+						/>
+						<Button id='basic-button'>
 							<Link
-								href={urls[i]}
-								className={`me-5 navlink`}
-								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{ my: 2, color: 'white', display: 'block' }}>
-								{page}
+								style={{
+									textDecoration: 'none',
+									color: 'gray',
+									fontWeight: 'bold',
+								}}
+								href={'/admin/users'}>
+								Usuarios
 							</Link>
-						))}
+						</Button>
 					</Box>
 
+					<SearchInput />
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='LogOut'>
 							<IconButton
 								sx={{ p: 0 }}
 								onClick={() => router.push('/session/login')}>
-								<LogoutRoundedIcon sx={{ color: 'white', fontSize: '30px' }} />
+								<LogoutRoundedIcon sx={{ color: 'gray', fontSize: '30px' }} />
 							</IconButton>
 						</Tooltip>
 					</Box>

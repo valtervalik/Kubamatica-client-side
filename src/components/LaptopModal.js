@@ -16,6 +16,7 @@ const style = {
 	maxHeight: '90vh',
 	overflowY: 'scroll',
 	bgcolor: '#000814',
+	// backdropFilter: 'blur(12px) saturate(180%)',
 	border: '2px solid azure',
 	borderRadius: '5px',
 	boxShadow: '0 0 10px 2px #000814',

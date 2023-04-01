@@ -8,8 +8,9 @@ const AddPurchasesForm = () => {
 					<div className='col'>
 						<TextInput label='Proveedor' name='supplier' type='text' />
 						<TextInput label='Teléfono' name='phone' type='text' />
+						<TextInput label='Categoría' name='category' type='text' />
 						<TextInput label='Estado' name='status' type='text' />
-						<TextInput label='Garantía' name='warranty' type='text' />
+						<TextInput label='Garantía' name='warranty' type='number' />
 						<TextInput label='No. Caja' name='box' type='number' />
 					</div>
 					<div className='col'>
