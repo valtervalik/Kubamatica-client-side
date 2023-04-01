@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import AddRepairsForm from './AddRepairsForm';
 
 const style = {
@@ -22,7 +21,7 @@ const style = {
 	p: 4,
 };
 
-export default function RepairsModal({ openRepairs, handleCloseRepairs }) {
+export default function RepairsModal({ openRepairs, handleClose }) {
 	return (
 		<div>
 			<Modal
@@ -47,17 +46,7 @@ export default function RepairsModal({ openRepairs, handleCloseRepairs }) {
 							Añadir Servicio de Reparación
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/services/repairs'>
-								<AddRepairsForm />
-								<div className='d-flex justify-content-around mt-3'>
-									<Button className='text-danger' onClick={handleCloseRepairs}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddRepairsForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

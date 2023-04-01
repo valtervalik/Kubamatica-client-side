@@ -51,7 +51,7 @@ const Purchases = () => {
 				]}
 			/>
 			<PurchasesModal
-				handleClosePurchases={handleClosePurchases}
+				handleClose={handleClosePurchases}
 				openPurchases={openPurchases}
 			/>
 			<Tooltip title='Añadir Servicio'>

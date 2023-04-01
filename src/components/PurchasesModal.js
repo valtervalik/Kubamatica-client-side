@@ -22,10 +22,7 @@ const style = {
 	p: 4,
 };
 
-export default function PurchasesModal({
-	openPurchases,
-	handleClosePurchases,
-}) {
+export default function PurchasesModal({ openPurchases, handleClose }) {
 	return (
 		<div>
 			<Modal
@@ -50,19 +47,7 @@ export default function PurchasesModal({
 							Añadir Compra
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/services/purchases'>
-								<AddPurchasesForm />
-								<div className='d-flex justify-content-around mt-3'>
-									<Button
-										className='text-danger'
-										onClick={handleClosePurchases}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddPurchasesForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

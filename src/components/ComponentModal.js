@@ -22,11 +22,7 @@ const style = {
 	p: 4,
 };
 
-export default function ComponentModal({
-	openComponent,
-	handleCloseComponent,
-	params,
-}) {
+export default function ComponentModal({ openComponent, handleClose, params }) {
 	return (
 		<div>
 			<Modal
@@ -54,19 +50,7 @@ export default function ComponentModal({
 								.replace('%C3%AD', 'í')}
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/services/repairs'>
-								<AddComponentForm />
-								<div className='d-flex justify-content-around mt-3'>
-									<Button
-										className='text-danger'
-										onClick={handleCloseComponent}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddComponentForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

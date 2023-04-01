@@ -54,7 +54,7 @@ export default function CategoryPage({ params }) {
 			</div>
 
 			<ComponentModal
-				handleCloseComponent={handleCloseComponent}
+				handleClose={handleCloseComponent}
 				openComponent={openComponent}
 				params={params.category}
 			/>

@@ -46,7 +46,7 @@ const Components = () => {
 			</div>
 
 			<CategoryModal
-				handleCloseCategory={handleCloseCategory}
+				handleClose={handleCloseCategory}
 				openCategory={openCategory}
 			/>
 			<Tooltip title='Añadir Categoría'>

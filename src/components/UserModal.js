@@ -5,7 +5,6 @@ import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import AddUserForm from './AddUserForm';
-import { Button } from '@mui/material';
 
 const style = {
 	position: 'absolute',
@@ -47,17 +46,7 @@ export default function UserModal({ open, handleClose }) {
 							Añadir Usuario
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/users'>
-								<AddUserForm />
-								<div className='d-flex justify-content-around mt-3'>
-									<Button className='text-danger' onClick={handleClose}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddUserForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

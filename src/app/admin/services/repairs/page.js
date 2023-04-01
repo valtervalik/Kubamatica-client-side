@@ -43,7 +43,7 @@ const Repairs = () => {
 				]}
 			/>
 			<RepairsModal
-				handleCloseRepairs={handleCloseRepairs}
+				handleClose={handleCloseRepairs}
 				openRepairs={openRepairs}
 			/>
 			<Tooltip title='Añadir Servicio'>

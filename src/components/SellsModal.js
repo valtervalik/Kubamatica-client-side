@@ -22,7 +22,7 @@ const style = {
 	p: 4,
 };
 
-export default function SellsModal({ openSells, handleCloseSells }) {
+export default function SellsModal({ openSells, handleClose }) {
 	return (
 		<div>
 			<Modal
@@ -47,17 +47,7 @@ export default function SellsModal({ openSells, handleCloseSells }) {
 							Añadir Servicio de Venta
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/services/sells'>
-								<AddSellsForm />
-								<div className='d-flex justify-content-around mt-3'>
-									<Button className='text-danger' onClick={handleCloseSells}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddSellsForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

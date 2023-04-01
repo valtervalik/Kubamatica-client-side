@@ -23,7 +23,7 @@ const style = {
 	p: 4,
 };
 
-export default function LaptopModal({ openLaptop, handleCloseLaptop }) {
+export default function LaptopModal({ openLaptop, handleClose }) {
 	return (
 		<div>
 			<Modal
@@ -48,17 +48,7 @@ export default function LaptopModal({ openLaptop, handleCloseLaptop }) {
 							Añadir Laptop
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/inventory/laptops'>
-								<AddLaptopForm />
-								<div className='d-flex justify-content-around mt-3'>
-									<Button className='text-danger' onClick={handleCloseLaptop}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddLaptopForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

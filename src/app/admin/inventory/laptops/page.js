@@ -64,10 +64,7 @@ const Laptops = () => {
 					</div>
 				</div>
 			</div>
-			<LaptopModal
-				openLaptop={openLaptop}
-				handleCloseLaptop={handleCloseLaptop}
-			/>
+			<LaptopModal openLaptop={openLaptop} handleClose={handleCloseLaptop} />
 			<Tooltip title='Añadir Portátil'>
 				<AddButton onClick={handleOpenLaptop}>
 					<SpeedDialIcon />

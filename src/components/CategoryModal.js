@@ -6,6 +6,7 @@ import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
 import { Button } from '@mui/material';
 import TextInput from './TextInput';
+import AddCategoryForm from './AddCategoryForm';
 
 const style = {
 	position: 'absolute',
@@ -22,7 +23,7 @@ const style = {
 	p: 4,
 };
 
-export default function CategoryModal({ openCategory, handleCloseCategory }) {
+export default function CategoryModal({ openCategory, handleClose }) {
 	return (
 		<div>
 			<Modal
@@ -47,23 +48,7 @@ export default function CategoryModal({ openCategory, handleCloseCategory }) {
 							Añadir Categoría de Componente
 						</Typography>
 						<div className='mt-3'>
-							<form action='/admin/inventory/components'>
-								<div className='d-flex justify-content-center'>
-									<TextInput
-										label='Nueva Categoría'
-										name='category'
-										width='43ch'
-									/>
-								</div>
-								<div className='d-flex justify-content-around mt-3'>
-									<Button className='text-danger' onClick={handleCloseCategory}>
-										Cancelar
-									</Button>
-									<Button type='submit' style={{ color: '#080DFB' }}>
-										Añadir
-									</Button>
-								</div>
-							</form>
+							<AddCategoryForm handleClose={handleClose} />
 						</div>
 					</Box>
 				</Fade>

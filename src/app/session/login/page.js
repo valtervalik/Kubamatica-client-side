@@ -10,7 +10,7 @@ const Login = () => {
 				<form className='w-50' action='/admin/services/repairs'>
 					<LoginForm />
 					<LoginBtn />
-					<Link href='/session/useredit' className='btn button-link'>
+					<Link href='/session/changepassword' className='btn button-link'>
 						Cambiar Contraseña
 					</Link>
 				</form>

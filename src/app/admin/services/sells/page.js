@@ -48,7 +48,7 @@ const Sells = () => {
 					'30 Días',
 				]}
 			/>
-			<SellsModal handleCloseSells={handleCloseSells} openSells={openSells} />
+			<SellsModal handleClose={handleCloseSells} openSells={openSells} />
 			<Tooltip title='Añadir Servicio'>
 				<AddButton onClick={handleOpenSells}>
 					<SpeedDialIcon />
