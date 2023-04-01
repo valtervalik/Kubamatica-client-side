@@ -69,7 +69,7 @@ const NavBar = () => {
 							width={500}
 							height={500}
 							id='klogo'
-							src='/Logo Kubamática.png'
+							src='/Logo-Kubamática.png'
 							alt=''
 							priority
 						/>
@@ -132,7 +132,7 @@ const NavBar = () => {
 							width={500}
 							height={500}
 							id='klogo2'
-							src='/Logo Kubamática.png'
+							src='/Logo-Kubamática.png'
 							alt=''
 							priority
 						/>
