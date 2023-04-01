@@ -1,3 +1,4 @@
+import Selector from './Selector';
 import TextInput from './TextInput';
 
 const AddComponentForm = () => {
@@ -17,8 +18,83 @@ const AddComponentForm = () => {
 						/>
 					</div>
 					<div className='col'>
-						<TextInput label='Categoría' name='category' type='text' />
-						<TextInput label='Estado' name='status' type='text' />
+						<Selector
+							label='Categoría'
+							name={'category'}
+							options={[
+								{
+									option: 'Portátiles',
+									value: 'laptops',
+								},
+								{
+									option: 'Baterías',
+									value: 'baterías',
+								},
+								{
+									option: 'Cargadores',
+									value: 'cargadores',
+								},
+								{
+									option: 'Pantallas',
+									value: 'pantallas',
+								},
+								{
+									option: 'Teclados',
+									value: 'teclados',
+								},
+								{
+									option: 'TouchPads',
+									value: 'touchpads',
+								},
+								{
+									option: 'Chasis',
+									value: 'chasis',
+								},
+								{
+									option: 'Procesadores',
+									value: 'procesadores',
+								},
+
+								{
+									option: 'RAM',
+									value: 'ram',
+								},
+								{
+									option: 'Discos',
+									value: 'discos',
+								},
+								{
+									option: 'Audio',
+									value: 'audio',
+								},
+								{
+									option: 'Red',
+									value: 'red',
+								},
+								{
+									option: 'Motherboards',
+									value: 'motherboards',
+								},
+							]}
+						/>
+						<Selector
+							label='Estado'
+							name={'status'}
+							options={[
+								{
+									option: 'Nuevo',
+									value: 'new',
+								},
+								{
+									option: 'Poco Uso',
+									value: 'bitused',
+								},
+								{
+									option: 'Usado',
+									value: 'used',
+								},
+							]}
+						/>
 						<TextInput label='No. Caja' name='box' type='number' />
 						<div className='d-flex justify-content-center align-items-end ps-2'>
 							<div>

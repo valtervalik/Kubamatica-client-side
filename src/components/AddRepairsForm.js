@@ -9,7 +9,7 @@ const AddRepairsForm = () => {
 						<TextInput label='Cliente' name='client' type='text' />
 						<TextInput label='Teléfono' name='phone' type='text' />
 						<TextInput label='Técnico' name='technic' type='text' />
-						<TextInput label='Garantía' name='warranty' type='text' />
+						<TextInput label='Garantía' name='warranty' type='number' />
 					</div>
 					<div className='col'>
 						<TextInput label='Equipo' name='device' type='text' />

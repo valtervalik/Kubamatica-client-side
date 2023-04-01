@@ -3,6 +3,7 @@ import { useReducer } from 'react';
 import TextInput from './TextInput';
 import DropZone from './DropZone';
 import styles from './AddLaptopForm.module.css';
+import Selector from './Selector';
 
 const AddLaptopForm = () => {
 	const reducer = (state, action) => {
@@ -45,8 +46,25 @@ const AddLaptopForm = () => {
 						/>
 					</div>
 					<div className='col'>
-						<TextInput label='Estado' name='status' type='text' />
-						<TextInput label='Garantía' name='warranty' type='text' />
+						<Selector
+							label='Estado'
+							name={'status'}
+							options={[
+								{
+									option: 'Nuevo',
+									value: 'new',
+								},
+								{
+									option: 'Poco Uso',
+									value: 'bitused',
+								},
+								{
+									option: 'Usado',
+									value: 'used',
+								},
+							]}
+						/>
+						<TextInput label='Garantía' name='warranty' type='number' />
 						<TextInput label='No. Caja' name='box' type='number' />
 
 						<div className='d-flex justify-content-center align-items-end ps-2'>

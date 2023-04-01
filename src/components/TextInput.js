@@ -20,7 +20,11 @@ export default function TextInput({
 			autoComplete='off'>
 			<TextField
 				sx={{
-					'& label': { color: 'azure', fontWeight: 'bold', fontSize: fontSize },
+					'& label': {
+						color: '#0066cc',
+						fontWeight: 'bold',
+						fontSize: fontSize,
+					},
 					'& input': { color: 'azure' },
 					'& textarea': { color: 'azure' },
 				}}

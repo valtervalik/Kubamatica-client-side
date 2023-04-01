@@ -1,3 +1,4 @@
+import Selector from './Selector';
 import TextInput from './TextInput';
 
 const AddSellsForm = () => {
@@ -9,15 +10,90 @@ const AddSellsForm = () => {
 						<TextInput label='Cliente' name='client' type='text' />
 						<TextInput label='Teléfono' name='phone' type='text' />
 						<TextInput label='Técnico' name='technic' type='text' />
-						<TextInput label='Categoría' name='category' type='text' />
-						<TextInput label='Garantía' name='warranty' type='text' />
+						<Selector
+							label='Categoría'
+							name={'category'}
+							options={[
+								{
+									option: 'Portátiles',
+									value: 'laptops',
+								},
+								{
+									option: 'Baterías',
+									value: 'baterías',
+								},
+								{
+									option: 'Cargadores',
+									value: 'cargadores',
+								},
+								{
+									option: 'Pantallas',
+									value: 'pantallas',
+								},
+								{
+									option: 'Teclados',
+									value: 'teclados',
+								},
+								{
+									option: 'TouchPads',
+									value: 'touchpads',
+								},
+								{
+									option: 'Chasis',
+									value: 'chasis',
+								},
+								{
+									option: 'Procesadores',
+									value: 'procesadores',
+								},
+
+								{
+									option: 'RAM',
+									value: 'ram',
+								},
+								{
+									option: 'Discos',
+									value: 'discos',
+								},
+								{
+									option: 'Audio',
+									value: 'audio',
+								},
+								{
+									option: 'Red',
+									value: 'red',
+								},
+								{
+									option: 'Motherboards',
+									value: 'motherboards',
+								},
+							]}
+						/>
+						<TextInput label='Garantía' name='warranty' type='number' />
 						<TextInput label='No. Caja' name='box' type='number' />
 					</div>
 					<div className='col'>
 						<TextInput label='Marca' name='brand' type='text' />
 						<TextInput label='Modelo' name='model' type='text' />
 						<TextInput label='No. Serie' name='serial' type='text' />
-						<TextInput label='Estado' name='status' type='text' />
+						<Selector
+							label='Estado'
+							name={'status'}
+							options={[
+								{
+									option: 'Nuevo',
+									value: 'new',
+								},
+								{
+									option: 'Poco Uso',
+									value: 'bitused',
+								},
+								{
+									option: 'Usado',
+									value: 'used',
+								},
+							]}
+						/>
 						<TextInput
 							label='Propiedades'
 							name='properties'
