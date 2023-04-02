@@ -192,7 +192,7 @@ const NavBar = () => {
 							<IconButton
 								sx={{ p: 0 }}
 								onClick={() => router.push('/session/login')}>
-								<LogoutRoundedIcon sx={{ color: 'gray', fontSize: '30px' }} />
+								<LogoutRoundedIcon sx={{ color: 'azure', fontSize: '30px' }} />
 							</IconButton>
 						</Tooltip>
 					</Box>

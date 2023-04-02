@@ -1,0 +1,14 @@
+#buttonbox {
+	position: absolute;
+	bottom: 1rem;
+	right: 1rem;
+}
+
+.button {
+	font-weight: bold;
+	padding: 0.5rem;
+}
+
+.button:hover {
+	box-shadow: 0 4px 6px 1px gray;
+}

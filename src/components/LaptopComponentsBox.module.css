@@ -1,0 +1,23 @@
+#box {
+	position: absolute;
+	left: 3rem;
+	bottom: 3rem;
+	width: 20rem;
+	height: 15rem;
+	border-radius: 5px;
+	background: linear-gradient(
+		45deg,
+		rgba(135, 207, 235, 0.3),
+		rgba(0, 0, 255, 0.3)
+	);
+}
+
+#sn {
+	display: flex;
+	justify-content: space-between;
+	text-align: end;
+	margin-right: 0.7rem;
+	margin-top: 5rem;
+	font-size: 13px;
+	color: rgb(100, 99, 99);
+}

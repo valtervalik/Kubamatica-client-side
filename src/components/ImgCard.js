@@ -6,6 +6,7 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './ImgCard.module.css';
+import Link from 'next/link';
 
 export default function ImgCard({ img, desc }) {
 	return (
@@ -41,7 +42,14 @@ export default function ImgCard({ img, desc }) {
 						<span>$</span> 000
 					</p>
 				</div>
-				<Button size='small'>Detalles</Button>
+				<Button size='small'>
+					{' '}
+					<Link
+						style={{ textDecoration: 'none' }}
+						href={'admin/inventory/laptops/details'}>
+						Detalles
+					</Link>
+				</Button>
 			</CardActions>
 		</Card>
 	);

@@ -13,7 +13,7 @@ const Laptops = () => {
 
 	return (
 		<div>
-			<div className='container text-center  mb-5 mainh1'>
+			<div className='container text-center mb-5 mainh1'>
 				<div className='row align-items-start'>
 					<div className='col'>
 						<ImgCard

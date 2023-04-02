@@ -1,0 +1,11 @@
+#laptopcarousel {
+	width: 30%;
+}
+
+#status {
+	background: linear-gradient(45deg, skyblue, blue);
+	width: 4rem;
+	color: azure;
+	padding: 0.2rem 0.5rem;
+	font-size: 16px;
+}
