@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import AddLaptopForm from './AddLaptopForm';
 
 const style = {

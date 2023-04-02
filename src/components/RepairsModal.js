@@ -14,7 +14,7 @@ const style = {
 	width: 1000,
 	maxHeight: '90vh',
 	overflowY: 'scroll',
-	bgcolor: '#000814',
+	background: `#000814`,
 	border: '2px solid azure',
 	borderRadius: '5px',
 	boxShadow: '0 0 10px 2px #000814',

@@ -26,7 +26,8 @@ export default function Selector({
 					labelId='demo-simple-select-standard-label'
 					id='demo-simple-select-standard'
 					defaultValue={''}
-					label={label}>
+					label={label}
+					required>
 					{options.map(({ option, value }) => (
 						<MenuItem key={value} value={value}>
 							{option}

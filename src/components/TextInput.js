@@ -3,9 +3,12 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
 export default function TextInput({
+	handleChange,
+	handleBlur,
 	label,
 	type,
 	name,
+	value,
 	multiline,
 	width = '47ch',
 	fontSize = '16px',
@@ -34,6 +37,10 @@ export default function TextInput({
 				maxRows={4}
 				type={type}
 				name={name}
+				value={value}
+				onChange={handleChange}
+				onBlur={handleBlur}
+				required
 			/>
 		</Box>
 	);
