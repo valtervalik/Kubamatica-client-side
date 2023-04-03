@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import DataTable from '@/components/DataTable';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
@@ -46,6 +46,7 @@ const Repairs = () => {
 				handleClose={handleCloseRepairs}
 				openRepairs={openRepairs}
 			/>
+
 			<Tooltip title='Añadir Servicio'>
 				<AddButton onClick={handleOpenRepairs}>
 					<SpeedDialIcon />

@@ -10,30 +10,44 @@ const card = (
 	<React.Fragment>
 		<CardContent>
 			<Typography
-				sx={{ fontSize: 25, color: 'azure' }}
+				className='mb-3'
+				sx={{
+					fontSize: 20,
+					color: 'azure',
+					fontWeight: 'bold',
+				}}
 				color='text.secondary'
 				gutterBottom>
 				Nombre y Apellidos
 			</Typography>
-			<Typography sx={{ fontSize: 20 }} variant='h5' component='div'>
-				usuario
-			</Typography>
-			<Typography sx={{ mb: 1.5, color: 'azure' }} color='text.secondary'>
-				email@email.com
-			</Typography>
-			<Typography variant='body2'>
-				Dependiente
-				<br />
-				{'TEL: 59764532'}
-			</Typography>
+			<div className='d-flex justify-content-between'>
+				<div>
+					<Typography
+						sx={{ fontSize: 17, color: 'azure' }}
+						variant='h5'
+						component='div'>
+						usuario
+					</Typography>
+					<Typography sx={{ color: 'silver' }} color='text.secondary'>
+						email@email.com
+					</Typography>
+				</div>
+				<div>
+					<Typography
+						sx={{ fontSize: 17, color: 'azure' }}
+						variant='h5'
+						component='div'>
+						Dependiente
+					</Typography>
+					<Typography sx={{ color: 'silver' }} color='text.secondary'>
+						TEL: 59764532
+					</Typography>
+				</div>
+			</div>
 		</CardContent>
 		<CardActions className='d-flex justify-content-end'>
-			<Button size='small' className='btn text-primary border-0'>
-				Editar
-			</Button>
-			<Button size='small' className='text-danger'>
-				Eliminar
-			</Button>
+			<Button className='btn text-primary border-0'>Editar</Button>
+			<Button className='btn text-danger border-0'>Eliminar</Button>
 		</CardActions>
 	</React.Fragment>
 );
@@ -43,8 +57,7 @@ export default function User() {
 		<Box sx={{ minWidth: 275, maxWidth: 350, width: 350 }}>
 			<Card
 				sx={{
-					backgroundColor: '#000814',
-					color: 'azure',
+					background: '#000814',
 				}}
 				variant='outlined'>
 				{card}

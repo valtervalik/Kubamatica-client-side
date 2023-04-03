@@ -6,6 +6,9 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
 export default function Selector({
+	handleChange,
+	handleBlur,
+	value,
 	label,
 	name,
 	options,
@@ -25,7 +28,9 @@ export default function Selector({
 					style={{ color: 'azure' }}
 					labelId='demo-simple-select-standard-label'
 					id='demo-simple-select-standard'
-					defaultValue={''}
+					onChange={handleChange}
+					onBlur={handleBlur}
+					value={value}
 					label={label}
 					required>
 					{options.map(({ option, value }) => (

@@ -15,7 +15,7 @@ export default function CategoryCard({ category }) {
 			sx={{
 				minWidth: 275,
 				maxWidth: 350,
-				backgroundColor: '#000814',
+				background: `#000814`,
 			}}>
 			<Link
 				style={{ textDecoration: 'none' }}

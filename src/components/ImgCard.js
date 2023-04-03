@@ -15,7 +15,7 @@ export default function ImgCard({ img, desc }) {
 			className='mb-3'
 			sx={{
 				maxWidth: 450,
-				backgroundColor: '#000814',
+				background: '#000814',
 				height: 'fit-content',
 				borderRadius: '15px',
 			}}>
@@ -38,7 +38,9 @@ export default function ImgCard({ img, desc }) {
 			</CardContent>
 			<CardActions className='d-flex justify-content-between'>
 				<div className='text-light align-content-bottom'>
-					<p style={{ padding: '4px 5px', fontSize: '13px' }} className='m-0'>
+					<p
+						style={{ padding: '4px 5px', fontSize: '16px', fontWeight: 'bold' }}
+						className='m-0'>
 						<span>$</span> 000
 					</p>
 				</div>
