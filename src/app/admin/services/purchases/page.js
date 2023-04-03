@@ -5,11 +5,15 @@ import { AddButton } from '@/components/AddButton';
 import DataTable from '@/components/DataTable';
 import Tooltip from '@mui/material/Tooltip';
 import PurchasesModal from '@/components/PurchasesModal';
+import { useContext } from 'react';
+import AdminContext from '@/context/AdminContext';
 
 const Purchases = () => {
 	const [openPurchases, setOpenPurchases] = useState(false);
 	const handleOpenPurchases = () => setOpenPurchases(true);
 	const handleClosePurchases = () => setOpenPurchases(false);
+
+	const { admin } = useContext(AdminContext);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -54,11 +58,13 @@ const Purchases = () => {
 				handleClose={handleClosePurchases}
 				openPurchases={openPurchases}
 			/>
-			<Tooltip title='Añadir Servicio'>
-				<AddButton onClick={handleOpenPurchases}>
-					<SpeedDialIcon />
-				</AddButton>
-			</Tooltip>
+			{!admin && (
+				<Tooltip title='Añadir Servicio'>
+					<AddButton onClick={handleOpenPurchases}>
+						<SpeedDialIcon />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 };

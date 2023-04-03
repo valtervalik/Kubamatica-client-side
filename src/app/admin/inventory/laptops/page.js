@@ -5,11 +5,15 @@ import { AddButton } from '@/components/AddButton';
 import ImgCard from '@/components/ImgCard';
 import Tooltip from '@mui/material/Tooltip';
 import LaptopModal from '@/components/LaptopModal';
+import { useContext } from 'react';
+import AdminContext from '@/context/AdminContext';
 
 const Laptops = () => {
 	const [openLaptop, setOpenLaptop] = useState(false);
 	const handleOpenLaptop = () => setOpenLaptop(true);
 	const handleCloseLaptop = () => setOpenLaptop(false);
+
+	const { admin } = useContext(AdminContext);
 
 	return (
 		<div>
@@ -65,11 +69,13 @@ const Laptops = () => {
 				</div>
 			</div>
 			<LaptopModal openLaptop={openLaptop} handleClose={handleCloseLaptop} />
-			<Tooltip title='Añadir Portátil'>
-				<AddButton onClick={handleOpenLaptop}>
-					<SpeedDialIcon />
-				</AddButton>
-			</Tooltip>
+			{!admin && (
+				<Tooltip title='Añadir Portátil'>
+					<AddButton onClick={handleOpenLaptop}>
+						<SpeedDialIcon />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 };

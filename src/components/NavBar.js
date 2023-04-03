@@ -18,6 +18,7 @@ import './NavBar.css';
 import LinkMenu from './LinkMenu';
 import { Button } from '@mui/material';
 import SearchInput from './SearchInput';
+import AdminSwitch from './AdminSwitch';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
@@ -185,7 +186,7 @@ const NavBar = () => {
 							</Link>
 						</Button>
 					</Box>
-
+					<AdminSwitch />
 					<SearchInput />
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='LogOut'>

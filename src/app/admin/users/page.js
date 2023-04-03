@@ -5,11 +5,15 @@ import { AddButton } from '../../../components/AddButton';
 import User from '../../../components/User';
 import UserModal from '../../../components/UserModal';
 import Tooltip from '@mui/material/Tooltip';
+import { useContext } from 'react';
+import AdminContext from '@/context/AdminContext';
 
 const Usuarios = () => {
 	const [open, setOpen] = useState(false);
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
+
+	const { admin } = useContext(AdminContext);
 
 	return (
 		<div>
@@ -31,12 +35,13 @@ const Usuarios = () => {
 			</div>
 
 			<UserModal handleClose={handleClose} open={open} />
-
-			<Tooltip title='Añadir Usuario'>
-				<AddButton onClick={handleOpen}>
-					<SpeedDialIcon />
-				</AddButton>
-			</Tooltip>
+			{!admin && (
+				<Tooltip title='Añadir Usuario'>
+					<AddButton onClick={handleOpen}>
+						<SpeedDialIcon />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 };

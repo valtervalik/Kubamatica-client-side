@@ -5,11 +5,16 @@ import ComponentNavTabs from '@/components/ComponentNavTabs';
 import DataTable from '@/components/DataTable';
 import { SpeedDialIcon, Tooltip } from '@mui/material';
 import ComponentModal from '@/components/ComponentModal';
+import { useContext } from 'react';
+import AdminContext from '@/context/AdminContext';
 
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
 	const handleOpenComponent = () => setOpenComponent(true);
 	const handleCloseComponent = () => setOpenComponent(false);
+
+	const { admin } = useContext(AdminContext);
+
 	return (
 		<div className='mainh1 px-5'>
 			<div>
@@ -30,6 +35,7 @@ export default function CategoryPage({ params }) {
 					]}
 				/>
 				<DataTable
+					crud={true}
 					maxHeight={420}
 					columns={[
 						'No.',
@@ -58,12 +64,13 @@ export default function CategoryPage({ params }) {
 				openComponent={openComponent}
 				params={params.category}
 			/>
-
-			<Tooltip title='Añadir Portátil'>
-				<AddButton onClick={handleOpenComponent}>
-					<SpeedDialIcon />
-				</AddButton>
-			</Tooltip>
+			{!admin && (
+				<Tooltip title='Añadir Portátil'>
+					<AddButton onClick={handleOpenComponent}>
+						<SpeedDialIcon />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 }
