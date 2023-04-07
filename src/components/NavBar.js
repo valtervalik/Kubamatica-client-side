@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import LogoutRoundedIcon from '@mui/icons-material/Logout';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -18,6 +18,8 @@ import './NavBar.css';
 import LinkMenu from './LinkMenu';
 import { Button } from '@mui/material';
 import SearchInput from './SearchInput';
+import AdminSwitch from './AdminSwitch';
+import AdminContext from '@/context/AdminContext';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
@@ -28,6 +30,8 @@ const urls = [
 
 const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
+
+	const { admin } = useContext(AdminContext);
 
 	const router = useRouter();
 
@@ -173,19 +177,21 @@ const NavBar = () => {
 								},
 							]}
 						/>
-						<Button id='basic-button'>
-							<Link
-								style={{
-									textDecoration: 'none',
-									color: 'gray',
-									fontWeight: 'bold',
-								}}
-								href={'/admin/users'}>
-								Usuarios
-							</Link>
-						</Button>
+						{admin && (
+							<Button id='basic-button'>
+								<Link
+									style={{
+										textDecoration: 'none',
+										color: 'gray',
+										fontWeight: 'bold',
+									}}
+									href={'/admin/users'}>
+									Usuarios
+								</Link>
+							</Button>
+						)}
 					</Box>
-
+					<AdminSwitch />
 					<SearchInput />
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='LogOut'>

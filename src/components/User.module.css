@@ -1,0 +1,9 @@
+#usercard {
+	transition: transform, box-shadow, 0.25s ease-in-out;
+}
+
+#usercard:hover {
+	cursor: pointer;
+	transform: scale(1.07);
+	box-shadow: 0 0 10px 2px;
+}
