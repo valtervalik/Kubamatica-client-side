@@ -17,6 +17,7 @@ export default function CategoryPage({ params }) {
 
 	return (
 		<div className='mainh1 px-5'>
+			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
 				<ComponentNavTabs
 					categories={[

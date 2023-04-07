@@ -13,8 +13,6 @@ const Usuarios = () => {
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-	const { admin } = useContext(AdminContext);
-
 	return (
 		<div>
 			<h1 className='text-center mb-5 mainh1'>Administrar Usuarios</h1>
@@ -35,13 +33,12 @@ const Usuarios = () => {
 			</div>
 
 			<UserModal handleClose={handleClose} open={open} />
-			{!admin && (
-				<Tooltip title='Añadir Usuario'>
-					<AddButton onClick={handleOpen}>
-						<SpeedDialIcon />
-					</AddButton>
-				</Tooltip>
-			)}
+
+			<Tooltip title='Añadir Usuario'>
+				<AddButton onClick={handleOpen}>
+					<SpeedDialIcon />
+				</AddButton>
+			</Tooltip>
 		</div>
 	);
 };

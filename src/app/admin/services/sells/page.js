@@ -17,41 +17,43 @@ const Sells = () => {
 
 	return (
 		<div className='mainh1 px-5'>
-			<div className='text-center mb-3'>
-				<h1>Enero</h1>
-				<h5>2023</h5>
+			<h2 className='text-center'>Registro de Servicios de Venta</h2>
+			<div className='mb-2'>
+				<p style={{ fontSize: '20px', fontWeight: 'bold', color: '#0010cc' }}>
+					Enero <span>2023</span>
+				</p>
+				<DataTable
+					columns={[
+						'No.',
+						'Cliente',
+						'Teléfono',
+						'Técnico',
+						'Marca',
+						'Modelo',
+						'No. Serie',
+						'Categoría',
+						'Estado',
+						'Propiedades',
+						'Fecha',
+						'Precio',
+						'Garantía',
+					]}
+					tdata={[
+						'Nombre y Apellidos',
+						'54789685',
+						'Nombre y Apellidos',
+						'Asus ROG',
+						'SW-83817',
+						'YjsY4568SUTSUh5d5s',
+						'Batería',
+						'Nuevo',
+						'Descripción de las propiedades',
+						'Jue - 1',
+						'$ 000 cup',
+						'30 Días',
+					]}
+				/>
 			</div>
-			<DataTable
-				columns={[
-					'No.',
-					'Cliente',
-					'Teléfono',
-					'Técnico',
-					'Marca',
-					'Modelo',
-					'No. Serie',
-					'Categoría',
-					'Estado',
-					'Propiedades',
-					'Fecha',
-					'Precio',
-					'Garantía',
-				]}
-				tdata={[
-					'Nombre y Apellidos',
-					'54789685',
-					'Nombre y Apellidos',
-					'Asus ROG',
-					'SW-83817',
-					'YjsY4568SUTSUh5d5s',
-					'Batería',
-					'Nuevo',
-					'Descripción de las propiedades',
-					'Jue - 1',
-					'$ 000 cup',
-					'30 Días',
-				]}
-			/>
 			<SellsModal handleClose={handleCloseSells} openSells={openSells} />
 			{!admin && (
 				<Tooltip title='Añadir Servicio'>

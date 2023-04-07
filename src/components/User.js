@@ -1,4 +1,3 @@
-'use client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
@@ -6,13 +5,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { useContext } from 'react';
-import AdminContext from '@/context/AdminContext';
 import styles from './User.module.css';
 
 export default function User() {
-	const { admin } = useContext(AdminContext);
-
 	return (
 		<Box sx={{ minWidth: 275, maxWidth: 350, width: 350 }}>
 			<React.Fragment>
@@ -56,12 +51,11 @@ export default function User() {
 							</div>
 						</div>
 					</CardContent>
-					{!admin && (
-						<CardActions className='d-flex justify-content-end'>
-							<Button className='btn text-primary border-0'>Editar</Button>
-							<Button className='btn text-danger border-0'>Eliminar</Button>
-						</CardActions>
-					)}
+
+					<CardActions className='d-flex justify-content-end'>
+						<Button className='btn text-primary border-0'>Editar</Button>
+						<Button className='btn text-danger border-0'>Eliminar</Button>
+					</CardActions>
 				</div>
 			</React.Fragment>
 		</Box>
