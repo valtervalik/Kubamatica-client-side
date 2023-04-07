@@ -7,12 +7,8 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './CategoryCard.module.css';
 import Link from 'next/link';
-import { useContext } from 'react';
-import AdminContext from '@/context/AdminContext';
 
 export default function CategoryCard({ category }) {
-	const { admin } = useContext(AdminContext);
-
 	return (
 		<Card
 			id={styles.categorycard}
@@ -34,16 +30,14 @@ export default function CategoryCard({ category }) {
 					</Typography>
 				</CardContent>
 			</Link>
-			{!admin && (
-				<CardActions className='d-flex justify-content-around'>
-					<Button className='btn text-primary' size='small'>
-						Editar
-					</Button>
-					<Button className='btn text-danger' size='small'>
-						Eliminar
-					</Button>
-				</CardActions>
-			)}
+			<CardActions className='d-flex justify-content-around'>
+				<Button className='btn text-primary' size='small'>
+					Editar
+				</Button>
+				<Button className='btn text-danger' size='small'>
+					Eliminar
+				</Button>
+			</CardActions>
 		</Card>
 	);
 }
