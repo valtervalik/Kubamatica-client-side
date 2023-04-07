@@ -3,6 +3,7 @@ import ModalButtons from './ModalButtons';
 import Selector from './Selector';
 import TextInput from './TextInput';
 import { FormError } from './FormError';
+import { Button } from '@mui/material';
 
 const initialForm = {
 	supplier: '',
@@ -316,6 +317,13 @@ const AddPurchasesForm = ({ handleClose }) => {
 									</select>
 								</div>
 							</div>
+							{form.category.trim() === 'laptops' && (
+								<Button
+									className='mt-4'
+									style={{ fontWeight: 'bold', color: 'silver' }}>
+									+ Agregar Componente
+								</Button>
+							)}
 						</div>
 					</div>
 				</div>

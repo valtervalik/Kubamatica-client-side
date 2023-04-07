@@ -3,7 +3,7 @@ import React from 'react';
 
 const ModalButtons = ({ handleClose }) => {
 	return (
-		<div className='d-flex justify-content-around mt-3'>
+		<div className='d-flex justify-content-around mt-5'>
 			<Button
 				className='text-danger'
 				style={{ fontWeight: 'bold' }}
