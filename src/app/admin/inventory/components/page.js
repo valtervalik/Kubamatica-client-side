@@ -1,15 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
 import CategoryCard from '@/components/CategoryCard';
 import Tooltip from '@mui/material/Tooltip';
 import CategoryModal from '@/components/CategoryModal';
+import MySnackbar from '@/components/MySnackBar';
+import SnackBarContext from '@/context/SnackBarContext';
 
 const Components = () => {
 	const [openCategory, setOpenCategory] = useState(false);
 	const handleOpenCategory = () => setOpenCategory(true);
 	const handleCloseCategory = () => setOpenCategory(false);
+
+	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
 
 	return (
 		<div>
@@ -54,6 +58,17 @@ const Components = () => {
 					<SpeedDialIcon />
 				</AddButton>
 			</Tooltip>
+
+			<MySnackbar
+				severity={'warning'}
+				text={'Por favor rellene el formulario correctamente'}
+				openWarningSnack={openWarningSnack}
+			/>
+			<MySnackbar
+				severity={'success'}
+				text={'Categoría añadida exitosamente'}
+				openSuccessSnack={openSuccessSnack}
+			/>
 		</div>
 	);
 };

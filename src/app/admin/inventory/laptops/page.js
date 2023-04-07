@@ -1,15 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
 import ImgCard from '@/components/ImgCard';
 import Tooltip from '@mui/material/Tooltip';
 import LaptopModal from '@/components/LaptopModal';
+import MySnackbar from '@/components/MySnackBar';
+import SnackBarContext from '@/context/SnackBarContext';
 
 const Laptops = () => {
 	const [openLaptop, setOpenLaptop] = useState(false);
 	const handleOpenLaptop = () => setOpenLaptop(true);
 	const handleCloseLaptop = () => setOpenLaptop(false);
+
+	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
 
 	return (
 		<div>
@@ -70,6 +74,16 @@ const Laptops = () => {
 					<SpeedDialIcon />
 				</AddButton>
 			</Tooltip>
+			<MySnackbar
+				severity={'warning'}
+				text={'Por favor rellene el formulario correctamente'}
+				openWarningSnack={openWarningSnack}
+			/>
+			<MySnackbar
+				severity={'success'}
+				text={'Portátil añadido exitosamente'}
+				openSuccessSnack={openSuccessSnack}
+			/>
 		</div>
 	);
 };

@@ -3,7 +3,6 @@ import Link from 'next/link';
 import LoginBtn from './LoginBtn';
 import './LoginForm.css';
 import { useForm } from '@/hooks/useForm';
-import MySnackbar from './MySnackBar';
 
 const initialForm = {
 	username: '',
@@ -25,15 +24,10 @@ const validateForm = (form) => {
 };
 
 const LoginForm = () => {
-	const {
-		form,
-		error,
-		openWarningSnack,
-		openSuccessSnack,
-		handleChange,
-		handleBlur,
-		handleSubmit,
-	} = useForm(initialForm, validateForm);
+	const { form, handleChange, handleBlur, handleSubmit } = useForm(
+		initialForm,
+		validateForm
+	);
 
 	return (
 		<>
@@ -78,16 +72,6 @@ const LoginForm = () => {
 					</Link>
 				</form>
 			</div>
-			<MySnackbar
-				severity={'error'}
-				text={'Nombre de usuario o contraseña incorrectos'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={'Inicio de sesión exitoso'}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</>
 	);
 };

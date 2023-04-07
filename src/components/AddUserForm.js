@@ -1,7 +1,6 @@
 import { useForm } from '@/hooks/useForm';
 import ModalButtons from './ModalButtons';
 import TextInput from './TextInput';
-import MySnackbar from './MySnackBar';
 import { FormError } from './FormError';
 import Selector from './Selector';
 
@@ -70,15 +69,10 @@ const validateForm = (form) => {
 	return error;
 };
 const AddUserForm = ({ handleClose }) => {
-	const {
-		form,
-		error,
-		openWarningSnack,
-		openSuccessSnack,
-		handleChange,
-		handleBlur,
-		handleSubmit,
-	} = useForm(initialForm, validateForm);
+	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
+		initialForm,
+		validateForm
+	);
 
 	return (
 		<div>
@@ -163,16 +157,6 @@ const AddUserForm = ({ handleClose }) => {
 				)}
 				<ModalButtons handleClose={handleClose} />
 			</form>
-			<MySnackbar
-				severity={'warning'}
-				text={'Por favor rellene el formulario correctamente'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={'Usuario añadido exitosamente'}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</div>
 	);
 };

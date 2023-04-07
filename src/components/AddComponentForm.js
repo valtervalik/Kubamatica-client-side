@@ -2,7 +2,6 @@ import { useForm } from '@/hooks/useForm';
 import ModalButtons from './ModalButtons';
 import Selector from './Selector';
 import TextInput from './TextInput';
-import MySnackbar from './MySnackBar';
 import { FormError } from './FormError';
 
 const initialForm = {
@@ -74,15 +73,10 @@ const validateForm = (form) => {
 };
 
 const AddComponentForm = ({ handleClose }) => {
-	const {
-		form,
-		error,
-		openWarningSnack,
-		openSuccessSnack,
-		handleChange,
-		handleBlur,
-		handleSubmit,
-	} = useForm(initialForm, validateForm);
+	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
+		initialForm,
+		validateForm
+	);
 
 	return (
 		<div>
@@ -271,16 +265,6 @@ const AddComponentForm = ({ handleClose }) => {
 				</div>
 				<ModalButtons handleClose={handleClose} />
 			</form>
-			<MySnackbar
-				severity={'warning'}
-				text={'Por favor rellene el formulario correctamente'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={'Componente añadido exitosamente'}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</div>
 	);
 };

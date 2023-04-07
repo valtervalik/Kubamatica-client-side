@@ -1,15 +1,19 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { AddButton } from '@/components/AddButton';
 import ComponentNavTabs from '@/components/ComponentNavTabs';
 import DataTable from '@/components/DataTable';
 import { SpeedDialIcon, Tooltip } from '@mui/material';
 import ComponentModal from '@/components/ComponentModal';
+import MySnackbar from '@/components/MySnackBar';
+import SnackBarContext from '@/context/SnackBarContext';
 
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
 	const handleOpenComponent = () => setOpenComponent(true);
 	const handleCloseComponent = () => setOpenComponent(false);
+
+	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -66,6 +70,16 @@ export default function CategoryPage({ params }) {
 					<SpeedDialIcon />
 				</AddButton>
 			</Tooltip>
+			<MySnackbar
+				severity={'warning'}
+				text={'Por favor rellene el formulario correctamente'}
+				openWarningSnack={openWarningSnack}
+			/>
+			<MySnackbar
+				severity={'success'}
+				text={'Componente añadido exitosamente'}
+				openSuccessSnack={openSuccessSnack}
+			/>
 		</div>
 	);
 }

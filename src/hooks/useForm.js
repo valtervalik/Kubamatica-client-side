@@ -1,12 +1,14 @@
 'use client';
 
-import { useState } from 'react';
+import SnackBarContext from '@/context/SnackBarContext';
+import { useContext, useState } from 'react';
 
 export const useForm = (initialForm, validateForm) => {
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
-	const [openWarningSnack, setOpenWarningSnack] = useState(false);
-	const [openSuccessSnack, setOpenSuccessSnack] = useState(false);
+
+	const { setOpenSuccessSnack, setOpenWarningSnack } =
+		useContext(SnackBarContext);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -39,8 +41,6 @@ export const useForm = (initialForm, validateForm) => {
 	return {
 		form,
 		error,
-		openWarningSnack,
-		openSuccessSnack,
 		handleChange,
 		handleBlur,
 		handleSubmit,

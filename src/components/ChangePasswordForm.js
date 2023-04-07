@@ -1,7 +1,6 @@
 'use client';
 import { useForm } from '@/hooks/useForm';
 import Link from 'next/link';
-import MySnackbar from './MySnackBar';
 import { FormError } from './FormError';
 
 const initialForm = {
@@ -41,15 +40,10 @@ const validateForm = (form) => {
 };
 
 const ChangePasswordForm = () => {
-	const {
-		form,
-		error,
-		openWarningSnack,
-		openSuccessSnack,
-		handleChange,
-		handleBlur,
-		handleSubmit,
-	} = useForm(initialForm, validateForm);
+	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
+		initialForm,
+		validateForm
+	);
 
 	return (
 		<>
@@ -134,16 +128,6 @@ const ChangePasswordForm = () => {
 					</div>
 				</form>
 			</div>
-			<MySnackbar
-				severity={'error'}
-				text={'Tiene campos incorrectos o su usuario y contraseña no existen'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={'Cambio de contraseña exitoso'}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</>
 	);
 };
