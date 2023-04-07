@@ -18,8 +18,6 @@ import './NavBar.css';
 import LinkMenu from './LinkMenu';
 import { Button } from '@mui/material';
 import SearchInput from './SearchInput';
-import AdminSwitch from './AdminSwitch';
-import AdminContext from '@/context/AdminContext';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
@@ -30,8 +28,6 @@ const urls = [
 
 const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
-
-	const { admin } = useContext(AdminContext);
 
 	const router = useRouter();
 
@@ -177,21 +173,18 @@ const NavBar = () => {
 								},
 							]}
 						/>
-						{admin && (
-							<Button id='basic-button'>
-								<Link
-									style={{
-										textDecoration: 'none',
-										color: 'gray',
-										fontWeight: 'bold',
-									}}
-									href={'/admin/users'}>
-									Usuarios
-								</Link>
-							</Button>
-						)}
+						<Button id='basic-button'>
+							<Link
+								style={{
+									textDecoration: 'none',
+									color: 'gray',
+									fontWeight: 'bold',
+								}}
+								href={'/admin/users'}>
+								Usuarios
+							</Link>
+						</Button>
 					</Box>
-					<AdminSwitch />
 					<SearchInput />
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='LogOut'>

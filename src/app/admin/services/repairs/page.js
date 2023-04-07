@@ -1,18 +1,15 @@
 'use client';
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import DataTable from '@/components/DataTable';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
 import RepairsModal from '@/components/RepairsModal';
 import Tooltip from '@mui/material/Tooltip';
-import AdminContext from '@/context/AdminContext';
 
 const Repairs = () => {
 	const [openRepairs, setOpenRepairs] = useState(false);
 	const handleOpenRepairs = () => setOpenRepairs(true);
 	const handleCloseRepairs = () => setOpenRepairs(false);
-
-	const { admin } = useContext(AdminContext);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -54,13 +51,11 @@ const Repairs = () => {
 				openRepairs={openRepairs}
 			/>
 
-			{!admin && (
-				<Tooltip title='Añadir Servicio'>
-					<AddButton onClick={handleOpenRepairs}>
-						<SpeedDialIcon />
-					</AddButton>
-				</Tooltip>
-			)}
+			<Tooltip title='Añadir Servicio'>
+				<AddButton onClick={handleOpenRepairs}>
+					<SpeedDialIcon />
+				</AddButton>
+			</Tooltip>
 		</div>
 	);
 };

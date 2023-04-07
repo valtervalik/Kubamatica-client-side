@@ -4,12 +4,8 @@ import React from 'react';
 import styles from './page.module.css';
 import LaptopDetailsButtons from '@/components/LaptopDetailsButtons';
 import LaptopComponentsBox from '@/components/LaptopComponentsBox';
-import { useContext } from 'react';
-import AdminContext from '@/context/AdminContext';
 
 const LaptopDetailsPage = () => {
-	const { admin } = useContext(AdminContext);
-
 	return (
 		<div className='mb-5 mainh1'>
 			<div className='d-flex justify-content-center'>
@@ -41,7 +37,7 @@ const LaptopDetailsPage = () => {
 					</div>
 				</div>
 			</div>
-			{!admin && <LaptopDetailsButtons />}
+			<LaptopDetailsButtons />
 
 			<LaptopComponentsBox />
 		</div>

@@ -5,15 +5,11 @@ import { AddButton } from '@/components/AddButton';
 import CategoryCard from '@/components/CategoryCard';
 import Tooltip from '@mui/material/Tooltip';
 import CategoryModal from '@/components/CategoryModal';
-import { useContext } from 'react';
-import AdminContext from '@/context/AdminContext';
 
 const Components = () => {
 	const [openCategory, setOpenCategory] = useState(false);
 	const handleOpenCategory = () => setOpenCategory(true);
 	const handleCloseCategory = () => setOpenCategory(false);
-
-	const { admin } = useContext(AdminContext);
 
 	return (
 		<div>
@@ -53,13 +49,11 @@ const Components = () => {
 				handleClose={handleCloseCategory}
 				openCategory={openCategory}
 			/>
-			{!admin && (
-				<Tooltip title='Añadir Categoría'>
-					<AddButton onClick={handleOpenCategory}>
-						<SpeedDialIcon />
-					</AddButton>
-				</Tooltip>
-			)}
+			<Tooltip title='Añadir Categoría'>
+				<AddButton onClick={handleOpenCategory}>
+					<SpeedDialIcon />
+				</AddButton>
+			</Tooltip>
 		</div>
 	);
 };
