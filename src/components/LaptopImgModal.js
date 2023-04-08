@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import AddCategoryForm from './AddCategoryForm';
 
 const style = {
 	position: 'absolute',
@@ -45,9 +44,7 @@ export default function CategoryModal({ openCategory, handleClose }) {
 							component='h2'>
 							Añadir Categoría de Componente
 						</Typography>
-						<div className='mt-3'>
-							<AddCategoryForm handleClose={handleClose} />
-						</div>
+						<div className='mt-3'></div>
 					</Box>
 				</Fade>
 			</Modal>

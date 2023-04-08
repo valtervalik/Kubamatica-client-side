@@ -7,6 +7,7 @@ import Selector from './Selector';
 import ModalButtons from './ModalButtons';
 import { useForm } from '@/hooks/useForm';
 import { FormError } from './FormError';
+import { Button } from '@mui/material';
 
 const initialForm = {
 	brand: '',
@@ -111,6 +112,12 @@ const AddLaptopForm = ({ handleClose }) => {
 							<DropZone data={data} dispatch={dispatch} />
 						</div>
 					</div>
+
+					<Button
+						className='my-4'
+						style={{ fontWeight: 'bold', color: 'silver' }}>
+						+ Agregar Componente
+					</Button>
 
 					<div className='row'>
 						<div className='col'>
