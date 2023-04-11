@@ -1,5 +1,5 @@
 html {
-	height: 100vh;
+	height: 100%;
 }
 body {
 	margin: 0;
@@ -8,6 +8,7 @@ body {
 		sans-serif;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	height: 100%;
 }
 
 code {
@@ -26,7 +27,7 @@ code {
 }
 
 .login-button:hover {
-	box-shadow: 0 4px 6px 1px gray;
+	box-shadow: 0 4px 6px 1px azure;
 }
 
 .button-link {
@@ -34,29 +35,29 @@ code {
 	color: #000814;
 	position: fixed;
 	bottom: 10px;
-	left: 85%;
+	left: 83%;
 	font-weight: bold !important;
 }
 
 .button-link:hover {
-	box-shadow: 0 2px 6px 1px !important;
+	box-shadow: 0 2px 6px 1px azure !important;
 }
 .cancel {
-	color: red !important;
+	color: #000814 !important;
 	font-weight: bold !important;
 }
 
 .cancel:hover {
-	box-shadow: 0 4px 6px 1px gray;
+	box-shadow: 0 4px 6px 1px;
 }
 
 .confirm {
-	color: #080cfbce !important;
+	color: azure !important;
 	font-weight: bold !important;
 }
 
 .confirm:hover {
-	box-shadow: 0 4px 6px 1px gray;
+	box-shadow: 0 4px 6px 1px azure;
 }
 
 .cancel,
@@ -75,5 +76,5 @@ code {
 }
 
 .mainh1 {
-	margin-top: 120px;
+	padding-top: 120px;
 }

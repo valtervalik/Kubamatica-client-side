@@ -5,6 +5,11 @@
 	font-weight: bold;
 }
 
+.input {
+	border: none;
+	opacity: 50%;
+}
+
 .input:hover {
 	box-shadow: 0px 2px 6px 1px inset;
 }

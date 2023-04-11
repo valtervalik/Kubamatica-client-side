@@ -8,8 +8,10 @@ const Login = () => {
 	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
 
 	return (
-		<div>
-			<h2 className='d-flex justify-content-center mb-3'>Inicio de Sesión</h2>
+		<>
+			<h2 className='d-flex justify-content-center mb-3 text-light'>
+				Inicio de Sesión
+			</h2>
 			<LoginForm />
 			<MySnackbar
 				severity={'error'}
@@ -21,7 +23,7 @@ const Login = () => {
 				text={'Inicio de sesión exitoso'}
 				openSuccessSnack={openSuccessSnack}
 			/>
-		</div>
+		</>
 	);
 };
 export default Login;

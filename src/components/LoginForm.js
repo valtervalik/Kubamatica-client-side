@@ -3,6 +3,7 @@ import Link from 'next/link';
 import LoginBtn from './LoginBtn';
 import './LoginForm.css';
 import { useForm } from '@/hooks/useForm';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const initialForm = {
 	username: '',
@@ -67,8 +68,11 @@ const LoginForm = () => {
 						<label htmlFor='floatingPassword'>Contraseña</label>
 					</div>
 					<LoginBtn />
-					<Link href='/session/changepassword' className='btn button-link'>
-						Cambiar Contraseña
+					<Link
+						style={{ color: 'silver' }}
+						href='/session/changepassword'
+						className='btn button-link'>
+						Cambiar Contraseña <LockOpenIcon fontSize='small' />
 					</Link>
 				</form>
 			</div>

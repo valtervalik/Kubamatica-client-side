@@ -4,7 +4,7 @@ const LoginBtn = () => {
 			<input
 				type='submit'
 				value='Iniciar Sesión'
-				className='btn login-button'
+				className='btn login-button text-light'
 				id='sesionBtn'
 			/>
 		</div>

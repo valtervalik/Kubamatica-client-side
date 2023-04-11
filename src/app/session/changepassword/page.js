@@ -8,9 +8,13 @@ const ChangePassword = () => {
 	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
 
 	return (
-		<div>
-			<h2 className='mb-3 d-flex justify-content-center'>Cambiar Contraseña</h2>
-			<ChangePasswordForm />
+		<>
+			<h2 className='pb-3 d-flex justify-content-center text-light'>
+				Cambiar Contraseña
+			</h2>
+			<div className='d-flex justify-content-center'>
+				<ChangePasswordForm />
+			</div>
 			<MySnackbar
 				severity={'error'}
 				text={'Tiene campos incorrectos o su usuario y contraseña no existen'}
@@ -21,7 +25,7 @@ const ChangePassword = () => {
 				text={'Cambio de contraseña exitoso'}
 				openSuccessSnack={openSuccessSnack}
 			/>
-		</div>
+		</>
 	);
 };
 
