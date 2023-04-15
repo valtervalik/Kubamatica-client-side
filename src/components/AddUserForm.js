@@ -5,7 +5,7 @@ import { FormError } from './FormError';
 import Selector from './Selector';
 
 const initialForm = {
-	name: '',
+	fullname: '',
 	phone: '',
 	username: '',
 	email: '',
@@ -26,10 +26,10 @@ const validateForm = (form) => {
 	let regexPassword =
 		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
 
-	if (!form.name.trim()) {
-		error.name = `El campo 'Nombre y Apellidos' es requerido`;
-	} else if (!regexName.test(form.name.trim())) {
-		error.name = `El campo 'Nombre y Apellidos' solo debe estar compuesto por letras`;
+	if (!form.fullname.trim()) {
+		error.fullname = `El campo 'Nombre y Apellidos' es requerido`;
+	} else if (!regexName.test(form.fullname.trim())) {
+		error.fullname = `El campo 'Nombre y Apellidos' solo debe estar compuesto por letras`;
 	}
 
 	if (!form.phone.trim()) {
@@ -68,10 +68,15 @@ const validateForm = (form) => {
 
 	return error;
 };
+
+const url = 'http://127.0.0.1:5000/users/register';
+
 const AddUserForm = ({ handleClose }) => {
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url,
+		handleClose
 	);
 
 	return (
@@ -83,9 +88,9 @@ const AddUserForm = ({ handleClose }) => {
 					handleBlur={handleBlur}
 					label='Nombre y Apellidos'
 					type='text'
-					name='name'
+					name='fullname'
 				/>
-				{error.name && <FormError>{error.name}</FormError>}
+				{error.fullname && <FormError>{error.fullname}</FormError>}
 				<TextInput
 					value={form.phone}
 					handleChange={handleChange}
@@ -94,7 +99,7 @@ const AddUserForm = ({ handleClose }) => {
 					type='text'
 					name='phone'
 				/>
-				{!error.name && error.phone && <FormError>{error.phone}</FormError>}
+				{!error.fullname && error.phone && <FormError>{error.phone}</FormError>}
 				<TextInput
 					value={form.username}
 					handleChange={handleChange}
@@ -124,11 +129,11 @@ const AddUserForm = ({ handleClose }) => {
 					options={[
 						{
 							option: 'Dependiente',
-							value: 'clerk',
+							value: 'Dependiente',
 						},
 						{
 							option: 'Administrador',
-							value: 'manager',
+							value: 'Administrador',
 						},
 					]}
 				/>

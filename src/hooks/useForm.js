@@ -1,9 +1,17 @@
 'use client';
 
 import SnackBarContext from '@/context/SnackBarContext';
+import { helpHttp } from '@/helpers/helpHttp';
 import { useContext, useState } from 'react';
 
-export const useForm = (initialForm, validateForm) => {
+const submitData = async (url, form) => {
+	await helpHttp().post(url, {
+		body: form,
+		headers: { 'content-type': 'application/json' },
+	});
+};
+
+export const useForm = (initialForm, validateForm, url, handleClose) => {
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
 
@@ -23,7 +31,12 @@ export const useForm = (initialForm, validateForm) => {
 	};
 	const handleSubmit = (e) => {
 		if (Object.keys(error).length === 0) {
+			e.preventDefault();
 			setForm(form);
+
+			submitData(url, form);
+			handleClose();
+
 			setOpenSuccessSnack(true);
 			setTimeout(() => {
 				setOpenSuccessSnack(false);

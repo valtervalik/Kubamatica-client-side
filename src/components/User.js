@@ -7,7 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './User.module.css';
 
-export default function User() {
+export default function User({ user }) {
 	return (
 		<Box sx={{ minWidth: 275, maxWidth: 350, width: 350 }}>
 			<React.Fragment>
@@ -24,7 +24,7 @@ export default function User() {
 							}}
 							color='text.secondary'
 							gutterBottom>
-							Nombre y Apellidos
+							{user.fullname}
 						</Typography>
 						<div className='d-flex justify-content-between'>
 							<div>
@@ -32,10 +32,10 @@ export default function User() {
 									sx={{ fontSize: 17, color: 'azure' }}
 									variant='h5'
 									component='div'>
-									usuario
+									{user.username}
 								</Typography>
 								<Typography sx={{ color: 'silver' }} color='text.secondary'>
-									email@email.com
+									{user.email}
 								</Typography>
 							</div>
 							<div>
@@ -43,10 +43,10 @@ export default function User() {
 									sx={{ fontSize: 17, color: 'azure' }}
 									variant='h5'
 									component='div'>
-									Dependiente
+									{user.role}
 								</Typography>
 								<Typography sx={{ color: 'silver' }} color='text.secondary'>
-									TEL: 59764532
+									TEL: {user.phone}
 								</Typography>
 							</div>
 						</div>

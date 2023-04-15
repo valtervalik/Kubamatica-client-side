@@ -11,6 +11,7 @@ export const helpHttp = () => {
 
 		//definiendo opciones por defecto
 		options.method = options.method || 'GET';
+		options.chache = options.cache || 'no-store';
 		options.headers = options.headers
 			? { ...defaultHeader, ...options.headers }
 			: defaultHeader;
