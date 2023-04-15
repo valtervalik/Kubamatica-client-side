@@ -22,9 +22,11 @@ export default function User({ user }) {
 	const deleteUser = async () => {
 		await helpHttp()
 			.del(url)
-			.then((res) => setMsg(res.message));
+			.then((res) => {
+				setMsg(res.message);
+				setOpenSuccessSnack(true);
+			});
 
-		setOpenSuccessSnack(true);
 		setTimeout(() => {
 			setOpenSuccessSnack(false);
 			setMsg('');

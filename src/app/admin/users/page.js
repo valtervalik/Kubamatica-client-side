@@ -30,7 +30,7 @@ const Usuarios = () => {
 					setUserData(null);
 				}
 			});
-	}, [openSuccessSnack, url]);
+	}, [openSuccessSnack, msg, url]);
 
 	return (
 		<div>

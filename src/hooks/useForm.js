@@ -36,10 +36,11 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 			e.preventDefault();
 			setForm(form);
 
-			submitData(url, form);
-			handleClose();
+			submitData(url, form).then(() => {
+				handleClose();
+				setOpenSuccessSnack(true);
+			});
 
-			setOpenSuccessSnack(true);
 			setTimeout(() => {
 				setOpenSuccessSnack(false);
 				setMsg('');
