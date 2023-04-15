@@ -22,6 +22,7 @@ export default function User({ user }) {
 		setOpenSuccessSnack(true);
 		setTimeout(() => {
 			setOpenSuccessSnack(false);
+			setMsg('');
 		}, 3000);
 	};
 

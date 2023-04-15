@@ -42,6 +42,7 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 			setOpenSuccessSnack(true);
 			setTimeout(() => {
 				setOpenSuccessSnack(false);
+				setMsg('');
 			}, 3000);
 		} else {
 			e.preventDefault();
