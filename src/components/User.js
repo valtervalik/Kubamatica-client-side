@@ -1,13 +1,30 @@
+'use client';
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import styles from './User.module.css';
+import { helpHttp } from '@/helpers/helpHttp';
+import SnackBarContext from '@/context/SnackBarContext';
 
 export default function User({ user }) {
+	const url = `http://127.0.0.1:5000/users/${user._id}`;
+
+	const { setOpenSuccessSnack, setMsg } = React.useContext(SnackBarContext);
+
+	const deleteUser = async () => {
+		await helpHttp()
+			.del(url)
+			.then((res) => setMsg(res.message));
+
+		setOpenSuccessSnack(true);
+		setTimeout(() => {
+			setOpenSuccessSnack(false);
+		}, 3000);
+	};
+
 	return (
 		<Box sx={{ minWidth: 275, maxWidth: 350, width: 350 }}>
 			<React.Fragment>
@@ -54,7 +71,9 @@ export default function User({ user }) {
 
 					<CardActions className='d-flex justify-content-end'>
 						<Button className='btn text-primary border-0'>Editar</Button>
-						<Button className='btn text-danger border-0'>Eliminar</Button>
+						<Button onClick={deleteUser} className='btn text-danger border-0'>
+							Eliminar
+						</Button>
 					</CardActions>
 				</div>
 			</React.Fragment>

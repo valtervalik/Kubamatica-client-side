@@ -4,19 +4,21 @@ import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import { useContext, useState } from 'react';
 
-const submitData = async (url, form) => {
-	await helpHttp().post(url, {
-		body: form,
-		headers: { 'content-type': 'application/json' },
-	});
-};
-
 export const useForm = (initialForm, validateForm, url, handleClose) => {
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
 
-	const { setOpenSuccessSnack, setOpenWarningSnack } =
+	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
 		useContext(SnackBarContext);
+
+	const submitData = async (url, form) => {
+		await helpHttp()
+			.post(url, {
+				body: form,
+				headers: { 'content-type': 'application/json' },
+			})
+			.then((res) => setMsg(res.message));
+	};
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;

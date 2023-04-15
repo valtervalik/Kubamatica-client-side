@@ -15,7 +15,8 @@ const Usuarios = () => {
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
+	const { openSuccessSnack, openWarningSnack, msg } =
+		useContext(SnackBarContext);
 
 	let url = 'http://127.0.0.1:5000/users';
 
@@ -58,7 +59,7 @@ const Usuarios = () => {
 			/>
 			<MySnackbar
 				severity={'success'}
-				text={'Usuario añadido exitosamente'}
+				text={msg}
 				openSuccessSnack={openSuccessSnack}
 			/>
 		</div>
