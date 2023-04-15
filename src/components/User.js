@@ -8,8 +8,13 @@ import Typography from '@mui/material/Typography';
 import styles from './User.module.css';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
+import ConfirmDeleteUserModal from './ConfirmDeleteUserModal';
 
 export default function User({ user }) {
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
+
 	const url = `http://127.0.0.1:5000/users/${user._id}`;
 
 	const { setOpenSuccessSnack, setMsg } = React.useContext(SnackBarContext);
@@ -72,12 +77,18 @@ export default function User({ user }) {
 
 					<CardActions className='d-flex justify-content-end'>
 						<Button className='btn text-primary border-0'>Editar</Button>
-						<Button onClick={deleteUser} className='btn text-danger border-0'>
+						<Button onClick={handleOpen} className='btn text-danger border-0'>
 							Eliminar
 						</Button>
 					</CardActions>
 				</div>
 			</React.Fragment>
+			<ConfirmDeleteUserModal
+				handleClose={handleClose}
+				open={open}
+				deleteUser={deleteUser}
+				username={user.username}
+			/>
 		</Box>
 	);
 }
