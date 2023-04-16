@@ -1,18 +1,8 @@
-import { useForm } from '@/hooks/useForm';
-import ModalButtons from './ModalButtons';
+import { useEditForm } from '@/hooks/useEditForm';
 import TextInput from './TextInput';
 import { FormError } from './FormError';
 import Selector from './Selector';
-
-const initialForm = {
-	fullname: '',
-	phone: '',
-	username: '',
-	email: '',
-	role: '',
-	password: '',
-	confirmpassword: '',
-};
+import ModalEditButtons from './ModalEditButtons';
 
 const validateForm = (form) => {
 	let error = {};
@@ -54,25 +44,21 @@ const validateForm = (form) => {
 		error.role = `El campo 'Rol' es requerido`;
 	}
 
-	if (!form.password.trim()) {
-		error.password = `El campo 'Contraseña' es requerido`;
-	} else if (!regexPassword.test(form.password.trim())) {
-		error.password = `El campo 'Contraseña' debe tener más de 8 caracteres y tener al menos una mayúscula, un número y un caracter especial`;
-	}
-
-	if (!form.confirmpassword.trim()) {
-		error.confirmpassword = `El campo 'Confirmar Contraseña' es requerido`;
-	} else if (form.password !== form.confirmpassword) {
-		error.confirmpassword = `Las contraseñas no coinciden`;
-	}
-
 	return error;
 };
 
-const url = 'http://127.0.0.1:5000/users/register';
+const EditUserForm = ({ handleClose, user }) => {
+	const url = `http://127.0.0.1:5000/users/${user._id}`;
 
-const AddUserForm = ({ handleClose }) => {
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
+	const initialForm = {
+		fullname: `${user.fullname}`,
+		phone: `${user.phone}`,
+		username: `${user.username}`,
+		email: `${user.email}`,
+		role: `${user.role}`,
+	};
+
+	const { form, error, handleChange, handleBlur, handleSubmit } = useEditForm(
 		initialForm,
 		validateForm,
 		url,
@@ -138,32 +124,11 @@ const AddUserForm = ({ handleClose }) => {
 					]}
 				/>
 				{!error.email && error.role && <FormError>{error.role}</FormError>}
-				<TextInput
-					value={form.password}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
-					label='Contraseña'
-					type='password'
-					name='password'
-				/>
-				{!error.role && error.password && (
-					<FormError>{error.password}</FormError>
-				)}
-				<TextInput
-					value={form.confirmpassword}
-					handleChange={handleChange}
-					handleBlur={handleBlur}
-					label='Confirmar Contraseña'
-					type='password'
-					name='confirmpassword'
-				/>
-				{!error.password && error.confirmpassword && (
-					<FormError>{error.confirmpassword}</FormError>
-				)}
-				<ModalButtons handleClose={handleClose} />
+
+				<ModalEditButtons handleClose={handleClose} />
 			</form>
 		</div>
 	);
 };
 
-export default AddUserForm;
+export default EditUserForm;

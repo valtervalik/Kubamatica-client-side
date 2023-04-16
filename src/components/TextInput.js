@@ -29,6 +29,10 @@ export default function TextInput({
 						fontSize: fontSize,
 					},
 					'& input': { color: 'azure' },
+					'& input:autofill': {
+						WebkitTextFillColor: 'azure',
+						WebkitBoxShadow: '0 0 0 20px #000814 inset',
+					},
 					'& textarea': { color: 'azure' },
 				}}
 				label={label}
