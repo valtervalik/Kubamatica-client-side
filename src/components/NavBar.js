@@ -21,9 +21,9 @@ import SearchInput from './SearchInput';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
-	'/admin/services/repairs',
-	'/admin/inventory/laptops',
-	'/admin/users',
+	'/managment/administration/services/repairs',
+	'/managment/administration/inventory/laptops',
+	'/managment/administration/users',
 ];
 
 const NavBar = () => {
@@ -148,15 +148,15 @@ const NavBar = () => {
 							linkNames={[
 								{
 									name: 'Reparaciones',
-									url: '/admin/services/repairs',
+									url: '/managment/administration/services/repairs',
 								},
 								{
 									name: 'Ventas',
-									url: '/admin/services/sells',
+									url: '/managment/administration/services/sells',
 								},
 								{
 									name: 'Compras',
-									url: '/admin/services/purchases',
+									url: '/managment/administration/services/purchases',
 								},
 							]}
 						/>
@@ -165,11 +165,11 @@ const NavBar = () => {
 							linkNames={[
 								{
 									name: 'Portátiles',
-									url: '/admin/inventory/laptops',
+									url: '/managment/administration/inventory/laptops',
 								},
 								{
 									name: 'Componentes',
-									url: '/admin/inventory/components',
+									url: '/managment/administration/inventory/components',
 								},
 							]}
 						/>
@@ -180,7 +180,7 @@ const NavBar = () => {
 									color: 'gray',
 									fontWeight: 'bold',
 								}}
-								href={'/admin/users'}>
+								href={'/managment/administration/users'}>
 								Usuarios
 							</Link>
 						</Button>
@@ -190,7 +190,7 @@ const NavBar = () => {
 						<Tooltip title='LogOut'>
 							<IconButton
 								sx={{ p: 0 }}
-								onClick={() => router.push('/session/login')}>
+								onClick={() => router.push('/managment/session/login')}>
 								<LogoutRoundedIcon sx={{ color: 'azure', fontSize: '30px' }} />
 							</IconButton>
 						</Tooltip>

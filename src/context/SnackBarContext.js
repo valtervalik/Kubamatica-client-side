@@ -6,11 +6,14 @@ const SnackBarContext = createContext();
 const SnackBarProvider = ({ children }) => {
 	const [openWarningSnack, setOpenWarningSnack] = useState(false);
 	const [openSuccessSnack, setOpenSuccessSnack] = useState(false);
+	const [openErrorSnack, setOpenErrorSnack] = useState(false);
 	const [msg, setMsg] = useState('');
 
 	const data = {
 		openWarningSnack,
 		openSuccessSnack,
+		openErrorSnack,
+		setOpenErrorSnack,
 		setOpenSuccessSnack,
 		setOpenWarningSnack,
 		msg,

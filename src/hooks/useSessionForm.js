@@ -2,13 +2,16 @@
 
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
+import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 
-export const useForm = (initialForm, validateForm, url, handleClose) => {
+export const useSessionForm = (initialForm, validateForm, url) => {
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
 
-	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
+	const router = useRouter();
+
+	const { setOpenSuccessSnack, setOpenErrorSnack, setMsg, msg } =
 		useContext(SnackBarContext);
 
 	const submitData = async (url, form) => {
@@ -17,7 +20,13 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 				body: form,
 				headers: { 'content-type': 'application/json' },
 			})
-			.then((res) => setMsg(res.message));
+			.then((res) => {
+				if (res.err) {
+					setMsg('Error');
+				} else {
+					setMsg(res.message);
+				}
+			});
 	};
 
 	const handleChange = (e) => {
@@ -37,19 +46,29 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 			setForm(form);
 
 			submitData(url, form).then(() => {
-				handleClose();
-				setOpenSuccessSnack(true);
-				setTimeout(() => {
-					setOpenSuccessSnack(false);
-					setMsg('');
-				}, 3000);
+				if (msg === 'Error') {
+					setMsg('Usuario o contraseña incorrectos');
+					setOpenErrorSnack(true);
+					setTimeout(() => {
+						setOpenErrorSnack(false);
+						setMsg('');
+						setError({});
+					}, 3000);
+				} else {
+					router.push('managment/administration/services/repairs');
+					setOpenSuccessSnack(true);
+					setTimeout(() => {
+						setOpenSuccessSnack(false);
+						setMsg('');
+					}, 3000);
+				}
 			});
 		} else {
 			e.preventDefault();
 			setError(validateForm(form));
-			setOpenWarningSnack(true);
+			setOpenErrorSnack(true);
 			setTimeout(() => {
-				setOpenWarningSnack(false);
+				setOpenErrorSnack(false);
 			}, 3000);
 		}
 	};

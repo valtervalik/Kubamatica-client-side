@@ -5,7 +5,6 @@ import { AddButton } from '@/components/AddButton';
 import User from '@/components/User';
 import UserModal from '@/components/UserModal';
 import Tooltip from '@mui/material/Tooltip';
-import MySnackbar from '@/components/MySnackBar';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 
@@ -15,8 +14,7 @@ const Usuarios = () => {
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-	const { openSuccessSnack, openWarningSnack, msg } =
-		useContext(SnackBarContext);
+	const { openSuccessSnack, msg } = useContext(SnackBarContext);
 
 	let url = 'http://127.0.0.1:5000/users';
 
@@ -52,16 +50,6 @@ const Usuarios = () => {
 					<SpeedDialIcon />
 				</AddButton>
 			</Tooltip>
-			<MySnackbar
-				severity={'warning'}
-				text={'Por favor rellene el formulario correctamente'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={msg}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</div>
 	);
 };

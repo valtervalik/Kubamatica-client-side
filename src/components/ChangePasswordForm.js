@@ -118,7 +118,7 @@ const ChangePasswordForm = () => {
 				<label htmlFor='floatingPassword'>Confirmar Contraseña</label>
 			</div>
 			<div className='d-flex justify-content-between pb-3'>
-				<Link href='/session/login' className='btn cancel'>
+				<Link href='/managment/session/login' className='btn cancel'>
 					Cancelar
 				</Link>
 

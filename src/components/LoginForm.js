@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import LoginBtn from './LoginBtn';
 import './LoginForm.css';
-import { useForm } from '@/hooks/useForm';
+import { useSessionForm } from '@/hooks/useSessionForm';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 
 const initialForm = {
@@ -13,21 +13,16 @@ const initialForm = {
 const validateForm = (form) => {
 	let error = {};
 
-	if (form.username !== 'valtervar') {
-		error.username = true;
-	}
-
-	if (form.password !== 'PWISW2402*') {
-		error.password = true;
-	}
-
 	return error;
 };
 
+const url = 'http://127.0.0.1:5000/users/login';
+
 const LoginForm = () => {
-	const { form, handleChange, handleBlur, handleSubmit } = useForm(
+	const { form, handleChange, handleBlur, handleSubmit } = useSessionForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url
 	);
 
 	return (
@@ -70,7 +65,7 @@ const LoginForm = () => {
 					<LoginBtn />
 					<Link
 						style={{ color: 'silver' }}
-						href='/session/changepassword'
+						href='/managment/session/changepassword'
 						className='btn button-link'>
 						Cambiar Contraseña <LockOpenIcon fontSize='small' />
 					</Link>

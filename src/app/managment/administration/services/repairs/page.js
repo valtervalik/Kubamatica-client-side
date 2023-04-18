@@ -1,19 +1,15 @@
 'use client';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import DataTable from '@/components/DataTable';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
 import RepairsModal from '@/components/RepairsModal';
 import Tooltip from '@mui/material/Tooltip';
-import MySnackbar from '@/components/MySnackBar';
-import SnackBarContext from '@/context/SnackBarContext';
 
 const Repairs = () => {
 	const [openRepairs, setOpenRepairs] = useState(false);
 	const handleOpenRepairs = () => setOpenRepairs(true);
 	const handleCloseRepairs = () => setOpenRepairs(false);
-
-	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -60,16 +56,6 @@ const Repairs = () => {
 					<SpeedDialIcon />
 				</AddButton>
 			</Tooltip>
-			<MySnackbar
-				severity={'warning'}
-				text={'Por favor rellene el formulario correctamente'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={'Servicio añadido exitosamente'}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</div>
 	);
 };
