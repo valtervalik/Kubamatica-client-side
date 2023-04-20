@@ -12,7 +12,7 @@ export default function ManagmentLayout({ children }) {
 			<MySnackbar
 				severity={'error'}
 				text={msg}
-				openWarningSnack={openErrorSnack}
+				openErrorSnack={openErrorSnack}
 			/>
 			<MySnackbar
 				severity={'success'}
@@ -22,7 +22,7 @@ export default function ManagmentLayout({ children }) {
 			<MySnackbar
 				severity={'warning'}
 				text={msg}
-				openSuccessSnack={openWarningSnack}
+				openWarningSnack={openWarningSnack}
 			/>
 		</>
 	);

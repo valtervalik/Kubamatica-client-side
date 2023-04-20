@@ -18,6 +18,8 @@ import './NavBar.css';
 import LinkMenu from './LinkMenu';
 import { Button } from '@mui/material';
 import SearchInput from './SearchInput';
+import { helpHttp } from '@/helpers/helpHttp';
+import SnackBarContext from '@/context/SnackBarContext';
 
 const pages = ['Servicios', 'Inventario', 'Usuarios'];
 const urls = [
@@ -28,7 +30,7 @@ const urls = [
 
 const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
-
+	const { setOpenSuccessSnack, setMsg } = useContext(SnackBarContext);
 	const router = useRouter();
 
 	const handleOpenNavMenu = (event) => {
@@ -190,7 +192,21 @@ const NavBar = () => {
 						<Tooltip title='LogOut'>
 							<IconButton
 								sx={{ p: 0 }}
-								onClick={() => router.push('/managment/session/login')}>
+								onClick={async () => {
+									await helpHttp()
+										.post('http://127.0.0.1:5000/users/logout')
+										.then((res) => {
+											console.log(res);
+											localStorage.clear();
+											router.push('/managment/session/login');
+											setMsg(res.message);
+											setOpenSuccessSnack(true);
+											setTimeout(() => {
+												setOpenSuccessSnack(false);
+												setMsg('');
+											}, 3000);
+										});
+								}}>
 								<LogoutRoundedIcon sx={{ color: 'azure', fontSize: '30px' }} />
 							</IconButton>
 						</Tooltip>
