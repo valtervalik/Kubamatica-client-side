@@ -36,6 +36,8 @@ export default function User({ user }) {
 			setOpenSuccessSnack(false);
 			setMsg('');
 		}, 3000);
+
+		handleCloseDelete();
 	};
 
 	return (
