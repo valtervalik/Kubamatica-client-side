@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import AddComponentForm from './AddComponentForm';
 
 const style = {
@@ -47,7 +46,11 @@ export default function ComponentModal({ openComponent, handleClose, params }) {
 							Añadir a{' '}
 							{(params.slice(0, 1).toUpperCase() + params.slice(1))
 								.replace('%20', ' ')
-								.replace('%C3%AD', 'í')}
+								.replace('%C3%A1', 'á')
+								.replace('%C3%A9', 'é')
+								.replace('%C3%AD', 'í')
+								.replace('%C3%B3', 'ó')
+								.replace('%C3%BA', 'ú')}
 						</Typography>
 						<div className='mt-3'>
 							<AddComponentForm handleClose={handleClose} />

@@ -1,47 +1,42 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
 import CategoryCard from '@/components/CategoryCard';
 import Tooltip from '@mui/material/Tooltip';
 import CategoryModal from '@/components/CategoryModal';
+import SnackBarContext from '@/context/SnackBarContext';
+import { helpHttp } from '@/helpers/helpHttp';
 
 const Components = () => {
 	const [openCategory, setOpenCategory] = useState(false);
+	const [categoryData, setCategoryData] = useState([]);
 	const handleOpenCategory = () => setOpenCategory(true);
 	const handleCloseCategory = () => setOpenCategory(false);
+
+	const { openSuccessSnack, msg } = useContext(SnackBarContext);
+
+	useEffect(() => {
+		helpHttp()
+			.get('http://127.0.0.1:5000/categories')
+			.then((res) => {
+				if (!res.err) {
+					setCategoryData(res);
+				} else {
+					setCategoryData(null);
+				}
+			});
+	}, [openSuccessSnack, msg]);
 
 	return (
 		<div>
 			<div className='container mb-5 mainh1'>
 				<div className='row'>
-					<div className='col'>
-						<CategoryCard category='Baterías' />
-
-						<CategoryCard category='Cargadores' />
-
-						<CategoryCard category='Pantallas' />
-
-						<CategoryCard category='Teclados' />
-					</div>
-					<div className='col'>
-						<CategoryCard category='TouchPads' />
-
-						<CategoryCard category='Chasis' />
-
-						<CategoryCard category='Procesadores' />
-
-						<CategoryCard category='RAM' />
-					</div>
-					<div className='col'>
-						<CategoryCard category='Discos' />
-
-						<CategoryCard category='Audio' />
-
-						<CategoryCard category='Red' />
-
-						<CategoryCard category='Placas Base' />
-					</div>
+					{categoryData.map((category, i) => (
+						<div key={i} className='col'>
+							<CategoryCard category={category} />
+						</div>
+					))}
 				</div>
 			</div>
 

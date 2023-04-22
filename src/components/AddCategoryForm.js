@@ -21,10 +21,14 @@ const validateForm = (form) => {
 	return error;
 };
 
+const url = 'http://127.0.0.1:5000/categories';
+
 const AddCategoryForm = ({ handleClose }) => {
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url,
+		handleClose
 	);
 
 	return (

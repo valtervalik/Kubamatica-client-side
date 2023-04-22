@@ -20,13 +20,14 @@ export default function CategoryCard({ category }) {
 			}}>
 			<Link
 				style={{ textDecoration: 'none' }}
-				href={`/admin/inventory/components/${category.toLowerCase()}`}>
+				href={`/managment/administration/inventory/components/${category.category.toLowerCase()}`}>
 				<CardContent>
 					<Typography
 						className='text-light text-center'
 						variant='h5'
 						component='div'>
-						{category}
+						{category.category[0].toUpperCase() +
+							category.category.substring(1)}
 					</Typography>
 				</CardContent>
 			</Link>
