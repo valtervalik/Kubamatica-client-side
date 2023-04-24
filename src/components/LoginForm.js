@@ -55,7 +55,15 @@ const LoginForm = () => {
 						/>
 						<label htmlFor='floatingPassword'>Contraseña</label>
 					</div>
-					<LoginBtn />
+					<div className='d-flex justify-content-between align-items-top'>
+						<a
+							href='#'
+							style={{ textDecoration: 'none', paddingTop: '0.3rem' }}
+							className='text-light'>
+							¿Ha olvidado su contraseña?
+						</a>
+						<LoginBtn />
+					</div>
 					<Link
 						style={{ color: 'silver' }}
 						href='/managment/session/changepassword'
