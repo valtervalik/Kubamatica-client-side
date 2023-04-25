@@ -1,5 +1,5 @@
 'use client';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { AddButton } from '@/components/AddButton';
 import ComponentNavTabs from '@/components/ComponentNavTabs';
 import DataTable from '@/components/DataTable';
@@ -7,34 +7,36 @@ import { SpeedDialIcon, Tooltip } from '@mui/material';
 import ComponentModal from '@/components/ComponentModal';
 import MySnackbar from '@/components/MySnackBar';
 import SnackBarContext from '@/context/SnackBarContext';
+import { helpHttp } from '@/helpers/helpHttp';
 
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
 	const handleOpenComponent = () => setOpenComponent(true);
 	const handleCloseComponent = () => setOpenComponent(false);
 
-	const { openSuccessSnack, openWarningSnack } = useContext(SnackBarContext);
+	const [categoryData, setCategoryData] = useState([]);
+	const [componentData, setComponentData] = useState([]);
+
+	const { openSuccessSnack, openWarningSnack, msg } =
+		useContext(SnackBarContext);
+
+	useEffect(() => {
+		helpHttp()
+			.get('http://127.0.0.1:5000/categories')
+			.then((res) => {
+				if (!res.err) {
+					setCategoryData(res);
+				} else {
+					setCategoryData(null);
+				}
+			});
+	}, [openSuccessSnack, msg]);
 
 	return (
 		<div className='mainh1 px-5'>
 			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
-				<ComponentNavTabs
-					categories={[
-						'Baterías',
-						'Cargadores',
-						'Pantallas',
-						'Teclados',
-						'TouchPads',
-						'Chasis',
-						'Procesadores',
-						'RAM',
-						'Discos',
-						'Audio',
-						'Red',
-						'Motherboards',
-					]}
-				/>
+				<ComponentNavTabs categories={categoryData} />
 				<DataTable
 					crud={true}
 					maxHeight={420}
