@@ -32,11 +32,12 @@ const Components = () => {
 		<div>
 			<div className='container mb-5 mainh1'>
 				<div className='row'>
-					{categoryData.map((category, i) => (
-						<div key={i} className='col'>
-							<CategoryCard category={category} />
-						</div>
-					))}
+					{categoryData &&
+						categoryData.map((category, i) => (
+							<div key={i} className='col'>
+								<CategoryCard category={category} />
+							</div>
+						))}
 				</div>
 			</div>
 

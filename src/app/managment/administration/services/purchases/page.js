@@ -35,21 +35,7 @@ const Purchases = () => {
 						'Precio',
 						'Garantía',
 					]}
-					tdata={[
-						'6',
-						'Nombre y Apellidos',
-						'54789685',
-						'Nombre y Apellidos',
-						'Asus ROG',
-						'SW-83817',
-						'YjsY4568SUTSUh5d5s',
-						'Batería',
-						'Nuevo',
-						'Descripción de las propiedades',
-						'Jue - 1',
-						'$ 000 cup',
-						'30 Días',
-					]}
+					tdata={false}
 				/>
 			</div>
 			<PurchasesModal

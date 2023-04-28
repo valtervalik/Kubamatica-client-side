@@ -32,17 +32,7 @@ const Repairs = () => {
 						'Precio',
 						'Garantía',
 					]}
-					tdata={[
-						'1',
-						'Nombre y Apellidos',
-						'54789685',
-						'Nombre y Apellidos',
-						'Asus ROG',
-						'Revision',
-						'Jue - 1',
-						'$ 000 cup',
-						'30 Días',
-					]}
+					tdata={false}
 				/>
 			</div>
 

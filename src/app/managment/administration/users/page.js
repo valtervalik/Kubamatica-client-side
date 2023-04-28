@@ -35,11 +35,12 @@ const Usuarios = () => {
 			<h1 className='text-center mb-5 mainh1'>Administrar Usuarios</h1>
 			<div className='container'>
 				<div className='row align-items-start'>
-					{userData.map((user, i) => (
-						<div key={i} className='col mb-3 d-flex justify-content-center'>
-							<User user={user} />
-						</div>
-					))}
+					{userData &&
+						userData.map((user, i) => (
+							<div key={i} className='col mb-3 d-flex justify-content-center'>
+								<User user={user} />
+							</div>
+						))}
 				</div>
 			</div>
 
