@@ -54,21 +54,69 @@ export default function DataTable({ columns, tdata, maxHeight = 350, crud }) {
 										align='center'>
 										{i + 1}
 									</TableCell>
-									{tdata.map((data, i) => {
-										return (
-											<TableCell
-												style={{
-													fontSize: '12px',
-													fontWeight: 'bold',
-												}}
-												className='py-1 px-2'
-												key={i + 5}
-												align='center'>
-												{data}
-											</TableCell>
-										);
-									})}
-
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{row.box}
+									</TableCell>
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{row.brand}
+									</TableCell>
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{row.model}
+									</TableCell>
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{row.serial}
+									</TableCell>
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{row.status}
+									</TableCell>
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{row.properties}
+									</TableCell>
+									<TableCell
+										style={{
+											fontSize: '12px',
+											fontWeight: 'bold',
+										}}
+										className='py-3 px-2'
+										align='center'>
+										{`$${row.price} ${row.currency.toUpperCase()}`}
+									</TableCell>
 									<TableCell className='py-1 px-2' align='center'>
 										{crud && (
 											<Tooltip title='Vender'>

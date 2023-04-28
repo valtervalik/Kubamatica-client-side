@@ -47,9 +47,11 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 		} else {
 			e.preventDefault();
 			setError(validateForm(form));
+			setMsg('Por favor rellene el formulario correctamente');
 			setOpenWarningSnack(true);
 			setTimeout(() => {
 				setOpenWarningSnack(false);
+				setMsg('');
 			}, 3000);
 		}
 	};

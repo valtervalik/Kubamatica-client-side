@@ -59,6 +59,7 @@ export default function ComponentModal({
 						</Typography>
 						<div className='mt-3'>
 							<AddComponentForm
+								params={params}
 								categories={categories}
 								handleClose={handleClose}
 							/>

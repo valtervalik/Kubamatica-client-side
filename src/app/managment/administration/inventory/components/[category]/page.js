@@ -32,7 +32,7 @@ export default function CategoryPage({ params }) {
 			});
 
 		helpHttp()
-			.get('http://127.0.0.1:5000/components')
+			.get(`http://127.0.0.1:5000/components/${params.category}`)
 			.then((res) => {
 				if (!res.err) {
 					setComponentData(res);
@@ -40,7 +40,7 @@ export default function CategoryPage({ params }) {
 					setComponentData(null);
 				}
 			});
-	}, [openSuccessSnack, msg]);
+	}, [openSuccessSnack, msg, params]);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -61,15 +61,7 @@ export default function CategoryPage({ params }) {
 						'Propiedades',
 						'Precio',
 					]}
-					tdata={[
-						'6',
-						'Asus ROG',
-						'SW-83817',
-						'YjsY4568SUTSUh5d5s',
-						'Nuevo',
-						'Descripción de las propiedades',
-						'$ 000 cup',
-					]}
+					tdata={componentData}
 				/>
 			</div>
 
@@ -79,7 +71,7 @@ export default function CategoryPage({ params }) {
 				params={params.category}
 				categories={categoryData}
 			/>
-			<Tooltip title='Añadir Portátil'>
+			<Tooltip title='Añadir Componente'>
 				<AddButton onClick={handleOpenComponent}>
 					<SpeedDialIcon />
 				</AddButton>

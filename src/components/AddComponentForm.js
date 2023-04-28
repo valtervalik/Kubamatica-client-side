@@ -4,18 +4,6 @@ import Selector from './Selector';
 import TextInput from './TextInput';
 import { FormError } from './FormError';
 
-const initialForm = {
-	brand: '',
-	model: '',
-	serial: '',
-	properties: '',
-	category: '',
-	status: '',
-	box: '',
-	price: '',
-	currency: 'cup',
-};
-
 const validateForm = (form) => {
 	let error = {};
 	let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
@@ -74,7 +62,18 @@ const validateForm = (form) => {
 
 const url = 'http://127.0.0.1:5000/components';
 
-const AddComponentForm = ({ handleClose, categories }) => {
+const AddComponentForm = ({ handleClose, categories, params }) => {
+	const initialForm = {
+		brand: '',
+		model: '',
+		serial: '',
+		properties: '',
+		category: `${params}`,
+		status: '',
+		box: '',
+		price: '',
+		currency: 'cup',
+	};
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
 		validateForm,
@@ -84,10 +83,12 @@ const AddComponentForm = ({ handleClose, categories }) => {
 
 	const categOptions = [];
 	categories.map((c) => {
-		categOptions.push({
-			option: c.category[0].toUpperCase() + c.category.substring(1),
-			value: c.category,
-		});
+		if (c.category === params) {
+			categOptions.push({
+				option: c.category[0].toUpperCase() + c.category.substring(1),
+				value: c.category,
+			});
+		}
 	});
 
 	return (
@@ -161,15 +162,15 @@ const AddComponentForm = ({ handleClose, categories }) => {
 								options={[
 									{
 										option: 'Nuevo',
-										value: 'new',
+										value: 'Nuevo',
 									},
 									{
 										option: 'Poco Uso',
-										value: 'bitused',
+										value: 'Poco Uso',
 									},
 									{
 										option: 'Usado',
-										value: 'used',
+										value: 'Usado',
 									},
 								]}
 							/>
