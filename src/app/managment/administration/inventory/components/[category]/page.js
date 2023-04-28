@@ -30,6 +30,16 @@ export default function CategoryPage({ params }) {
 					setCategoryData(null);
 				}
 			});
+
+		helpHttp()
+			.get('http://127.0.0.1:5000/components')
+			.then((res) => {
+				if (!res.err) {
+					setComponentData(res);
+				} else {
+					setComponentData(null);
+				}
+			});
 	}, [openSuccessSnack, msg]);
 
 	return (
@@ -37,6 +47,7 @@ export default function CategoryPage({ params }) {
 			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
 				<ComponentNavTabs categories={categoryData} />
+
 				<DataTable
 					crud={true}
 					maxHeight={420}
@@ -66,22 +77,13 @@ export default function CategoryPage({ params }) {
 				handleClose={handleCloseComponent}
 				openComponent={openComponent}
 				params={params.category}
+				categories={categoryData}
 			/>
 			<Tooltip title='Añadir Portátil'>
 				<AddButton onClick={handleOpenComponent}>
 					<SpeedDialIcon />
 				</AddButton>
 			</Tooltip>
-			<MySnackbar
-				severity={'warning'}
-				text={'Por favor rellene el formulario correctamente'}
-				openWarningSnack={openWarningSnack}
-			/>
-			<MySnackbar
-				severity={'success'}
-				text={'Componente añadido exitosamente'}
-				openSuccessSnack={openSuccessSnack}
-			/>
 		</div>
 	);
 }

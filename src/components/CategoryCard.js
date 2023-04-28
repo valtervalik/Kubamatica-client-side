@@ -52,7 +52,7 @@ export default function CategoryCard({ category }) {
 			}}>
 			<Link
 				style={{ textDecoration: 'none' }}
-				href={`/managment/administration/inventory/components/${category.category.toLowerCase()}`}>
+				href={`/managment/administration/inventory/components/${category.category}`}>
 				<CardContent>
 					<Typography
 						className='text-light text-center'

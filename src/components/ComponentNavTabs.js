@@ -7,7 +7,7 @@ const ComponentNavTabs = ({ categories }) => {
 			{categories.map((category) => (
 				<Link
 					className={`me-3 ${styles.compnavtab}`}
-					href={`/admin/inventory/components/${category.category.toLowerCase()}`}
+					href={`/managment/administration/inventory/components/${category.category}`}
 					key={category._id}>
 					{category.category[0].toUpperCase() + category.category.substring(1)}
 				</Link>

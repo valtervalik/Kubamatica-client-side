@@ -21,7 +21,12 @@ const style = {
 	p: 4,
 };
 
-export default function ComponentModal({ openComponent, handleClose, params }) {
+export default function ComponentModal({
+	openComponent,
+	handleClose,
+	params,
+	categories,
+}) {
 	return (
 		<div>
 			<Modal
@@ -53,7 +58,10 @@ export default function ComponentModal({ openComponent, handleClose, params }) {
 								.replace('%C3%BA', 'ú')}
 						</Typography>
 						<div className='mt-3'>
-							<AddComponentForm handleClose={handleClose} />
+							<AddComponentForm
+								categories={categories}
+								handleClose={handleClose}
+							/>
 						</div>
 					</Box>
 				</Fade>

@@ -41,7 +41,7 @@ const AddCategoryForm = ({ handleClose }) => {
 						label='Nueva Categoría'
 						name='category'
 						width='43ch'
-						value={form.category}
+						value={form.category.toLowerCase()}
 					/>
 					{error.category && (
 						<FormError className='text-center'>{error.category}</FormError>

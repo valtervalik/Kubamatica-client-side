@@ -13,7 +13,7 @@ const initialForm = {
 	status: '',
 	box: '',
 	price: '',
-	currency: '',
+	currency: 'cup',
 };
 
 const validateForm = (form) => {
@@ -72,11 +72,23 @@ const validateForm = (form) => {
 	return error;
 };
 
-const AddComponentForm = ({ handleClose }) => {
+const url = 'http://127.0.0.1:5000/components';
+
+const AddComponentForm = ({ handleClose, categories }) => {
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url,
+		handleClose
 	);
+
+	const categOptions = [];
+	categories.map((c) => {
+		categOptions.push({
+			option: c.category[0].toUpperCase() + c.category.substring(1),
+			value: c.category,
+		});
+	});
 
 	return (
 		<div>
@@ -135,61 +147,7 @@ const AddComponentForm = ({ handleClose }) => {
 								handleBlur={handleBlur}
 								label='Categoría'
 								name={'category'}
-								options={[
-									{
-										option: 'Portátiles',
-										value: 'laptops',
-									},
-									{
-										option: 'Baterías',
-										value: 'baterías',
-									},
-									{
-										option: 'Cargadores',
-										value: 'cargadores',
-									},
-									{
-										option: 'Pantallas',
-										value: 'pantallas',
-									},
-									{
-										option: 'Teclados',
-										value: 'teclados',
-									},
-									{
-										option: 'TouchPads',
-										value: 'touchpads',
-									},
-									{
-										option: 'Chasis',
-										value: 'chasis',
-									},
-									{
-										option: 'Procesadores',
-										value: 'procesadores',
-									},
-
-									{
-										option: 'RAM',
-										value: 'ram',
-									},
-									{
-										option: 'Discos',
-										value: 'discos',
-									},
-									{
-										option: 'Audio',
-										value: 'audio',
-									},
-									{
-										option: 'Red',
-										value: 'red',
-									},
-									{
-										option: 'Motherboards',
-										value: 'motherboards',
-									},
-								]}
+								options={categOptions}
 							/>
 							{!error.properties && error.category && (
 								<FormError>{error.category}</FormError>
