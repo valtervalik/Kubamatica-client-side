@@ -7,6 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import CategoryModal from '@/components/CategoryModal';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
+import styles from './page.module.css';
 
 const Components = () => {
 	const [openCategory, setOpenCategory] = useState(false);
@@ -30,15 +31,13 @@ const Components = () => {
 
 	return (
 		<div>
-			<div className='container mb-5 mainh1'>
-				<div className='row'>
-					{categoryData &&
-						categoryData.map((category, i) => (
-							<div key={i} className='col'>
-								<CategoryCard category={category} />
-							</div>
-						))}
-				</div>
+			<div className={`container mb-5 mainh1 ${styles.grid}`}>
+				{categoryData &&
+					categoryData.map((category, i) => (
+						<div key={i}>
+							<CategoryCard category={category} />
+						</div>
+					))}
 			</div>
 
 			<CategoryModal
@@ -47,7 +46,7 @@ const Components = () => {
 			/>
 			<Tooltip title='Añadir Categoría'>
 				<AddButton onClick={handleOpenCategory}>
-					<SpeedDialIcon />
+					<SpeedDialIcon className='d-flex align-content-center' />
 				</AddButton>
 			</Tooltip>
 		</div>

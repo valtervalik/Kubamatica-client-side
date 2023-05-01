@@ -43,7 +43,7 @@ const Repairs = () => {
 
 			<Tooltip title='Añadir Servicio'>
 				<AddButton onClick={handleOpenRepairs}>
-					<SpeedDialIcon />
+					<SpeedDialIcon className='d-flex align-content-center' />
 				</AddButton>
 			</Tooltip>
 		</div>

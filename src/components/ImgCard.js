@@ -14,8 +14,9 @@ export default function ImgCard({ img, desc }) {
 			id={styles.imgcard}
 			className='mb-3'
 			sx={{
+				boxShadow: '0 0 5px 1px',
 				maxWidth: 450,
-				background: '#000814',
+				background: 'white',
 				height: 'fit-content',
 				borderRadius: '15px',
 			}}>
@@ -23,21 +24,21 @@ export default function ImgCard({ img, desc }) {
 			<CardContent>
 				<Typography
 					sx={{ fontSize: '18px' }}
-					className='text-light text-start'
+					className='text-dark text-start'
 					gutterBottom
 					variant='h5'
 					component='div'>
 					Laptop
 				</Typography>
 				<Typography
-					className='text-light text-start'
+					className='text-dark text-start'
 					variant='body2'
 					color='text.secondary'>
 					{desc}
 				</Typography>
 			</CardContent>
 			<CardActions className='d-flex justify-content-between'>
-				<div className='text-light align-content-bottom'>
+				<div className='text-dark align-content-bottom'>
 					<p
 						style={{ padding: '4px 5px', fontSize: '16px', fontWeight: 'bold' }}
 						className='m-0'>
@@ -47,8 +48,8 @@ export default function ImgCard({ img, desc }) {
 				<Button size='small'>
 					{' '}
 					<Link
-						style={{ textDecoration: 'none' }}
-						href={'admin/inventory/laptops/details'}>
+						style={{ textDecoration: 'none', fontWeight: 'bold' }}
+						href={'/managment/administration/inventory/laptops/details'}>
 						Detalles
 					</Link>
 				</Button>

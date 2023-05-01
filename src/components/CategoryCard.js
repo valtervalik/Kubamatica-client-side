@@ -48,14 +48,16 @@ export default function CategoryCard({ category }) {
 			sx={{
 				minWidth: 275,
 				maxWidth: 350,
-				background: `#000814`,
+				background: `white`,
+				boxShadow: '0 0 5px 1px',
 			}}>
 			<Link
 				style={{ textDecoration: 'none' }}
 				href={`/managment/administration/inventory/components/${category.category}`}>
 				<CardContent>
 					<Typography
-						className='text-light text-center'
+						style={{ fontWeight: 'bold' }}
+						className='text-dark text-center'
 						variant='h5'
 						component='div'>
 						{category.category[0].toUpperCase() +
@@ -65,12 +67,14 @@ export default function CategoryCard({ category }) {
 			</Link>
 			<CardActions className='d-flex justify-content-around'>
 				<Button
+					style={{ fontWeight: 'bold' }}
 					onClick={handleOpenEdit}
 					className='btn text-primary'
 					size='small'>
 					Editar
 				</Button>
 				<Button
+					style={{ fontWeight: 'bold' }}
 					onClick={handleOpenDelete}
 					className='btn text-danger'
 					size='small'>

@@ -45,13 +45,16 @@ export default function User({ user }) {
 			<React.Fragment>
 				<div
 					id={styles.usercard}
-					style={{ background: '#000814', borderRadius: '5px' }}>
+					style={{
+						background: 'white',
+						boxShadow: '0 0 5px 1px',
+						borderRadius: '5px',
+					}}>
 					<CardContent variant='outlined'>
 						<Typography
-							className='mb-3'
+							className='mb-3 text-dark'
 							sx={{
 								fontSize: 20,
-								color: 'azure',
 								fontWeight: 'bold',
 							}}
 							color='text.secondary'
@@ -61,23 +64,25 @@ export default function User({ user }) {
 						<div className='d-flex justify-content-between'>
 							<div>
 								<Typography
+									className='text-dark'
 									sx={{ fontSize: 17, color: 'azure' }}
 									variant='h5'
 									component='div'>
 									{user.username}
 								</Typography>
-								<Typography sx={{ color: 'silver' }} color='text.secondary'>
+								<Typography sx={{ color: 'gray' }} color='text.secondary'>
 									{user.email}
 								</Typography>
 							</div>
 							<div>
 								<Typography
+									className='text-dark'
 									sx={{ fontSize: 17, color: 'azure' }}
 									variant='h5'
 									component='div'>
 									{user.role}
 								</Typography>
-								<Typography sx={{ color: 'silver' }} color='text.secondary'>
+								<Typography sx={{ color: 'gray' }} color='text.secondary'>
 									TEL: {user.phone}
 								</Typography>
 							</div>
@@ -86,11 +91,13 @@ export default function User({ user }) {
 
 					<CardActions className='d-flex justify-content-end'>
 						<Button
+							style={{ fontWeight: 'bold' }}
 							onClick={handleOpenEdit}
 							className='btn text-primary border-0'>
 							Editar
 						</Button>
 						<Button
+							style={{ fontWeight: 'bold' }}
 							onClick={handleOpenDelete}
 							className='btn text-danger border-0'>
 							Eliminar

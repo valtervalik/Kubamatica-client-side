@@ -7,6 +7,7 @@ import UserModal from '@/components/UserModal';
 import Tooltip from '@mui/material/Tooltip';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
+import styles from './page.module.css';
 
 const Usuarios = () => {
 	const [userData, setUserData] = useState([]);
@@ -32,23 +33,21 @@ const Usuarios = () => {
 
 	return (
 		<div>
-			<h1 className='text-center mb-5 mainh1'>Administrar Usuarios</h1>
-			<div className='container'>
-				<div className='row align-items-start'>
-					{userData &&
-						userData.map((user, i) => (
-							<div key={i} className='col mb-3 d-flex justify-content-center'>
-								<User user={user} />
-							</div>
-						))}
-				</div>
+			<h1 className='text-center mb-3 mainh1'>Administrar Usuarios</h1>
+			<div className={`container ${styles.grid}`}>
+				{userData &&
+					userData.map((user, i) => (
+						<div key={i} className='mb-4'>
+							<User user={user} />
+						</div>
+					))}
 			</div>
 
 			<UserModal handleClose={handleClose} open={open} />
 
 			<Tooltip title='Añadir Usuario'>
 				<AddButton onClick={handleOpen}>
-					<SpeedDialIcon />
+					<SpeedDialIcon className='d-flex align-content-center' />
 				</AddButton>
 			</Tooltip>
 		</div>

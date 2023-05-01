@@ -47,6 +47,7 @@ const NavBar = () => {
 			sx={{
 				backgroundColor: '#ffffff90',
 				boxShadow: 'none',
+				background: 'linear-gradient(45deg, azure 10%, #0066ff66, darkblue)',
 				backdropFilter: 'blur(12px) saturate(180%)',
 				position: 'fixed',
 				top: 0,

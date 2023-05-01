@@ -73,7 +73,7 @@ export default function CategoryPage({ params }) {
 			/>
 			<Tooltip title='Añadir Componente'>
 				<AddButton onClick={handleOpenComponent}>
-					<SpeedDialIcon />
+					<SpeedDialIcon className='d-flex align-content-center' />
 				</AddButton>
 			</Tooltip>
 		</div>

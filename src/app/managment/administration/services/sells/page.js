@@ -41,7 +41,7 @@ const Sells = () => {
 
 			<Tooltip title='Añadir Servicio'>
 				<AddButton onClick={handleOpenSells}>
-					<SpeedDialIcon />
+					<SpeedDialIcon className='d-flex align-content-center' />
 				</AddButton>
 			</Tooltip>
 		</div>
