@@ -10,8 +10,19 @@ import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+import { helpHttp } from '@/helpers/helpHttp';
+import SnackBarContext from '@/context/SnackBarContext';
 
-export default function DataTable({ columns, tdata, maxHeight = 350, crud }) {
+export default function DataTable({
+	params,
+	columns,
+	cdata,
+	maxHeight = 350,
+	crud,
+}) {
+	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
+		React.useContext(SnackBarContext);
+
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
 			<TableContainer sx={{ maxHeight: { maxHeight } }}>
@@ -36,8 +47,8 @@ export default function DataTable({ columns, tdata, maxHeight = 350, crud }) {
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{tdata &&
-							tdata.map((row, i) => {
+						{cdata &&
+							cdata.map((row, i) => {
 								return (
 									<TableRow
 										role='checkbox'
@@ -150,6 +161,20 @@ export default function DataTable({ columns, tdata, maxHeight = 350, crud }) {
 											{crud && (
 												<Tooltip title='Eliminar'>
 													<Button
+														onClick={() => {
+															helpHttp()
+																.del(
+																	`http://127.0.0.1:5000/components/${params}/${row._id}`
+																)
+																.then((res) => {
+																	setMsg(res.message);
+																	setOpenSuccessSnack(true);
+																	setTimeout(() => {
+																		setOpenSuccessSnack(false);
+																		setMsg('');
+																	}, 3000);
+																});
+														}}
 														className='btn px-0 border-0'
 														style={{ color: '#cc0010' }}>
 														<DeleteForeverIcon />

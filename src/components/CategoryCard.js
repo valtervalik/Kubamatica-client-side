@@ -48,8 +48,8 @@ export default function CategoryCard({ category }) {
 			sx={{
 				minWidth: 275,
 				maxWidth: 350,
-				background: `white`,
-				boxShadow: '0 0 5px 1px',
+				background: `lightgray`,
+				// boxShadow: '0 0 5px 1px',
 			}}>
 			<Link
 				style={{ textDecoration: 'none' }}

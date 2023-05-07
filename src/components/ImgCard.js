@@ -14,9 +14,9 @@ export default function ImgCard({ img, desc }) {
 			id={styles.imgcard}
 			className='mb-3'
 			sx={{
-				boxShadow: '0 0 5px 1px',
+				// boxShadow: '0 0 5px 1px',
 				maxWidth: 450,
-				background: 'white',
+				background: 'lightgray',
 				height: 'fit-content',
 				borderRadius: '15px',
 			}}>

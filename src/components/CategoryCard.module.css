@@ -5,5 +5,5 @@
 #categorycard:hover {
 	cursor: pointer;
 	transform: scale(1.07);
-	box-shadow: 0 0 2rem 1px;
+	box-shadow: 0 0 1rem 1px;
 }

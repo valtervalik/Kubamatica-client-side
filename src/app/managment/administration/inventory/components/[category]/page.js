@@ -61,7 +61,8 @@ export default function CategoryPage({ params }) {
 						'Propiedades',
 						'Precio',
 					]}
-					tdata={componentData}
+					cdata={componentData}
+					params={params.category}
 				/>
 			</div>
 

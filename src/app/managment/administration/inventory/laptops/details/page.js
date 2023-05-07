@@ -7,6 +7,11 @@ import LaptopComponentsBox from '@/components/LaptopComponentsBox';
 
 const LaptopDetailsPage = () => {
 	return (
+		/* This is a JSX code block that defines the layout and content of a page component for displaying
+		details of a laptop product. It includes a carousel component for displaying images of the laptop,
+		information about the laptop's specifications and pricing, and buttons for adding the laptop to a
+		cart or wishlist. It also includes a component for displaying the various components and features
+		of the laptop. The `className` attributes are used to apply CSS styles to the various elements. */
 		<div className='mb-5 mainh1'>
 			<div className='d-flex justify-content-center'>
 				<div id={styles.laptopcarousel}>

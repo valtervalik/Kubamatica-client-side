@@ -46,9 +46,9 @@ export default function User({ user }) {
 				<div
 					id={styles.usercard}
 					style={{
-						background: 'white',
-						boxShadow: '0 0 5px 1px',
+						background: 'lightgray',
 						borderRadius: '5px',
+						borderBottom: '1px solid #aaa',
 					}}>
 					<CardContent variant='outlined'>
 						<Typography
@@ -70,8 +70,8 @@ export default function User({ user }) {
 									component='div'>
 									{user.username}
 								</Typography>
-								<Typography sx={{ color: 'gray' }} color='text.secondary'>
-									{user.email}
+								<Typography className='text-dark' color='text.secondary'>
+									<i>{user.email}</i>
 								</Typography>
 							</div>
 							<div>
@@ -82,8 +82,8 @@ export default function User({ user }) {
 									component='div'>
 									{user.role}
 								</Typography>
-								<Typography sx={{ color: 'gray' }} color='text.secondary'>
-									TEL: {user.phone}
+								<Typography className='text-dark' color='text.secondary'>
+									<i>+53 {user.phone}</i>
 								</Typography>
 							</div>
 						</div>
