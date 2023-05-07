@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const AddButton = styled.button`
+export const AddButton = styled.div`
 	border-radius: 50%;
 	border: 1px solid azure;
 	padding: 1.2rem;
@@ -16,5 +16,6 @@ export const AddButton = styled.button`
 
 	&:hover {
 		transform: scale(1.07) rotateZ(180deg);
+		cursor: pointer;
 	}
 `;
