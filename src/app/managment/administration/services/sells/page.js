@@ -38,12 +38,12 @@ const Sells = () => {
 				/>
 			</div>
 			<SellsModal handleClose={handleCloseSells} openSells={openSells} />
-
+			{/* 
 			<Tooltip title='Añadir Servicio'>
 				<AddButton onClick={handleOpenSells}>
 					<SpeedDialIcon className='d-flex align-content-center' />
 				</AddButton>
-			</Tooltip>
+			</Tooltip> */}
 		</div>
 	);
 };
