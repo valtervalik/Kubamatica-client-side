@@ -65,7 +65,6 @@ const LoginForm = () => {
 						<LoginBtn />
 					</div>
 					<Link
-						style={{ color: 'silver' }}
 						href='/managment/session/changepassword'
 						className='btn button-link'>
 						Cambiar Contraseña <LockOpenIcon fontSize='small' />

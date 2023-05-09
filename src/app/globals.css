@@ -27,12 +27,13 @@ code {
 }
 
 .login-button:hover {
-	box-shadow: 0 4px 6px 1px azure;
+	/* box-shadow: 0 4px 6px 1px azure; */
+	background: rgba(240, 255, 255, 0.411) !important;
+	color: azure !important;
 }
 
 .button-link {
-	background-color: rgba(1, 1, 27, 0);
-	color: #000814;
+	color: azure;
 	position: fixed;
 	bottom: 10px;
 	left: 83%;
@@ -40,7 +41,9 @@ code {
 }
 
 .button-link:hover {
-	box-shadow: 0 2px 6px 1px azure !important;
+	/* box-shadow: 0 2px 6px 1px azure !important; */
+	background: rgba(240, 255, 255, 0.411);
+	color: azure;
 }
 .cancel {
 	color: #000814 !important;
