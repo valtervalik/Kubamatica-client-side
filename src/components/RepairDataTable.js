@@ -130,7 +130,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 											}}
 											className='py-2 px-2'
 											align='center'>
-											{repair.price}
+											$ {repair.price} {repair.currency.toUpperCase()}
 										</TableCell>
 										<TableCell
 											style={{
