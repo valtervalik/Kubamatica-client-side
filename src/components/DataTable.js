@@ -12,6 +12,7 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
+import ConfirmDeleteComponent from './ConfirmDeleteComponent';
 
 export default function DataTable({
 	params,
@@ -20,8 +21,34 @@ export default function DataTable({
 	maxHeight = 350,
 	crud,
 }) {
+	const [openDelete, setOpenDelete] = React.useState(false);
+	const handleOpenDelete = () => setOpenDelete(true);
+	const handleCloseDelete = () => setOpenDelete(false);
+
+	const [component, setComponent] = React.useState(null);
+
 	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
 		React.useContext(SnackBarContext);
+
+	const deleteComponent = async (
+		params,
+		component,
+		handleClose,
+		setComponent
+	) => {
+		await helpHttp()
+			.del(`http://127.0.0.1:5000/components/${params}/${component._id}`)
+			.then((res) => {
+				handleClose();
+				setMsg(res.message);
+				setOpenSuccessSnack(true);
+				setComponent(null);
+				setTimeout(() => {
+					setOpenSuccessSnack(false);
+					setMsg('');
+				}, 3000);
+			});
+	};
 
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -164,18 +191,8 @@ export default function DataTable({
 												<Tooltip title='Eliminar'>
 													<Button
 														onClick={() => {
-															helpHttp()
-																.del(
-																	`http://127.0.0.1:5000/components/${params}/${component._id}`
-																)
-																.then((res) => {
-																	setMsg(res.message);
-																	setOpenSuccessSnack(true);
-																	setTimeout(() => {
-																		setOpenSuccessSnack(false);
-																		setMsg('');
-																	}, 3000);
-																});
+															handleOpenDelete();
+															setComponent(component);
 														}}
 														className='btn px-0 border-0'
 														style={{ color: '#cc0010' }}>
@@ -190,6 +207,14 @@ export default function DataTable({
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<ConfirmDeleteComponent
+				open={openDelete}
+				handleClose={handleCloseDelete}
+				deleteComponent={deleteComponent}
+				component={component}
+				params={params}
+				setComponent={setComponent}
+			/>
 		</Paper>
 	);
 }
