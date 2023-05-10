@@ -3,6 +3,20 @@ import ModalButtons from './ModalButtons';
 import TextInput from './TextInput';
 import { useForm } from '@/hooks/useForm';
 
+let today = new Date();
+let day = today.getDate();
+let daysOfWeek = [
+	'Domingo',
+	'Lunes',
+	'Martes',
+	'Miércoles',
+	'Jueves',
+	'Viernes',
+	'Sábado',
+];
+let dayOfWeek = daysOfWeek[today.getDay()];
+let formattedDate = day + ' - ' + dayOfWeek;
+
 const initialForm = {
 	client: '',
 	phone: '',
@@ -11,8 +25,9 @@ const initialForm = {
 	device: '',
 	box: '',
 	description: '',
+	date: `${formattedDate}`,
 	price: '',
-	currency: '',
+	currency: 'cup',
 };
 
 const validateForm = (form) => {
@@ -74,10 +89,14 @@ const validateForm = (form) => {
 	return error;
 };
 
+const url = 'http://127.0.0.1:5000/repairs';
+
 const AddRepairsForm = ({ handleClose }) => {
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url,
+		handleClose
 	);
 
 	return (

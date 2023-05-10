@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
-import DataTable from '@/components/DataTable';
+import DataTable from '@/components/ComponentDataTable';
 import Tooltip from '@mui/material/Tooltip';
 import SellsModal from '@/components/SellsModal';
 

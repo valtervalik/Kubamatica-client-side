@@ -2,12 +2,11 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AddButton } from '@/components/AddButton';
 import ComponentNavTabs from '@/components/ComponentNavTabs';
-import DataTable from '@/components/DataTable';
 import { SpeedDialIcon, Tooltip } from '@mui/material';
 import ComponentModal from '@/components/ComponentModal';
-import MySnackbar from '@/components/MySnackBar';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
+import ComponentDataTable from '@/components/ComponentDataTable';
 
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
@@ -48,8 +47,7 @@ export default function CategoryPage({ params }) {
 			<div>
 				<ComponentNavTabs categories={categoryData} />
 
-				<DataTable
-					crud={true}
+				<ComponentDataTable
 					maxHeight={420}
 					columns={[
 						'No.',

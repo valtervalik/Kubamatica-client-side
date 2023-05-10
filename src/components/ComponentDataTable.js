@@ -15,12 +15,11 @@ import SnackBarContext from '@/context/SnackBarContext';
 import ConfirmDeleteComponent from './ConfirmDeleteComponent';
 import EditComponentModal from './EditComponentModal';
 
-export default function DataTable({
+export default function ComponentDataTable({
 	params,
 	columns,
 	cdata,
 	maxHeight = 350,
-	crud,
 }) {
 	const [openDelete, setOpenDelete] = React.useState(false);
 	const handleOpenDelete = () => setOpenDelete(true);
@@ -158,15 +157,13 @@ export default function DataTable({
 											} ${component.currency.toUpperCase()}`}
 										</TableCell>
 										<TableCell className='py-1 px-2' align='center'>
-											{crud && (
-												<Tooltip title='Vender'>
-													<Button
-														className='btn px-0 border-0'
-														style={{ color: '#00cc10' }}>
-														<AttachMoneyIcon />
-													</Button>
-												</Tooltip>
-											)}
+											<Tooltip title='Vender'>
+												<Button
+													className='btn px-0 border-0'
+													style={{ color: '#00cc10' }}>
+													<AttachMoneyIcon />
+												</Button>
+											</Tooltip>
 											<Tooltip title='Editar'>
 												<Button
 													onClick={() => {
@@ -190,19 +187,17 @@ export default function DataTable({
 													</svg>
 												</Button>
 											</Tooltip>
-											{crud && (
-												<Tooltip title='Eliminar'>
-													<Button
-														onClick={() => {
-															handleOpenDelete();
-															setComponent(component);
-														}}
-														className='btn px-0 border-0'
-														style={{ color: '#cc0010' }}>
-														<DeleteForeverIcon />
-													</Button>
-												</Tooltip>
-											)}
+											<Tooltip title='Eliminar'>
+												<Button
+													onClick={() => {
+														handleOpenDelete();
+														setComponent(component);
+													}}
+													className='btn px-0 border-0'
+													style={{ color: '#cc0010' }}>
+													<DeleteForeverIcon />
+												</Button>
+											</Tooltip>
 										</TableCell>
 									</TableRow>
 								);
