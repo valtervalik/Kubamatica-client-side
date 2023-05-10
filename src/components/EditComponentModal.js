@@ -11,7 +11,7 @@ const style = {
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 500,
+	width: 1000,
 	maxHeight: '90vh',
 	overflowY: 'scroll',
 	bgcolor: '#000814',

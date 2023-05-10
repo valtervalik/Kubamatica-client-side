@@ -81,16 +81,6 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 		handleClose
 	);
 
-	const categOptions = [];
-	categories.map((c) => {
-		if (c.category === params) {
-			categOptions.push({
-				option: c.category[0].toUpperCase() + c.category.substring(1),
-				value: c.category,
-			});
-		}
-	});
-
 	return (
 		<div>
 			<form onSubmit={handleSubmit} action='/admin/services/repairs'>
@@ -143,17 +133,6 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 						</div>
 						<div className='col'>
 							<Selector
-								value={form.category}
-								handleChange={handleChange}
-								handleBlur={handleBlur}
-								label='Categoría'
-								name={'category'}
-								options={categOptions}
-							/>
-							{!error.properties && error.category && (
-								<FormError>{error.category}</FormError>
-							)}
-							<Selector
 								value={form.status}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
@@ -174,7 +153,7 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 									},
 								]}
 							/>
-							{!error.category && error.status && (
+							{!error.properties && error.status && (
 								<FormError>{error.status}</FormError>
 							)}
 							<TextInput
