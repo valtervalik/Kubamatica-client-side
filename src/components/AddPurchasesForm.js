@@ -134,10 +134,6 @@ const AddPurchasesForm = ({ handleClose }) => {
 								name={'category'}
 								options={[
 									{
-										option: 'Portátiles',
-										value: 'laptops',
-									},
-									{
 										option: 'Baterías',
 										value: 'baterías',
 									},
@@ -317,13 +313,13 @@ const AddPurchasesForm = ({ handleClose }) => {
 									</select>
 								</div>
 							</div>
-							{form.category.trim() === 'laptops' && (
+							{/* {form.category.trim() === 'laptops' && (
 								<Button
 									className='mt-4'
 									style={{ fontWeight: 'bold', color: 'silver' }}>
 									+ Agregar Componente
 								</Button>
-							)}
+							)} */}
 						</div>
 					</div>
 				</div>
