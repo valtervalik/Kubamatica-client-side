@@ -8,16 +8,14 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
-import { helpHttp } from '@/helpers/helpHttp';
-import SnackBarContext from '@/context/SnackBarContext';
+import EditRepairModal from './EditRepairModal';
 
 export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 	const [openEdit, setOpenEdit] = React.useState(false);
 	const handleOpenEdit = () => setOpenEdit(true);
 	const handleCloseEdit = () => setOpenEdit(false);
 
-	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
-		React.useContext(SnackBarContext);
+	const [repair, setRepair] = React.useState(null);
 
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -58,7 +56,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{i + 1}
 										</TableCell>
@@ -67,7 +65,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.box}
 										</TableCell>
@@ -76,7 +74,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.client}
 										</TableCell>
@@ -85,7 +83,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											+53 {repair.phone}
 										</TableCell>
@@ -94,7 +92,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.technic}
 										</TableCell>
@@ -103,7 +101,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.device}
 										</TableCell>
@@ -112,7 +110,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.description}
 										</TableCell>
@@ -121,16 +119,16 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{repair.date}
+											{repair.date.dayOfWeek} - {repair.date.day}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.price}
 										</TableCell>
@@ -139,7 +137,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{repair.warranty} días
 										</TableCell>
@@ -148,10 +146,14 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											<Tooltip title='Editar'>
 												<Button
+													onClick={() => {
+														handleOpenEdit();
+														setRepair(repair);
+													}}
 													className='btn px-0 border-0'
 													style={{ color: '#0010cc' }}>
 													<svg
@@ -176,6 +178,11 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<EditRepairModal
+				open={openEdit}
+				handleClose={handleCloseEdit}
+				repair={repair}
+			/>
 		</Paper>
 	);
 }

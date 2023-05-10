@@ -1,34 +1,7 @@
+import { useEditForm } from '@/hooks/useEditForm';
 import { FormError } from './FormError';
-import ModalButtons from './ModalButtons';
+import ModalEditButtons from './ModalEditButtons';
 import TextInput from './TextInput';
-import { useForm } from '@/hooks/useForm';
-
-let today = new Date();
-let day = today.getDate();
-let daysOfWeek = [
-	'Domingo',
-	'Lunes',
-	'Martes',
-	'Miércoles',
-	'Jueves',
-	'Viernes',
-	'Sábado',
-];
-let dayOfWeek = daysOfWeek[today.getDay()];
-// let formattedDate = dayOfWeek + ' - ' + day;
-
-const initialForm = {
-	client: '',
-	phone: '',
-	technic: '',
-	warranty: '',
-	device: '',
-	box: '',
-	description: '',
-	date: { year: today.getFullYear(), month: today.getMonth(), day, dayOfWeek },
-	price: '',
-	currency: 'cup',
-};
 
 const validateForm = (form) => {
 	let error = {};
@@ -89,10 +62,23 @@ const validateForm = (form) => {
 	return error;
 };
 
-const url = 'http://127.0.0.1:5000/repairs';
+const EditRepairsForm = ({ handleClose, repair }) => {
+	const url = `http://127.0.0.1:5000/repairs/${repair._id}`;
 
-const AddRepairsForm = ({ handleClose }) => {
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
+	const initialForm = {
+		client: `${repair.client}`,
+		phone: `${repair.phone}`,
+		technic: `${repair.technic}`,
+		warranty: `${repair.warranty}`,
+		device: `${repair.device}`,
+		box: `${repair.box}`,
+		description: `${repair.description}`,
+
+		price: `${repair.price}`,
+		currency: `${repair.currency}`,
+	};
+
+	const { form, error, handleChange, handleBlur, handleSubmit } = useEditForm(
 		initialForm,
 		validateForm,
 		url,
@@ -217,9 +203,9 @@ const AddRepairsForm = ({ handleClose }) => {
 						</div>
 					</div>
 				</div>
-				<ModalButtons handleClose={handleClose} />
+				<ModalEditButtons handleClose={handleClose} />
 			</form>
 		</div>
 	);
 };
-export default AddRepairsForm;
+export default EditRepairsForm;
