@@ -152,7 +152,7 @@ export default function ComponentDataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{`$${
+											{`$ ${
 												component.price
 											} ${component.currency.toUpperCase()}`}
 										</TableCell>
