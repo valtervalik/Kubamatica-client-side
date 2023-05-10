@@ -21,10 +21,12 @@ import SearchInput from './SearchInput';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 
-const pages = ['Servicios', 'Inventario', 'Usuarios'];
+const pages = ['Reparaciones', 'Ventas', 'Compras', 'Inventario', 'Usuarios'];
 const urls = [
 	'/managment/administration/services/repairs',
-	'/managment/administration/inventory/laptops',
+	'/managment/administration/services/sells',
+	'/managment/administration/services/purchases',
+	'/managment/administration/inventory/components',
 	'/managment/administration/users',
 ];
 
@@ -163,19 +165,17 @@ const NavBar = () => {
 								},
 							]}
 						/>
-						<LinkMenu
-							pageName='Inventario'
-							linkNames={[
-								{
-									name: 'Portátiles',
-									url: '/managment/administration/inventory/laptops',
-								},
-								{
-									name: 'Componentes',
-									url: '/managment/administration/inventory/components',
-								},
-							]}
-						/>
+						<Button id='basic-button'>
+							<Link
+								style={{
+									textDecoration: 'none',
+									color: 'gray',
+									fontWeight: 'bold',
+								}}
+								href={'/managment/administration/inventory/components'}>
+								Inventario
+							</Link>
+						</Button>
 						<Button id='basic-button'>
 							<Link
 								style={{
