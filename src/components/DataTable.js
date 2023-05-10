@@ -48,7 +48,7 @@ export default function DataTable({
 					</TableHead>
 					<TableBody>
 						{cdata &&
-							cdata.map((row, i) => {
+							cdata.map((component, i) => {
 								return (
 									<TableRow
 										role='checkbox'
@@ -73,7 +73,7 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{row.box}
+											{component.box}
 										</TableCell>
 										<TableCell
 											style={{
@@ -82,7 +82,7 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{row.brand}
+											{component.brand}
 										</TableCell>
 										<TableCell
 											style={{
@@ -91,7 +91,7 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{row.model}
+											{component.model}
 										</TableCell>
 										<TableCell
 											style={{
@@ -100,7 +100,7 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{row.serial}
+											{component.serial}
 										</TableCell>
 										<TableCell
 											style={{
@@ -109,7 +109,7 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{row.status}
+											{component.status}
 										</TableCell>
 										<TableCell
 											style={{
@@ -118,7 +118,7 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{row.properties}
+											{component.properties}
 										</TableCell>
 										<TableCell
 											style={{
@@ -127,7 +127,9 @@ export default function DataTable({
 											}}
 											className='py-3 px-2'
 											align='center'>
-											{`$${row.price} ${row.currency.toUpperCase()}`}
+											{`$${
+												component.price
+											} ${component.currency.toUpperCase()}`}
 										</TableCell>
 										<TableCell className='py-1 px-2' align='center'>
 											{crud && (
@@ -164,7 +166,7 @@ export default function DataTable({
 														onClick={() => {
 															helpHttp()
 																.del(
-																	`http://127.0.0.1:5000/components/${params}/${row._id}`
+																	`http://127.0.0.1:5000/components/${params}/${component._id}`
 																)
 																.then((res) => {
 																	setMsg(res.message);
