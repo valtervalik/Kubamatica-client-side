@@ -13,6 +13,7 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 import ConfirmDeleteComponent from './ConfirmDeleteComponent';
+import EditComponentModal from './EditComponentModal';
 
 export default function DataTable({
 	params,
@@ -25,24 +26,22 @@ export default function DataTable({
 	const handleOpenDelete = () => setOpenDelete(true);
 	const handleCloseDelete = () => setOpenDelete(false);
 
+	const [openEdit, setOpenEdit] = React.useState(false);
+	const handleOpenEdit = () => setOpenEdit(true);
+	const handleCloseEdit = () => setOpenEdit(false);
+
 	const [component, setComponent] = React.useState(null);
 
 	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
 		React.useContext(SnackBarContext);
 
-	const deleteComponent = async (
-		params,
-		component,
-		handleClose,
-		setComponent
-	) => {
+	const deleteComponent = async (params, component, handleClose) => {
 		await helpHttp()
 			.del(`http://127.0.0.1:5000/components/${params}/${component._id}`)
 			.then((res) => {
 				handleClose();
 				setMsg(res.message);
 				setOpenSuccessSnack(true);
-				setComponent(null);
 				setTimeout(() => {
 					setOpenSuccessSnack(false);
 					setMsg('');
@@ -170,6 +169,10 @@ export default function DataTable({
 											)}
 											<Tooltip title='Editar'>
 												<Button
+													onClick={() => {
+														handleOpenEdit();
+														setComponent(component);
+													}}
 													className='btn px-0 border-0'
 													style={{ color: '#0010cc' }}>
 													<svg
@@ -213,7 +216,12 @@ export default function DataTable({
 				deleteComponent={deleteComponent}
 				component={component}
 				params={params}
-				setComponent={setComponent}
+			/>
+			<EditComponentModal
+				open={openEdit}
+				handleClose={handleCloseEdit}
+				component={component}
+				params={params}
 			/>
 		</Paper>
 	);

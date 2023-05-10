@@ -4,14 +4,14 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
+import EditComponentForm from './EditComponentForm';
 
 const style = {
 	position: 'absolute',
 	top: '50%',
 	left: '50%',
 	transform: 'translate(-50%, -50%)',
-	width: 600,
+	width: 500,
 	maxHeight: '90vh',
 	overflowY: 'scroll',
 	bgcolor: '#000814',
@@ -21,10 +21,9 @@ const style = {
 	p: 4,
 };
 
-export default function ConfirmDeleteComponent({
+export default function EditComponentModal({
 	open,
 	handleClose,
-	deleteComponent,
 	component,
 	params,
 }) {
@@ -49,21 +48,14 @@ export default function ConfirmDeleteComponent({
 							id='transition-modal-title'
 							variant='h5'
 							component='h2'>
-							¿Está seguro de que desea eliminar el componente con número de
-							serie {component && component.serial}?
+							Editar Componente
 						</Typography>
-						<div className='d-flex justify-content-around mt-5'>
-							<Button
-								className='text-danger'
-								style={{ fontWeight: 'bold' }}
-								onClick={handleClose}>
-								Cancelar
-							</Button>
-							<Button
-								onClick={() => deleteComponent(params, component, handleClose)}
-								style={{ color: '#0066ff', fontWeight: 'bold' }}>
-								Aceptar
-							</Button>
+						<div className='mt-3'>
+							<EditComponentForm
+								handleClose={handleClose}
+								component={component}
+								params={params}
+							/>
 						</div>
 					</Box>
 				</Fade>
