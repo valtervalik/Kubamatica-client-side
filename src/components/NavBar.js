@@ -20,6 +20,7 @@ import { Button } from '@mui/material';
 import SearchInput from './SearchInput';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
+import Cookies from 'js-cookie';
 
 const pages = ['Reparaciones', 'Ventas', 'Compras', 'Inventario', 'Usuarios'];
 const urls = [
@@ -197,8 +198,7 @@ const NavBar = () => {
 									await helpHttp()
 										.post('http://127.0.0.1:5000/users/logout')
 										.then((res) => {
-											console.log(res);
-											localStorage.clear();
+											Cookies.remove('currentUser');
 											router.push('/managment/session/login');
 											setMsg(res.message);
 											setOpenSuccessSnack(true);

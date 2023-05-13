@@ -4,6 +4,7 @@ import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
+import Cookies from 'js-cookie';
 
 export const useSessionForm = (initialForm, url) => {
 	const [form, setForm] = useState(initialForm);
@@ -46,7 +47,8 @@ export const useSessionForm = (initialForm, url) => {
 					}, 3000);
 				} else {
 					setMsg(res.message);
-					localStorage.setItem('currentUser', JSON.stringify(res));
+					// localStorage.setItem('currentUser', JSON.stringify(res));
+					Cookies.set('currentUser', res);
 					router.push('/managment/administration/services/repairs');
 					setOpenSuccessSnack(true);
 					setTimeout(() => {
