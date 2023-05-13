@@ -3,7 +3,19 @@ import ModalButtons from './ModalButtons';
 import Selector from './Selector';
 import TextInput from './TextInput';
 import { FormError } from './FormError';
-import { Button } from '@mui/material';
+
+let today = new Date();
+let day = today.getDate();
+let daysOfWeek = [
+	'Domingo',
+	'Lunes',
+	'Martes',
+	'Miércoles',
+	'Jueves',
+	'Viernes',
+	'Sábado',
+];
+let dayOfWeek = daysOfWeek[today.getDay()];
 
 const initialForm = {
 	supplier: '',
@@ -16,8 +28,9 @@ const initialForm = {
 	model: '',
 	serial: '',
 	properties: '',
+	date: { year: today.getFullYear(), month: today.getMonth(), day, dayOfWeek },
 	price: '',
-	currency: '',
+	currency: 'cup',
 };
 
 const validateForm = (form) => {
