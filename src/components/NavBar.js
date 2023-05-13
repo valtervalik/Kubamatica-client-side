@@ -191,7 +191,7 @@ const NavBar = () => {
 					</Box>
 					<SearchInput />
 					<Box sx={{ flexGrow: 0 }}>
-						<Tooltip title='LogOut'>
+						<Tooltip title='Cerrar Sesión'>
 							<IconButton
 								sx={{ p: 0 }}
 								onClick={async () => {
