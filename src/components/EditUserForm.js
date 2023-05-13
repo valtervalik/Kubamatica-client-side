@@ -48,7 +48,7 @@ const validateForm = (form) => {
 };
 
 const EditUserForm = ({ handleClose, user }) => {
-	const url = `http://127.0.0.1:5000/users/${user._id}`;
+	const url = [`http://127.0.0.1:5000/users/${user._id}`];
 
 	const initialForm = {
 		fullname: `${user.fullname}`,

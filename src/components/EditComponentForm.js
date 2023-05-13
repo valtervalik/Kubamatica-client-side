@@ -57,7 +57,7 @@ const validateForm = (form) => {
 };
 
 const EditComponentForm = ({ handleClose, params, component }) => {
-	const url = `http://127.0.0.1:5000/components/${params}/${component._id}`;
+	const url = [`http://127.0.0.1:5000/components/${params}/${component._id}`];
 
 	const initialForm = {
 		brand: `${component.brand}`,
