@@ -1,8 +1,11 @@
+'use client';
 import { useForm } from '@/hooks/useForm';
 import ModalButtons from './ModalButtons';
 import Selector from './Selector';
 import TextInput from './TextInput';
 import { FormError } from './FormError';
+import { useEffect, useState } from 'react';
+import { helpHttp } from '@/helpers/helpHttp';
 
 let today = new Date();
 let day = today.getDate();
@@ -107,13 +110,38 @@ const validateForm = (form) => {
 	return error;
 };
 
-const url = '';
+const url = 'http://127.0.0.1:5000/purchases';
 
 const AddPurchasesForm = ({ handleClose }) => {
+	const [categories, setCategories] = useState([]);
+
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url,
+		handleClose
 	);
+
+	useEffect(() => {
+		helpHttp()
+			.get('http://127.0.0.1:5000/categories')
+			.then((res) => {
+				if (!res.err) {
+					setCategories(res);
+				} else {
+					setCategories(null);
+				}
+			});
+	}, []);
+
+	const options = [];
+	categories &&
+		categories.map((cat) => {
+			options.push({
+				option: cat.category[0].toUpperCase() + cat.category.substring(1),
+				value: cat.category,
+			});
+		});
 
 	return (
 		<div>
@@ -147,57 +175,7 @@ const AddPurchasesForm = ({ handleClose }) => {
 								handleBlur={handleBlur}
 								label='Categoría'
 								name={'category'}
-								options={[
-									{
-										option: 'Baterías',
-										value: 'baterías',
-									},
-									{
-										option: 'Cargadores',
-										value: 'cargadores',
-									},
-									{
-										option: 'Pantallas',
-										value: 'pantallas',
-									},
-									{
-										option: 'Teclados',
-										value: 'teclados',
-									},
-									{
-										option: 'TouchPads',
-										value: 'touchpads',
-									},
-									{
-										option: 'Chasis',
-										value: 'chasis',
-									},
-									{
-										option: 'Procesadores',
-										value: 'procesadores',
-									},
-
-									{
-										option: 'RAM',
-										value: 'ram',
-									},
-									{
-										option: 'Discos',
-										value: 'discos',
-									},
-									{
-										option: 'Audio',
-										value: 'audio',
-									},
-									{
-										option: 'Red',
-										value: 'red',
-									},
-									{
-										option: 'Motherboards',
-										value: 'motherboards',
-									},
-								]}
+								options={options}
 							/>
 							{!error.phone && error.category && (
 								<FormError>{error.category}</FormError>
@@ -211,15 +189,15 @@ const AddPurchasesForm = ({ handleClose }) => {
 								options={[
 									{
 										option: 'Nuevo',
-										value: 'new',
+										value: 'Nuevo',
 									},
 									{
 										option: 'Poco Uso',
-										value: 'bitused',
+										value: 'Poco Uso',
 									},
 									{
 										option: 'Usado',
-										value: 'used',
+										value: 'Usado',
 									},
 								]}
 							/>
