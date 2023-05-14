@@ -1,6 +1,5 @@
 'use client';
-
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,45 +8,13 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import { helpHttp } from '@/helpers/helpHttp';
-import SnackBarContext from '@/context/SnackBarContext';
-import ConfirmDeleteComponent from './ConfirmDeleteComponent';
-import EditComponentModal from './EditComponentModal';
 
-export default function ComponentDataTable({
-	params,
-	columns,
-	cdata,
-	maxHeight = 350,
-}) {
-	const [openDelete, setOpenDelete] = useState(false);
-	const handleOpenDelete = () => setOpenDelete(true);
-	const handleCloseDelete = () => setOpenDelete(false);
-
+export default function PurchaseDataTable({ columns, pdata, maxHeight = 350 }) {
 	const [openEdit, setOpenEdit] = useState(false);
 	const handleOpenEdit = () => setOpenEdit(true);
 	const handleCloseEdit = () => setOpenEdit(false);
 
-	const [component, setComponent] = useState(null);
-
-	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
-		useContext(SnackBarContext);
-
-	const deleteComponent = async (params, component, handleClose) => {
-		await helpHttp()
-			.del(`http://127.0.0.1:5000/components/${params}/${component._id}`)
-			.then((res) => {
-				handleClose();
-				setMsg(res.message);
-				setOpenSuccessSnack(true);
-				setTimeout(() => {
-					setOpenSuccessSnack(false);
-					setMsg('');
-				}, 3000);
-			});
-	};
+	const [purchase, setPurchase] = useState(null);
 
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -73,8 +40,8 @@ export default function ComponentDataTable({
 						</TableRow>
 					</TableHead>
 					<TableBody>
-						{cdata &&
-							cdata.map((component, i) => {
+						{pdata &&
+							pdata.map((purchase, i) => {
 								return (
 									<TableRow
 										role='checkbox'
@@ -88,7 +55,7 @@ export default function ComponentDataTable({
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
 											{i + 1}
 										</TableCell>
@@ -97,79 +64,121 @@ export default function ComponentDataTable({
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{component.box}
+											{purchase.box}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{component.brand}
+											{purchase.supplier}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{component.model}
+											+53 {purchase.phone}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{component.serial}
+											{purchase.brand}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{component.status}
+											{purchase.model}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{component.properties}
+											{purchase.serial}
 										</TableCell>
 										<TableCell
 											style={{
 												fontSize: '12px',
 												fontWeight: 'bold',
 											}}
-											className='py-3 px-2'
+											className='py-2 px-2'
 											align='center'>
-											{`$ ${
-												component.price
-											} ${component.currency.toUpperCase()}`}
+											{purchase.category}
 										</TableCell>
-										<TableCell className='py-1 px-2' align='center'>
-											<Tooltip title='Vender'>
-												<Button
-													className='btn px-0 border-0'
-													style={{ color: '#00cc10' }}>
-													<AttachMoneyIcon />
-												</Button>
-											</Tooltip>
+										<TableCell
+											style={{
+												fontSize: '12px',
+												fontWeight: 'bold',
+											}}
+											className='py-2 px-2'
+											align='center'>
+											{purchase.status}
+										</TableCell>
+										<TableCell
+											style={{
+												fontSize: '12px',
+												fontWeight: 'bold',
+											}}
+											className='py-2 px-2'
+											align='center'>
+											{purchase.properties}
+										</TableCell>
+										<TableCell
+											style={{
+												fontSize: '12px',
+												fontWeight: 'bold',
+											}}
+											className='py-2 px-2'
+											align='center'>
+											{purchase.date.dayOfWeek} - {purchase.date.day}
+										</TableCell>
+										<TableCell
+											style={{
+												fontSize: '12px',
+												fontWeight: 'bold',
+											}}
+											className='py-2 px-2'
+											align='center'>
+											$ {purchase.price} {purchase.currency.toUpperCase()}
+										</TableCell>
+										<TableCell
+											style={{
+												fontSize: '12px',
+												fontWeight: 'bold',
+											}}
+											className='py-2 px-2'
+											align='center'>
+											{purchase.warranty} días
+										</TableCell>
+										<TableCell
+											style={{
+												fontSize: '12px',
+												fontWeight: 'bold',
+											}}
+											className='py-2 px-2'
+											align='center'>
 											<Tooltip title='Editar'>
 												<Button
 													onClick={() => {
 														handleOpenEdit();
-														setComponent(component);
+														setPurchase(purchase);
 													}}
 													className='btn px-0 border-0'
 													style={{ color: '#0010cc' }}>
@@ -188,17 +197,6 @@ export default function ComponentDataTable({
 													</svg>
 												</Button>
 											</Tooltip>
-											<Tooltip title='Eliminar'>
-												<Button
-													onClick={() => {
-														handleOpenDelete();
-														setComponent(component);
-													}}
-													className='btn px-0 border-0'
-													style={{ color: '#cc0010' }}>
-													<DeleteForeverIcon />
-												</Button>
-											</Tooltip>
 										</TableCell>
 									</TableRow>
 								);
@@ -206,19 +204,6 @@ export default function ComponentDataTable({
 					</TableBody>
 				</Table>
 			</TableContainer>
-			<ConfirmDeleteComponent
-				open={openDelete}
-				handleClose={handleCloseDelete}
-				deleteComponent={deleteComponent}
-				component={component}
-				params={params}
-			/>
-			<EditComponentModal
-				open={openEdit}
-				handleClose={handleCloseEdit}
-				component={component}
-				params={params}
-			/>
 		</Paper>
 	);
 }

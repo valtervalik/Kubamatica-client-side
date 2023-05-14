@@ -1,15 +1,34 @@
 'use client';
-import React, { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { SpeedDialIcon } from '@mui/material';
 import { AddButton } from '@/components/AddButton';
-import DataTable from '@/components/ComponentDataTable';
 import Tooltip from '@mui/material/Tooltip';
 import PurchasesModal from '@/components/PurchasesModal';
+import PurchaseDataTable from '@/components/PurchaseDataTable';
+import { helpHttp } from '@/helpers/helpHttp';
+import SnackBarContext from '@/context/SnackBarContext';
 
 const Purchases = () => {
 	const [openPurchases, setOpenPurchases] = useState(false);
 	const handleOpenPurchases = () => setOpenPurchases(true);
 	const handleClosePurchases = () => setOpenPurchases(false);
+
+	const [purchaseData, setPurchaseData] = useState([]);
+
+	const { openSuccessSnack, openWarningSnack, msg } =
+		useContext(SnackBarContext);
+
+	useEffect(() => {
+		helpHttp()
+			.get(`http://127.0.0.1:5000/purchases`)
+			.then((res) => {
+				if (!res.err) {
+					setPurchaseData(res);
+				} else {
+					setPurchaseData(null);
+				}
+			});
+	}, [openSuccessSnack, msg]);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -18,13 +37,12 @@ const Purchases = () => {
 				<p style={{ fontSize: '20px', fontWeight: 'bold', color: '#0010cc' }}>
 					Enero <span>2023</span>
 				</p>
-				<DataTable
+				<PurchaseDataTable
 					columns={[
 						'No.',
 						'Caja',
 						'Proveedor',
 						'Teléfono',
-						'Técnico',
 						'Marca',
 						'Modelo',
 						'No. Serie',
@@ -35,7 +53,7 @@ const Purchases = () => {
 						'Precio',
 						'Garantía',
 					]}
-					tdata={false}
+					pdata={purchaseData}
 				/>
 			</div>
 			<PurchasesModal
