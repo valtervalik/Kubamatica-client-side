@@ -107,6 +107,8 @@ const validateForm = (form) => {
 	return error;
 };
 
+const url = '';
+
 const AddPurchasesForm = ({ handleClose }) => {
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,

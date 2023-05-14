@@ -12,14 +12,12 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 		useContext(SnackBarContext);
 
 	const submitData = async (url, form) => {
-		for (let u of url) {
-			await helpHttp()
-				.post(u, {
-					body: form,
-					headers: { 'content-type': 'application/json' },
-				})
-				.then((res) => setMsg(res.message));
-		}
+		await helpHttp()
+			.post(url, {
+				body: form,
+				headers: { 'content-type': 'application/json' },
+			})
+			.then((res) => setMsg(res.message));
 	};
 
 	const handleChange = (e) => {

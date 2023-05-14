@@ -69,7 +69,7 @@ const validateForm = (form) => {
 	return error;
 };
 
-const url = ['http://127.0.0.1:5000/users/register'];
+const url = 'http://127.0.0.1:5000/users/register';
 
 const AddUserForm = ({ handleClose }) => {
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
