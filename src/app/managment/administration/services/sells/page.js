@@ -1,15 +1,26 @@
 'use client';
-import React, { useState } from 'react';
-import { SpeedDialIcon } from '@mui/material';
-import { AddButton } from '@/components/AddButton';
-import DataTable from '@/components/ComponentDataTable';
-import Tooltip from '@mui/material/Tooltip';
-import SellsModal from '@/components/SellsModal';
+import React, { useContext, useEffect, useState } from 'react';
+import SellDataTable from '@/components/SellDataTable';
+import SnackBarContext from '@/context/SnackBarContext';
+import { helpHttp } from '@/helpers/helpHttp';
 
 const Sells = () => {
-	const [openSells, setOpenSells] = useState(false);
-	const handleOpenSells = () => setOpenSells(true);
-	const handleCloseSells = () => setOpenSells(false);
+	const [sellData, setSellData] = useState([]);
+
+	const { openSuccessSnack, openWarningSnack, msg } =
+		useContext(SnackBarContext);
+
+	useEffect(() => {
+		helpHttp()
+			.get(`http://127.0.0.1:5000/sells`)
+			.then((res) => {
+				if (!res.err) {
+					setSellData(res);
+				} else {
+					setSellData(null);
+				}
+			});
+	}, [openSuccessSnack, msg]);
 
 	return (
 		<div className='mainh1 px-5'>
@@ -18,7 +29,7 @@ const Sells = () => {
 				<p style={{ fontSize: '20px', fontWeight: 'bold', color: '#0010cc' }}>
 					Enero <span>2023</span>
 				</p>
-				<DataTable
+				<SellDataTable
 					columns={[
 						'No.',
 						'Cliente',
@@ -34,16 +45,9 @@ const Sells = () => {
 						'Precio',
 						'Garantía',
 					]}
-					tdata={false}
+					sdata={sellData}
 				/>
 			</div>
-			<SellsModal handleClose={handleCloseSells} openSells={openSells} />
-			{/* 
-			<Tooltip title='Añadir Servicio'>
-				<AddButton onClick={handleOpenSells}>
-					<SpeedDialIcon className='d-flex align-content-center' />
-				</AddButton>
-			</Tooltip> */}
 		</div>
 	);
 };
