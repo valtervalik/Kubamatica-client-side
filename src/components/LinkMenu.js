@@ -37,13 +37,12 @@ export default function LinkMenu({ pageName, linkNames }) {
 				<div onMouseLeave={handleClose}>
 					{linkNames &&
 						linkNames.map(({ name, url }) => (
-							<MenuItem key={url} onClick={handleClose}>
-								<Link
-									style={{ textDecoration: 'none', color: 'gray' }}
-									href={url}>
-									{name}
-								</Link>
-							</MenuItem>
+							<Link
+								key={url}
+								style={{ textDecoration: 'none', color: 'gray' }}
+								href={url}>
+								<MenuItem onClick={handleClose}>{name}</MenuItem>
+							</Link>
 						))}
 				</div>
 			</Menu>
