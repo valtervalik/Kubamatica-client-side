@@ -1,24 +1,24 @@
+'use client';
 import { useForm } from '@/hooks/useForm';
 import ModalButtons from './ModalButtons';
 import Selector from './Selector';
 import TextInput from './TextInput';
 import { FormError } from './FormError';
+import { useEffect, useState } from 'react';
+import { helpHttp } from '@/helpers/helpHttp';
 
-const initialForm = {
-	client: '',
-	phone: '',
-	technic: '',
-	category: '',
-	warranty: '',
-	box: '',
-	brand: '',
-	model: '',
-	serial: '',
-	status: '',
-	properties: '',
-	price: '',
-	currency: '',
-};
+let today = new Date();
+let day = today.getDate();
+let daysOfWeek = [
+	'Domingo',
+	'Lunes',
+	'Martes',
+	'Miércoles',
+	'Jueves',
+	'Viernes',
+	'Sábado',
+];
+let dayOfWeek = daysOfWeek[today.getDay()];
 
 const validateForm = (form) => {
 	let error = {};
@@ -100,11 +100,60 @@ const validateForm = (form) => {
 	return error;
 };
 
-const AddSellsForm = ({ handleClose }) => {
+const url = 'http://127.0.0.1:5000/sells';
+
+const AddSellsForm = ({ handleClose, component }) => {
+	const [categories, setCategories] = useState([]);
+
+	const initialForm = {
+		client: '',
+		phone: '',
+		technic: '',
+		category: `${component.category}`,
+		warranty: '',
+		box: `${component.box}`,
+		brand: `${component.brand}`,
+		model: `${component.model}`,
+		serial: `${component.serial}`,
+		status: `${component.status}`,
+		properties: `${component.properties}`,
+		date: {
+			year: today.getFullYear(),
+			month: today.getMonth(),
+			day,
+			dayOfWeek,
+		},
+		price: `${component.price}`,
+		currency: `${component.currency}`,
+	};
+
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
-		validateForm
+		validateForm,
+		url,
+		handleClose
 	);
+
+	useEffect(() => {
+		helpHttp()
+			.get('http://127.0.0.1:5000/categories')
+			.then((res) => {
+				if (!res.err) {
+					setCategories(res);
+				} else {
+					setCategories(null);
+				}
+			});
+	}, []);
+
+	const options = [];
+	categories &&
+		categories.map((cat) => {
+			options.push({
+				option: cat.category[0].toUpperCase() + cat.category.substring(1),
+				value: cat.category,
+			});
+		});
 
 	return (
 		<div>
@@ -149,61 +198,7 @@ const AddSellsForm = ({ handleClose }) => {
 								handleBlur={handleBlur}
 								label='Categoría'
 								name={'category'}
-								options={[
-									{
-										option: 'Portátiles',
-										value: 'laptops',
-									},
-									{
-										option: 'Baterías',
-										value: 'baterías',
-									},
-									{
-										option: 'Cargadores',
-										value: 'cargadores',
-									},
-									{
-										option: 'Pantallas',
-										value: 'pantallas',
-									},
-									{
-										option: 'Teclados',
-										value: 'teclados',
-									},
-									{
-										option: 'TouchPads',
-										value: 'touchpads',
-									},
-									{
-										option: 'Chasis',
-										value: 'chasis',
-									},
-									{
-										option: 'Procesadores',
-										value: 'procesadores',
-									},
-
-									{
-										option: 'RAM',
-										value: 'ram',
-									},
-									{
-										option: 'Discos',
-										value: 'discos',
-									},
-									{
-										option: 'Audio',
-										value: 'audio',
-									},
-									{
-										option: 'Red',
-										value: 'red',
-									},
-									{
-										option: 'Motherboards',
-										value: 'motherboards',
-									},
-								]}
+								options={options}
 							/>
 							{!error.technic && error.category && (
 								<FormError>{error.category}</FormError>
@@ -274,15 +269,15 @@ const AddSellsForm = ({ handleClose }) => {
 								options={[
 									{
 										option: 'Nuevo',
-										value: 'new',
+										value: 'Nuevo',
 									},
 									{
 										option: 'Poco Uso',
-										value: 'bitused',
+										value: 'Poco Uso',
 									},
 									{
 										option: 'Usado',
-										value: 'used',
+										value: 'Usado',
 									},
 								]}
 							/>

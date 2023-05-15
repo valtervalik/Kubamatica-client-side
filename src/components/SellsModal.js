@@ -4,7 +4,6 @@ import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import Fade from '@mui/material/Fade';
 import Typography from '@mui/material/Typography';
-import { Button } from '@mui/material';
 import AddSellsForm from './AddSellsForm';
 
 const style = {
@@ -22,13 +21,13 @@ const style = {
 	p: 4,
 };
 
-export default function SellsModal({ openSells, handleClose }) {
+export default function SellsModal({ open, handleClose, component }) {
 	return (
 		<div>
 			<Modal
 				aria-labelledby='transition-modal-title'
 				aria-describedby='transition-modal-description'
-				open={openSells}
+				open={open}
 				closeAfterTransition
 				slots={{ backdrop: Backdrop }}
 				slotProps={{
@@ -36,7 +35,7 @@ export default function SellsModal({ openSells, handleClose }) {
 						timeout: 500,
 					},
 				}}>
-				<Fade in={openSells}>
+				<Fade in={open}>
 					<Box sx={style}>
 						<Typography
 							style={{ fontWeight: 'bold', color: 'silver' }}
@@ -47,7 +46,7 @@ export default function SellsModal({ openSells, handleClose }) {
 							Añadir Servicio de Venta
 						</Typography>
 						<div className='mt-3'>
-							<AddSellsForm handleClose={handleClose} />
+							<AddSellsForm handleClose={handleClose} component={component} />
 						</div>
 					</Box>
 				</Fade>

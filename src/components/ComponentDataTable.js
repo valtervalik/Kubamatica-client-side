@@ -15,6 +15,7 @@ import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 import ConfirmDeleteComponent from './ConfirmDeleteComponent';
 import EditComponentModal from './EditComponentModal';
+import SellsModal from './SellsModal';
 
 export default function ComponentDataTable({
 	params,
@@ -29,6 +30,10 @@ export default function ComponentDataTable({
 	const [openEdit, setOpenEdit] = useState(false);
 	const handleOpenEdit = () => setOpenEdit(true);
 	const handleCloseEdit = () => setOpenEdit(false);
+
+	const [openSell, setOpenSell] = useState(false);
+	const handleOpenSell = () => setOpenSell(true);
+	const handleCloseSell = () => setOpenSell(false);
 
 	const [component, setComponent] = useState(null);
 
@@ -160,6 +165,10 @@ export default function ComponentDataTable({
 										<TableCell className='py-1 px-2' align='center'>
 											<Tooltip title='Vender'>
 												<Button
+													onClick={() => {
+														handleOpenSell();
+														setComponent(component);
+													}}
 													className='btn px-0 border-0'
 													style={{ color: '#00cc10' }}>
 													<AttachMoneyIcon />
@@ -218,6 +227,11 @@ export default function ComponentDataTable({
 				handleClose={handleCloseEdit}
 				component={component}
 				params={params}
+			/>
+			<SellsModal
+				open={openSell}
+				handleClose={handleCloseSell}
+				component={component}
 			/>
 		</Paper>
 	);
