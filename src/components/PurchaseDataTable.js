@@ -8,6 +8,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
+import EditPurchaseModal from './EditPurchaseModal';
 
 export default function PurchaseDataTable({ columns, pdata, maxHeight = 350 }) {
 	const [openEdit, setOpenEdit] = useState(false);
@@ -204,6 +205,11 @@ export default function PurchaseDataTable({ columns, pdata, maxHeight = 350 }) {
 					</TableBody>
 				</Table>
 			</TableContainer>
+			<EditPurchaseModal
+				open={openEdit}
+				handleClose={handleCloseEdit}
+				purchase={purchase}
+			/>
 		</Paper>
 	);
 }
