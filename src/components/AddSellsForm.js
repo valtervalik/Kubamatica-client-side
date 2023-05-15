@@ -6,6 +6,7 @@ import TextInput from './TextInput';
 import { FormError } from './FormError';
 import { useEffect, useState } from 'react';
 import { helpHttp } from '@/helpers/helpHttp';
+import { useRouter } from 'next/navigation';
 
 let today = new Date();
 let day = today.getDate();
@@ -105,6 +106,12 @@ const url = 'http://127.0.0.1:5000/sells';
 const AddSellsForm = ({ handleClose, component }) => {
 	const [categories, setCategories] = useState([]);
 
+	const router = useRouter();
+
+	const action = () => {
+		router.push('/managment/administration/services/sells');
+	};
+
 	const initialForm = {
 		client: '',
 		phone: '',
@@ -131,7 +138,8 @@ const AddSellsForm = ({ handleClose, component }) => {
 		initialForm,
 		validateForm,
 		url,
-		handleClose
+		handleClose,
+		action
 	);
 
 	useEffect(() => {

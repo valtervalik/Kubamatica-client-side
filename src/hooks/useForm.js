@@ -4,7 +4,13 @@ import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import { useContext, useState } from 'react';
 
-export const useForm = (initialForm, validateForm, url, handleClose) => {
+export const useForm = (
+	initialForm,
+	validateForm,
+	url,
+	handleClose,
+	action
+) => {
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
 
@@ -38,6 +44,7 @@ export const useForm = (initialForm, validateForm, url, handleClose) => {
 
 			submitData(url, form).then(() => {
 				handleClose();
+				action && action();
 				setOpenSuccessSnack(true);
 				setTimeout(() => {
 					setOpenSuccessSnack(false);
