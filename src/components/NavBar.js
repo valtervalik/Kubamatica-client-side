@@ -110,12 +110,12 @@ const NavBar = () => {
 								display: { xs: 'block', md: 'none' },
 							}}>
 							{pages.map((page, i) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Link className='links' href={urls[i]}>
+								<Link key={page} className='links' href={urls[i]}>
+									<MenuItem onClick={handleCloseNavMenu}>
 										{page}
-									</Link>
-									{/* <Typography textAlign='center'>{page}</Typography> */}
-								</MenuItem>
+										{/* <Typography textAlign='center'>{page}</Typography> */}
+									</MenuItem>
+								</Link>
 							))}
 						</Menu>
 					</Box>
