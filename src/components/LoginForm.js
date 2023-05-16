@@ -4,6 +4,7 @@ import LoginBtn from './LoginBtn';
 import './LoginForm.css';
 import { useSessionForm } from '@/hooks/useSessionForm';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
+import { Button } from '@mui/material';
 
 const initialForm = {
 	username: '',
@@ -56,12 +57,11 @@ const LoginForm = () => {
 						<label htmlFor='floatingPassword'>Contraseña</label>
 					</div>
 					<div className='d-flex justify-content-between align-items-top'>
-						<a
-							href='#'
-							style={{ textDecoration: 'none', paddingTop: '0.3rem' }}
+						<Button
+							style={{ fontSize: '12px', height: '40px' }}
 							className='text-light'>
 							¿Ha olvidado su contraseña?
-						</a>
+						</Button>
 						<LoginBtn />
 					</div>
 					<Link
