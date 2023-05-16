@@ -5,6 +5,8 @@ import './LoginForm.css';
 import { useSessionForm } from '@/hooks/useSessionForm';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import { Button } from '@mui/material';
+import { useState } from 'react';
+import RecoverPasswordModal from './RecoverPasswordModal';
 
 const initialForm = {
 	username: '',
@@ -14,6 +16,10 @@ const initialForm = {
 const url = 'http://127.0.0.1:5000/users/login';
 
 const LoginForm = () => {
+	const [openRecover, setOpenRecover] = useState(false);
+	const handleOpenRecover = () => setOpenRecover(true);
+	const handleCloseRecover = () => setOpenRecover(false);
+
 	const { form, handleChange, handleBlur, handleSubmit } = useSessionForm(
 		initialForm,
 		url
@@ -58,6 +64,7 @@ const LoginForm = () => {
 					</div>
 					<div className='d-flex justify-content-between align-items-top'>
 						<Button
+							onClick={handleOpenRecover}
 							style={{ fontSize: '12px', height: '40px' }}
 							className='text-light'>
 							¿Ha olvidado su contraseña?
@@ -71,6 +78,10 @@ const LoginForm = () => {
 					</Link>
 				</form>
 			</div>
+			<RecoverPasswordModal
+				open={openRecover}
+				handleClose={handleCloseRecover}
+			/>
 		</>
 	);
 };
