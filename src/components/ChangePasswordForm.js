@@ -1,7 +1,7 @@
 'use client';
-import { useForm } from '@/hooks/useForm';
 import Link from 'next/link';
 import { FormError } from './FormError';
+import { usePasswordForm } from '@/hooks/usePasswordForm';
 
 const initialForm = {
 	username: '',
@@ -14,14 +14,6 @@ const validateForm = (form) => {
 	let error = {};
 	let regexPassword =
 		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-
-	if (form.username.trim() !== 'valtervar') {
-		error.username = true;
-	}
-
-	if (form.password.trim() !== 'PWISW2402*') {
-		error.password = true;
-	}
 
 	if (!form.newpassword.trim()) {
 		error.newpassword = `El campo 'Nueva Contraseña' es requerido`;
@@ -39,11 +31,11 @@ const validateForm = (form) => {
 	return error;
 };
 
+const url = 'http://127.0.0.1:5000/users/changepassword';
+
 const ChangePasswordForm = () => {
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit } =
+		usePasswordForm(initialForm, validateForm, url);
 
 	return (
 		<form onSubmit={handleSubmit} className='w-50' action='/session/login'>
