@@ -10,12 +10,22 @@ import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
 import EditSellsModal from './EditSellsModal';
 
-export default function SellDataTable({ columns, sdata, maxHeight = 350 }) {
+export default function SellDataTable({
+	columns,
+	sdata,
+	maxHeight = 350,
+	month,
+	year,
+}) {
 	const [openEdit, setOpenEdit] = useState(false);
 	const handleOpenEdit = () => setOpenEdit(true);
 	const handleCloseEdit = () => setOpenEdit(false);
 
 	const [sell, setSell] = useState(null);
+
+	const filteredData = sdata.filter(
+		(sell) => sell.date.month === month && sell.date.year === year
+	);
 
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -42,7 +52,7 @@ export default function SellDataTable({ columns, sdata, maxHeight = 350 }) {
 					</TableHead>
 					<TableBody>
 						{sdata &&
-							sdata.map((sell, i) => {
+							filteredData.map((sell, i) => {
 								return (
 									<TableRow
 										role='checkbox'

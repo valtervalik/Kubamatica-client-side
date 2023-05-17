@@ -3,9 +3,14 @@ import React, { useContext, useEffect, useState } from 'react';
 import SellDataTable from '@/components/SellDataTable';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
+import dayjs from 'dayjs';
+import DateFilter from '@/components/DateFilter';
 
 const Sells = () => {
 	const [sellData, setSellData] = useState([]);
+
+	const [month, setMonth] = useState(dayjs().$M);
+	const [year, setYear] = useState(dayjs().$y);
 
 	const { openSuccessSnack, openWarningSnack, msg } =
 		useContext(SnackBarContext);
@@ -26,9 +31,13 @@ const Sells = () => {
 		<div className='mainh1 px-5'>
 			<h2 className='text-center'>Registro de Servicios de Venta</h2>
 			<div className='mb-2'>
-				<p style={{ fontSize: '20px', fontWeight: 'bold', color: '#0010cc' }}>
-					Enero <span>2023</span>
-				</p>
+				<DateFilter
+					month={month}
+					year={year}
+					setMonth={setMonth}
+					setYear={setYear}
+				/>
+
 				<SellDataTable
 					columns={[
 						'No.',
@@ -46,6 +55,8 @@ const Sells = () => {
 						'Garantía',
 					]}
 					sdata={sellData}
+					month={month}
+					year={year}
 				/>
 			</div>
 		</div>

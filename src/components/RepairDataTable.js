@@ -10,12 +10,22 @@ import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
 import EditRepairModal from './EditRepairModal';
 
-export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
+export default function RepairDataTable({
+	columns,
+	rdata,
+	maxHeight = 350,
+	month,
+	year,
+}) {
 	const [openEdit, setOpenEdit] = React.useState(false);
 	const handleOpenEdit = () => setOpenEdit(true);
 	const handleCloseEdit = () => setOpenEdit(false);
 
 	const [repair, setRepair] = React.useState(null);
+
+	const filteredData = rdata.filter(
+		(repair) => repair.date.month === month && repair.date.year === year
+	);
 
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -42,7 +52,7 @@ export default function RepairDataTable({ columns, rdata, maxHeight = 350 }) {
 					</TableHead>
 					<TableBody>
 						{rdata &&
-							rdata.map((repair, i) => {
+							filteredData.map((repair, i) => {
 								return (
 									<TableRow
 										role='checkbox'

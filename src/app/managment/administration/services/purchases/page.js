@@ -7,6 +7,8 @@ import PurchasesModal from '@/components/PurchasesModal';
 import PurchaseDataTable from '@/components/PurchaseDataTable';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
+import dayjs from 'dayjs';
+import DateFilter from '@/components/DateFilter';
 
 const Purchases = () => {
 	const [openPurchases, setOpenPurchases] = useState(false);
@@ -14,6 +16,8 @@ const Purchases = () => {
 	const handleClosePurchases = () => setOpenPurchases(false);
 
 	const [purchaseData, setPurchaseData] = useState([]);
+	const [month, setMonth] = useState(dayjs().$M);
+	const [year, setYear] = useState(dayjs().$y);
 
 	const { openSuccessSnack, openWarningSnack, msg } =
 		useContext(SnackBarContext);
@@ -34,9 +38,13 @@ const Purchases = () => {
 		<div className='mainh1 px-5'>
 			<h2 className='text-center'>Registro de Compras</h2>
 			<div className='mb-2'>
-				<p style={{ fontSize: '20px', fontWeight: 'bold', color: '#0010cc' }}>
-					Enero <span>2023</span>
-				</p>
+				<DateFilter
+					month={month}
+					year={year}
+					setMonth={setMonth}
+					setYear={setYear}
+				/>
+
 				<PurchaseDataTable
 					columns={[
 						'No.',
@@ -54,6 +62,8 @@ const Purchases = () => {
 						'Garantía',
 					]}
 					pdata={purchaseData}
+					month={month}
+					year={year}
 				/>
 			</div>
 			<PurchasesModal

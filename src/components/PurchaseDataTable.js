@@ -10,12 +10,22 @@ import TableRow from '@mui/material/TableRow';
 import { Button, Tooltip } from '@mui/material';
 import EditPurchaseModal from './EditPurchaseModal';
 
-export default function PurchaseDataTable({ columns, pdata, maxHeight = 350 }) {
+export default function PurchaseDataTable({
+	columns,
+	pdata,
+	maxHeight = 350,
+	month,
+	year,
+}) {
 	const [openEdit, setOpenEdit] = useState(false);
 	const handleOpenEdit = () => setOpenEdit(true);
 	const handleCloseEdit = () => setOpenEdit(false);
 
 	const [purchase, setPurchase] = useState(null);
+
+	const filteredData = pdata.filter(
+		(purchase) => purchase.date.month === month && purchase.date.year === year
+	);
 
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -42,7 +52,7 @@ export default function PurchaseDataTable({ columns, pdata, maxHeight = 350 }) {
 					</TableHead>
 					<TableBody>
 						{pdata &&
-							pdata.map((purchase, i) => {
+							filteredData.map((purchase, i) => {
 								return (
 									<TableRow
 										role='checkbox'
