@@ -1,3 +1,4 @@
+import BasicDatePicker from './BasicDatePicker';
 import { FormError } from './FormError';
 import ModalButtons from './ModalButtons';
 import TextInput from './TextInput';
@@ -147,6 +148,7 @@ const AddRepairsForm = ({ handleClose }) => {
 							{!error.technic && error.warranty && (
 								<FormError>{error.warranty}</FormError>
 							)}
+							<BasicDatePicker />
 						</div>
 						<div className='col'>
 							<TextInput
