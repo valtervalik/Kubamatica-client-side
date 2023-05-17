@@ -5,7 +5,7 @@ import { helpHttp } from '@/helpers/helpHttp';
 import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 import Cookies from 'js-cookie';
-import crypto from 'crypto';
+import SessionContext from '@/context/SessionContext';
 
 export const useSessionForm = (initialForm, url) => {
 	const [form, setForm] = useState(initialForm);
@@ -15,6 +15,8 @@ export const useSessionForm = (initialForm, url) => {
 
 	const { setOpenSuccessSnack, setOpenErrorSnack, setMsg } =
 		useContext(SnackBarContext);
+
+	const { setKey, setIv } = useContext(SessionContext);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -48,14 +50,9 @@ export const useSessionForm = (initialForm, url) => {
 					}, 3000);
 				} else {
 					setMsg(res.message);
-					const secret = 'your-secret-password';
-					const objectToHash = { res };
-					const stringifiedObject = JSON.stringify(objectToHash);
-					const hash = crypto
-						.createHmac('sha256', secret)
-						.update(stringifiedObject)
-						.digest('hex');
-					Cookies.set('currentUser', hash);
+					setKey(res.key);
+					setIv(res.iv);
+					Cookies.set('currentUser', res.encrypted);
 					router.push('/managment/administration/services/repairs');
 					setOpenSuccessSnack(true);
 					setTimeout(() => {
