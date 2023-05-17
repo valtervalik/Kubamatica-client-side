@@ -5,6 +5,7 @@ import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import dayjs from 'dayjs';
 import DateFilter from '@/components/DateFilter';
+import SessionContext from '@/context/SessionContext';
 
 const Sells = () => {
 	const [sellData, setSellData] = useState([]);
@@ -14,6 +15,8 @@ const Sells = () => {
 
 	const { openSuccessSnack, openWarningSnack, msg } =
 		useContext(SnackBarContext);
+
+	const { currentUser } = useContext(SessionContext);
 
 	useEffect(() => {
 		helpHttp()
@@ -57,6 +60,7 @@ const Sells = () => {
 					sdata={sellData}
 					month={month}
 					year={year}
+					role={currentUser.role}
 				/>
 			</div>
 		</div>

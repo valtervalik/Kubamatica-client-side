@@ -9,6 +9,7 @@ import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 import dayjs from 'dayjs';
 import DateFilter from '@/components/DateFilter';
+import SessionContext from '@/context/SessionContext';
 
 const Purchases = () => {
 	const [openPurchases, setOpenPurchases] = useState(false);
@@ -21,6 +22,8 @@ const Purchases = () => {
 
 	const { openSuccessSnack, openWarningSnack, msg } =
 		useContext(SnackBarContext);
+
+	const { currentUser } = useContext(SessionContext);
 
 	useEffect(() => {
 		helpHttp()
@@ -64,17 +67,20 @@ const Purchases = () => {
 					pdata={purchaseData}
 					month={month}
 					year={year}
+					role={currentUser.role}
 				/>
 			</div>
 			<PurchasesModal
 				handleClose={handleClosePurchases}
 				openPurchases={openPurchases}
 			/>
-			<Tooltip title='Añadir Servicio'>
-				<AddButton onClick={handleOpenPurchases}>
-					<SpeedDialIcon className='d-flex align-content-center' />
-				</AddButton>
-			</Tooltip>
+			{currentUser.role === 'Dependiente' && (
+				<Tooltip title='Añadir Servicio'>
+					<AddButton onClick={handleOpenPurchases}>
+						<SpeedDialIcon className='d-flex align-content-center' />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 };

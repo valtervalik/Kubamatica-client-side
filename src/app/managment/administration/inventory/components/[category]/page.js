@@ -8,6 +8,7 @@ import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import ComponentDataTable from '@/components/ComponentDataTable';
 import SearchInput from '@/components/SearchInput';
+import SessionContext from '@/context/SessionContext';
 
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
@@ -19,6 +20,8 @@ export default function CategoryPage({ params }) {
 
 	const { openSuccessSnack, openWarningSnack, msg } =
 		useContext(SnackBarContext);
+
+	const { currentUser } = useContext(SessionContext);
 
 	useEffect(() => {
 		helpHttp()
@@ -65,6 +68,7 @@ export default function CategoryPage({ params }) {
 					]}
 					cdata={componentData}
 					params={params.category}
+					role={currentUser.role}
 				/>
 			</div>
 
@@ -74,11 +78,13 @@ export default function CategoryPage({ params }) {
 				params={params.category}
 				categories={categoryData}
 			/>
-			<Tooltip title='Añadir Componente'>
-				<AddButton onClick={handleOpenComponent}>
-					<SpeedDialIcon className='d-flex align-content-center' />
-				</AddButton>
-			</Tooltip>
+			{currentUser.role === 'Dependiente' && (
+				<Tooltip title='Añadir Componente'>
+					<AddButton onClick={handleOpenComponent}>
+						<SpeedDialIcon className='d-flex align-content-center' />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 }

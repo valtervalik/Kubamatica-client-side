@@ -12,7 +12,7 @@ import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import EditCategoryModal from './EditCategoryModal';
 
-export default function CategoryCard({ category }) {
+export default function CategoryCard({ category, role }) {
 	const [openDelete, setOpenDelete] = React.useState(false);
 	const handleOpenDelete = () => setOpenDelete(true);
 	const handleCloseDelete = () => setOpenDelete(false);
@@ -65,22 +65,24 @@ export default function CategoryCard({ category }) {
 					</Typography>
 				</CardContent>
 			</Link>
-			<CardActions className='d-flex justify-content-around'>
-				<Button
-					style={{ fontWeight: 'bold' }}
-					onClick={handleOpenEdit}
-					className='btn text-primary'
-					size='small'>
-					Editar
-				</Button>
-				<Button
-					style={{ fontWeight: 'bold' }}
-					onClick={handleOpenDelete}
-					className='btn text-danger'
-					size='small'>
-					Eliminar
-				</Button>
-			</CardActions>
+			{role === 'Dependiente' && (
+				<CardActions className='d-flex justify-content-around'>
+					<Button
+						style={{ fontWeight: 'bold' }}
+						onClick={handleOpenEdit}
+						className='btn text-primary'
+						size='small'>
+						Editar
+					</Button>
+					<Button
+						style={{ fontWeight: 'bold' }}
+						onClick={handleOpenDelete}
+						className='btn text-danger'
+						size='small'>
+						Eliminar
+					</Button>
+				</CardActions>
+			)}
 			<ConfirmDeleteCategory
 				deleteCategory={deleteCategory}
 				open={openDelete}

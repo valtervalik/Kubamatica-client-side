@@ -8,6 +8,7 @@ import CategoryModal from '@/components/CategoryModal';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import styles from './page.module.css';
+import SessionContext from '@/context/SessionContext';
 
 const Components = () => {
 	const [openCategory, setOpenCategory] = useState(false);
@@ -16,6 +17,8 @@ const Components = () => {
 	const handleCloseCategory = () => setOpenCategory(false);
 
 	const { openSuccessSnack, msg } = useContext(SnackBarContext);
+
+	const { currentUser } = useContext(SessionContext);
 
 	useEffect(() => {
 		helpHttp()
@@ -35,7 +38,7 @@ const Components = () => {
 				{categoryData &&
 					categoryData.map((category, i) => (
 						<div key={i}>
-							<CategoryCard category={category} />
+							<CategoryCard category={category} role={currentUser.role} />
 						</div>
 					))}
 			</div>
@@ -44,11 +47,13 @@ const Components = () => {
 				handleClose={handleCloseCategory}
 				openCategory={openCategory}
 			/>
-			<Tooltip title='Añadir Categoría'>
-				<AddButton onClick={handleOpenCategory}>
-					<SpeedDialIcon className='d-flex align-content-center' />
-				</AddButton>
-			</Tooltip>
+			{currentUser.role === 'Dependiente' && (
+				<Tooltip title='Añadir Categoría'>
+					<AddButton onClick={handleOpenCategory}>
+						<SpeedDialIcon className='d-flex align-content-center' />
+					</AddButton>
+				</Tooltip>
+			)}
 		</div>
 	);
 };

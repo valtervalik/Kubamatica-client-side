@@ -20,6 +20,7 @@ import { Button } from '@mui/material';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 import Cookies from 'js-cookie';
+import SessionContext from '@/context/SessionContext';
 
 const pages = ['Reparaciones', 'Ventas', 'Compras', 'Inventario', 'Usuarios'];
 const urls = [
@@ -34,6 +35,8 @@ const NavBar = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
 	const { setOpenSuccessSnack, setMsg } = useContext(SnackBarContext);
 	const router = useRouter();
+
+	const { currentUser } = useContext(SessionContext);
 
 	const handleOpenNavMenu = (event) => {
 		setAnchorElNav(event.currentTarget);
@@ -176,17 +179,19 @@ const NavBar = () => {
 								Inventario
 							</Link>
 						</Button>
-						<Button id='basic-button'>
-							<Link
-								style={{
-									textDecoration: 'none',
-									color: 'gray',
-									fontWeight: 'bold',
-								}}
-								href={'/managment/administration/users'}>
-								Usuarios
-							</Link>
-						</Button>
+						{currentUser.role === 'Administrador' && (
+							<Button id='basic-button'>
+								<Link
+									style={{
+										textDecoration: 'none',
+										color: 'gray',
+										fontWeight: 'bold',
+									}}
+									href={'/managment/administration/users'}>
+									Usuarios
+								</Link>
+							</Button>
+						)}
 					</Box>
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Cerrar Sesión'>
