@@ -7,6 +7,7 @@ import ComponentModal from '@/components/ComponentModal';
 import SnackBarContext from '@/context/SnackBarContext';
 import { helpHttp } from '@/helpers/helpHttp';
 import ComponentDataTable from '@/components/ComponentDataTable';
+import SearchInput from '@/components/SearchInput';
 
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
@@ -45,7 +46,10 @@ export default function CategoryPage({ params }) {
 		<div className='mainh1 px-5'>
 			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
-				<ComponentNavTabs categories={categoryData} />
+				<div className='d-flex justify-content-between'>
+					<ComponentNavTabs categories={categoryData} />
+					<SearchInput />
+				</div>
 
 				<ComponentDataTable
 					maxHeight={420}

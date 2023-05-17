@@ -17,7 +17,6 @@ import Link from 'next/link';
 import './NavBar.css';
 import LinkMenu from './LinkMenu';
 import { Button } from '@mui/material';
-import SearchInput from './SearchInput';
 import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 import Cookies from 'js-cookie';
@@ -189,7 +188,6 @@ const NavBar = () => {
 							</Link>
 						</Button>
 					</Box>
-					<SearchInput />
 					<Box sx={{ flexGrow: 0 }}>
 						<Tooltip title='Cerrar Sesión'>
 							<IconButton

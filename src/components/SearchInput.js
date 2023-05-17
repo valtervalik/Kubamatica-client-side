@@ -11,8 +11,8 @@ export default function SearchInput() {
 		'&:hover': {
 			backgroundColor: alpha(theme.palette.common.black, 0.25),
 		},
-		marginRight: '3rem',
 		marginLeft: 0,
+		marginBottom: 5,
 		width: '100%',
 		[theme.breakpoints.up('sm')]: {
 			marginLeft: theme.spacing(1),
