@@ -3,25 +3,23 @@ import * as React from 'react';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-import dayjs from 'dayjs';
 
-export default function HelperText() {
-	const [value, setValue] = React.useState(dayjs());
-
+export default function BasicDatePicker({ value, setValue }) {
 	return (
 		<LocalizationProvider dateAdapter={AdapterDayjs}>
 			<DatePicker
 				label='Fecha'
+				name='date'
 				value={value}
 				onChange={(newValue) => {
 					setValue(newValue);
 				}}
 				slotProps={{
 					textField: {
-						helperText: 'MM/DD/YYYY',
+						helperText: 'MM/DD/AAAA',
 						FormHelperTextProps: {
 							sx: {
-								color: 'azure',
+								color: 'gray',
 							},
 						},
 					},

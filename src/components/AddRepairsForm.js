@@ -1,11 +1,14 @@
+'use client';
+import { useEffect, useState } from 'react';
 import BasicDatePicker from './BasicDatePicker';
 import { FormError } from './FormError';
 import ModalButtons from './ModalButtons';
 import TextInput from './TextInput';
 import { useForm } from '@/hooks/useForm';
+import dayjs from 'dayjs';
 
-let today = new Date();
-let day = today.getDate();
+// let today = new Date();
+// let day = today.getDate();
 let daysOfWeek = [
 	'Domingo',
 	'Lunes',
@@ -15,21 +18,8 @@ let daysOfWeek = [
 	'Viernes',
 	'Sábado',
 ];
-let dayOfWeek = daysOfWeek[today.getDay()];
+// let dayOfWeek = daysOfWeek[today.getDay()];
 // let formattedDate = dayOfWeek + ' - ' + day;
-
-const initialForm = {
-	client: '',
-	phone: '',
-	technic: '',
-	warranty: '',
-	device: '',
-	box: '',
-	description: '',
-	date: { year: today.getFullYear(), month: today.getMonth(), day, dayOfWeek },
-	price: '',
-	currency: 'cup',
-};
 
 const validateForm = (form) => {
 	let error = {};
@@ -93,12 +83,42 @@ const validateForm = (form) => {
 const url = 'http://127.0.0.1:5000/repairs';
 
 const AddRepairsForm = ({ handleClose }) => {
+	const [value, setValue] = useState(dayjs());
+	console.log(value);
+
+	const initialForm = {
+		client: '',
+		phone: '',
+		technic: '',
+		warranty: '',
+		device: '',
+		box: '',
+		description: '',
+		date: {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		},
+		price: '',
+		currency: 'cup',
+	};
+
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
 		validateForm,
 		url,
 		handleClose
 	);
+
+	useEffect(() => {
+		form.date = {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		};
+	}, [value, form]);
 
 	return (
 		<div>
@@ -148,7 +168,7 @@ const AddRepairsForm = ({ handleClose }) => {
 							{!error.technic && error.warranty && (
 								<FormError>{error.warranty}</FormError>
 							)}
-							<BasicDatePicker />
+							<BasicDatePicker value={value} setValue={setValue} />
 						</div>
 						<div className='col'>
 							<TextInput
