@@ -15,7 +15,7 @@ const Usuarios = () => {
 	const handleOpen = () => setOpen(true);
 	const handleClose = () => setOpen(false);
 
-	const { openSuccessSnack, msg } = useContext(SnackBarContext);
+	const { openSuccessSnack, msg, currentUser } = useContext(SnackBarContext);
 
 	let url = 'http://127.0.0.1:5000/users';
 

@@ -5,6 +5,7 @@ import { helpHttp } from '@/helpers/helpHttp';
 import { useRouter } from 'next/navigation';
 import { useContext, useState } from 'react';
 import Cookies from 'js-cookie';
+import crypto from 'crypto';
 
 export const useSessionForm = (initialForm, url) => {
 	const [form, setForm] = useState(initialForm);
@@ -47,8 +48,14 @@ export const useSessionForm = (initialForm, url) => {
 					}, 3000);
 				} else {
 					setMsg(res.message);
-					// localStorage.setItem('currentUser', JSON.stringify(res));
-					Cookies.set('currentUser', res);
+					const secret = 'your-secret-password';
+					const objectToHash = { res };
+					const stringifiedObject = JSON.stringify(objectToHash);
+					const hash = crypto
+						.createHmac('sha256', secret)
+						.update(stringifiedObject)
+						.digest('hex');
+					Cookies.set('currentUser', hash);
 					router.push('/managment/administration/services/repairs');
 					setOpenSuccessSnack(true);
 					setTimeout(() => {
