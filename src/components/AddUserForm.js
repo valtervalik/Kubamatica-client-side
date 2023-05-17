@@ -20,7 +20,7 @@ const validateForm = (form) => {
 	let regexUsername = /^[a-z]{1,15}$/;
 	let regexPhone = /^5\d{7}$/;
 	let regexNumber = /^\d+$/;
-	let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+	let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.][a-z]{2,}(\.[a-z]{2,})?$/;
 	let regexDescription = /^.{1,155}$/;
 	let regexInput = /^.{1,55}$/;
 	let regexPassword =

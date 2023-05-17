@@ -11,7 +11,7 @@ const initialForm = {
 const validateForm = (form) => {
 	let error = {};
 
-	let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+	let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.][a-z]{2,}(\.[a-z]{2,})?$/;
 
 	if (!form.email.trim()) {
 		error.email = `El campo 'Email' es requerido`;
