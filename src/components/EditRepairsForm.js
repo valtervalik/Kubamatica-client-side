@@ -1,7 +1,21 @@
+'use client';
 import { useEditForm } from '@/hooks/useEditForm';
 import { FormError } from './FormError';
 import ModalEditButtons from './ModalEditButtons';
 import TextInput from './TextInput';
+import { useEffect, useState } from 'react';
+import BasicDatePicker from './BasicDatePicker';
+import dayjs from 'dayjs';
+
+let daysOfWeek = [
+	'Domingo',
+	'Lunes',
+	'Martes',
+	'Miércoles',
+	'Jueves',
+	'Viernes',
+	'Sábado',
+];
 
 const validateForm = (form) => {
 	let error = {};
@@ -63,6 +77,10 @@ const validateForm = (form) => {
 };
 
 const EditRepairsForm = ({ handleClose, repair }) => {
+	const [value, setValue] = useState(
+		dayjs(`${repair.date.month + 1}-${repair.date.day}-${repair.date.year}`)
+	);
+
 	const url = `http://127.0.0.1:5000/repairs/${repair._id}`;
 
 	const initialForm = {
@@ -73,7 +91,12 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 		device: `${repair.device}`,
 		box: `${repair.box}`,
 		description: `${repair.description}`,
-
+		date: {
+			year: repair.date.year,
+			month: repair.date.month,
+			day: repair.date.day,
+			dayOfWeek: repair.date.dayOfWeek,
+		},
 		price: `${repair.price}`,
 		currency: `${repair.currency}`,
 	};
@@ -84,6 +107,15 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 		url,
 		handleClose
 	);
+
+	useEffect(() => {
+		form.date = {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		};
+	}, [value, form]);
 
 	return (
 		<div>
@@ -133,6 +165,7 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 							{!error.technic && error.warranty && (
 								<FormError>{error.warranty}</FormError>
 							)}
+							<BasicDatePicker value={value} setValue={setValue} />
 						</div>
 						<div className='col'>
 							<TextInput

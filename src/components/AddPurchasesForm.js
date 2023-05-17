@@ -6,9 +6,11 @@ import TextInput from './TextInput';
 import { FormError } from './FormError';
 import { useEffect, useState } from 'react';
 import { helpHttp } from '@/helpers/helpHttp';
+import dayjs from 'dayjs';
+import BasicDatePicker from './BasicDatePicker';
 
-let today = new Date();
-let day = today.getDate();
+// let today = new Date();
+// let day = today.getDate();
 let daysOfWeek = [
 	'Domingo',
 	'Lunes',
@@ -18,23 +20,7 @@ let daysOfWeek = [
 	'Viernes',
 	'Sábado',
 ];
-let dayOfWeek = daysOfWeek[today.getDay()];
-
-const initialForm = {
-	supplier: '',
-	phone: '',
-	category: '',
-	status: '',
-	warranty: '',
-	box: '',
-	brand: '',
-	model: '',
-	serial: '',
-	properties: '',
-	date: { year: today.getFullYear(), month: today.getMonth(), day, dayOfWeek },
-	price: '',
-	currency: 'cup',
-};
+// let dayOfWeek = daysOfWeek[today.getDay()];
 
 const validateForm = (form) => {
 	let error = {};
@@ -114,6 +100,28 @@ const url = 'http://127.0.0.1:5000/purchases';
 
 const AddPurchasesForm = ({ handleClose }) => {
 	const [categories, setCategories] = useState([]);
+	const [value, setValue] = useState(dayjs());
+
+	const initialForm = {
+		supplier: '',
+		phone: '',
+		category: '',
+		status: '',
+		warranty: '',
+		box: '',
+		brand: '',
+		model: '',
+		serial: '',
+		properties: '',
+		date: {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		},
+		price: '',
+		currency: 'cup',
+	};
 
 	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
 		initialForm,
@@ -133,6 +141,15 @@ const AddPurchasesForm = ({ handleClose }) => {
 				}
 			});
 	}, []);
+
+	useEffect(() => {
+		form.date = {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		};
+	}, [value, form]);
 
 	const options = [];
 	categories &&
@@ -306,13 +323,7 @@ const AddPurchasesForm = ({ handleClose }) => {
 									</select>
 								</div>
 							</div>
-							{/* {form.category.trim() === 'laptops' && (
-								<Button
-									className='mt-4'
-									style={{ fontWeight: 'bold', color: 'silver' }}>
-									+ Agregar Componente
-								</Button>
-							)} */}
+							<BasicDatePicker value={value} setValue={setValue} />
 						</div>
 					</div>
 				</div>

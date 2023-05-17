@@ -84,7 +84,6 @@ const url = 'http://127.0.0.1:5000/repairs';
 
 const AddRepairsForm = ({ handleClose }) => {
 	const [value, setValue] = useState(dayjs());
-	console.log(value);
 
 	const initialForm = {
 		client: '',

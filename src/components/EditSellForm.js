@@ -2,6 +2,19 @@ import TextInput from './TextInput';
 import { FormError } from './FormError';
 import { useEditForm } from '@/hooks/useEditForm';
 import ModalEditButtons from './ModalEditButtons';
+import dayjs from 'dayjs';
+import { useEffect, useState } from 'react';
+import BasicDatePicker from './BasicDatePicker';
+
+let daysOfWeek = [
+	'Domingo',
+	'Lunes',
+	'Martes',
+	'Miércoles',
+	'Jueves',
+	'Viernes',
+	'Sábado',
+];
 
 const validateForm = (form) => {
 	let error = {};
@@ -46,6 +59,10 @@ const validateForm = (form) => {
 };
 
 const EditSellForm = ({ handleClose, sell }) => {
+	const [value, setValue] = useState(
+		dayjs(`${sell.date.month + 1}-${sell.date.day}-${sell.date.year}`)
+	);
+
 	const url = `http://127.0.0.1:5000/sells/${sell._id}`;
 
 	const initialForm = {
@@ -53,7 +70,12 @@ const EditSellForm = ({ handleClose, sell }) => {
 		phone: `${sell.phone}`,
 		technic: `${sell.technic}`,
 		warranty: `${sell.warranty}`,
-
+		date: {
+			year: sell.date.year,
+			month: sell.date.month,
+			day: sell.date.day,
+			dayOfWeek: sell.date.dayOfWeek,
+		},
 		price: `${sell.price}`,
 		currency: `${sell.currency}`,
 	};
@@ -64,6 +86,15 @@ const EditSellForm = ({ handleClose, sell }) => {
 		url,
 		handleClose
 	);
+
+	useEffect(() => {
+		form.date = {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		};
+	}, [value, form]);
 
 	return (
 		<div>
@@ -147,6 +178,7 @@ const EditSellForm = ({ handleClose, sell }) => {
 									</select>
 								</div>
 							</div>
+							<BasicDatePicker value={value} setValue={setValue} />
 						</div>
 					</div>
 				</div>

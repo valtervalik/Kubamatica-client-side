@@ -7,9 +7,9 @@ import { FormError } from './FormError';
 import { useEffect, useState } from 'react';
 import { helpHttp } from '@/helpers/helpHttp';
 import { useRouter } from 'next/navigation';
+import dayjs from 'dayjs';
+import BasicDatePicker from './BasicDatePicker';
 
-let today = new Date();
-let day = today.getDate();
 let daysOfWeek = [
 	'Domingo',
 	'Lunes',
@@ -19,7 +19,6 @@ let daysOfWeek = [
 	'Viernes',
 	'Sábado',
 ];
-let dayOfWeek = daysOfWeek[today.getDay()];
 
 const validateForm = (form) => {
 	let error = {};
@@ -104,6 +103,7 @@ const validateForm = (form) => {
 const url = 'http://127.0.0.1:5000/sells';
 
 const AddSellsForm = ({ handleClose, component }) => {
+	const [value, setValue] = useState(dayjs());
 	const [categories, setCategories] = useState([]);
 
 	const router = useRouter();
@@ -125,10 +125,10 @@ const AddSellsForm = ({ handleClose, component }) => {
 		status: `${component.status}`,
 		properties: `${component.properties}`,
 		date: {
-			year: today.getFullYear(),
-			month: today.getMonth(),
-			day,
-			dayOfWeek,
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
 		},
 		price: `${component.price}`,
 		currency: `${component.currency}`,
@@ -153,6 +153,15 @@ const AddSellsForm = ({ handleClose, component }) => {
 				}
 			});
 	}, []);
+
+	useEffect(() => {
+		form.date = {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		};
+	}, [value, form]);
 
 	const options = [];
 	categories &&
@@ -233,6 +242,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 							{!error.warranty && error.box && (
 								<FormError>{error.box}</FormError>
 							)}
+							<BasicDatePicker value={value} setValue={setValue} />
 						</div>
 						<div className='col'>
 							<TextInput

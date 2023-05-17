@@ -6,9 +6,9 @@ import { useEffect, useState } from 'react';
 import { helpHttp } from '@/helpers/helpHttp';
 import { useEditForm } from '@/hooks/useEditForm';
 import ModalEditButtons from './ModalEditButtons';
+import dayjs from 'dayjs';
+import BasicDatePicker from './BasicDatePicker';
 
-let today = new Date();
-let day = today.getDate();
 let daysOfWeek = [
 	'Domingo',
 	'Lunes',
@@ -18,7 +18,6 @@ let daysOfWeek = [
 	'Viernes',
 	'Sábado',
 ];
-let dayOfWeek = daysOfWeek[today.getDay()];
 
 const validateForm = (form) => {
 	let error = {};
@@ -95,6 +94,11 @@ const validateForm = (form) => {
 };
 
 const EditPurchasesForm = ({ handleClose, purchase }) => {
+	const [value, setValue] = useState(
+		dayjs(
+			`${purchase.date.month + 1}-${purchase.date.day}-${purchase.date.year}`
+		)
+	);
 	const [categories, setCategories] = useState([]);
 
 	const initialForm = {
@@ -108,7 +112,12 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 		model: `${purchase.model}`,
 		serial: `${purchase.serial}`,
 		properties: `${purchase.properties}`,
-
+		date: {
+			year: purchase.date.year,
+			month: purchase.date.month,
+			day: purchase.date.day,
+			dayOfWeek: purchase.date.dayOfWeek,
+		},
 		price: `${purchase.price}`,
 		currency: `${purchase.currency}`,
 	};
@@ -133,6 +142,15 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 				}
 			});
 	}, []);
+
+	useEffect(() => {
+		form.date = {
+			year: value.$y,
+			month: value.$M,
+			day: value.$D,
+			dayOfWeek: daysOfWeek[value.$W],
+		};
+	}, [value, form]);
 
 	const options = [];
 	categories &&
@@ -306,6 +324,8 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 									</select>
 								</div>
 							</div>
+							<BasicDatePicker value={value} setValue={setValue} />
+
 							{/* {form.category.trim() === 'laptops' && (
 								<Button
 									className='mt-4'
