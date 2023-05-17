@@ -1,8 +1,8 @@
 import React from 'react';
 import TextInput from './TextInput';
-import { useForm } from '@/hooks/useForm';
 import { FormError } from './FormError';
 import ModalEditButtons from './ModalEditButtons';
+import { useRecoverForm } from '@/hooks/useRecoverForm';
 
 const initialForm = {
 	email: '',
@@ -22,15 +22,11 @@ const validateForm = (form) => {
 	return error;
 };
 
-const url = 'http://127.0.0.1:5000/';
+const url = 'http://127.0.0.1:5000/users/recoverpassword';
 
 const RecoverPasswordForm = ({ handleClose }) => {
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit } =
+		useRecoverForm(initialForm, validateForm, url, handleClose);
 
 	return (
 		<>

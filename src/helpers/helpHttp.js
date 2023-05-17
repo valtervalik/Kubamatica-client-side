@@ -23,7 +23,7 @@ export const helpHttp = () => {
 
 		// console.log(options);
 		//aborta la carga de datos si el servidor no responde en 3 segundos
-		setTimeout(() => controller.abort(), 3000);
+		setTimeout(() => controller.abort(), 5000);
 
 		//Haciendo un fetch hacia la url correspondiente
 		return fetch(endPoint, options)
