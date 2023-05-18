@@ -31,7 +31,7 @@ const AdminLayout = ({ children }) => {
 			</div>
 		);
 	} else {
-		return <p>Unauthorized</p>;
+		return null;
 	}
 };
 
