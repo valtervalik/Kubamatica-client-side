@@ -22,8 +22,9 @@ const SessionProvider = ({ children }) => {
 		const user = JSON.parse(decipher.output.getBytes());
 		localStorage.setItem('session', JSON.stringify(user));
 	}
-
-	currentUser = JSON.stringify(localStorage.getItem('session'));
+	if (typeof localStorage !== 'undefined') {
+		currentUser = JSON.parse(localStorage.getItem('session'));
+	}
 
 	const data = {
 		key,
