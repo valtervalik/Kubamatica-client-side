@@ -29,10 +29,16 @@ export default function TextInput({
 						fontWeight: 'bold',
 						fontSize: fontSize,
 					},
+					'& label': {
+						'-webkit-text-fill-color': '#0066cc',
+					},
 					'& input': { color: 'azure' },
 					'& input:autofill': {
 						WebkitTextFillColor: 'azure',
 						WebkitBoxShadow: '0 0 0 20px #000814 inset',
+					},
+					'& .MuiInputBase-input.MuiInput-input.Mui-disabled': {
+						'-webkit-text-fill-color': 'gray',
 					},
 					'& textarea': { color: 'azure' },
 				}}

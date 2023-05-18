@@ -215,6 +215,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								handleBlur={handleBlur}
 								label='Categoría'
 								name={'category'}
+								disabled={true}
 								options={options}
 							/>
 							{!error.technic && error.category && (
@@ -238,6 +239,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								name='box'
 								type='number'
 								value={form.box}
+								disabled={true}
 							/>
 							{!error.warranty && error.box && (
 								<FormError>{error.box}</FormError>
@@ -252,6 +254,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								name='brand'
 								type='text'
 								value={form.brand}
+								disabled={true}
 							/>
 							{!error.box && error.brand && (
 								<FormError>{error.brand}</FormError>
@@ -263,6 +266,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								name='model'
 								type='text'
 								value={form.model}
+								disabled={true}
 							/>
 							{!error.brand && error.model && (
 								<FormError>{error.model}</FormError>
@@ -274,6 +278,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								name='serial'
 								type='text'
 								value={form.serial}
+								disabled={true}
 							/>
 							{!error.model && error.serial && (
 								<FormError>{error.serial}</FormError>
@@ -282,6 +287,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								value={form.status}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								disabled={true}
 								label='Estado'
 								name={'status'}
 								options={[
@@ -310,6 +316,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								type='text'
 								multiline={true}
 								value={form.properties}
+								disabled={true}
 							/>
 							{!error.status && error.properties && (
 								<FormError>{error.properties}</FormError>

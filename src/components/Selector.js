@@ -11,6 +11,7 @@ export default function Selector({
 	value,
 	label,
 	name,
+	disabled,
 	options,
 	width = '47ch',
 	fontSize = '16px',
@@ -24,6 +25,14 @@ export default function Selector({
 					{label}*
 				</InputLabel>
 				<Select
+					sx={{
+						'& .MuiInputBase-input.MuiInput-input.Mui-disabled': {
+							'-webkit-text-fill-color': 'gray',
+						},
+						'& label': {
+							'-webkit-text-fill-color': '#0066cc',
+						},
+					}}
 					name={name}
 					style={{ color: 'azure' }}
 					labelId='demo-simple-select-standard-label'
@@ -32,6 +41,7 @@ export default function Selector({
 					onBlur={handleBlur}
 					value={value}
 					label={label}
+					disabled={disabled}
 					required>
 					{options.map(({ option, value }) => (
 						<MenuItem key={value} value={value}>
