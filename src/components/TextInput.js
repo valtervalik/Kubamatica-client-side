@@ -8,6 +8,7 @@ export default function TextInput({
 	label,
 	type,
 	name,
+	disabled,
 	value,
 	multiline,
 	width = '47ch',
@@ -44,6 +45,7 @@ export default function TextInput({
 				value={value}
 				onChange={handleChange}
 				onBlur={handleBlur}
+				disabled={disabled}
 				required
 			/>
 		</Box>
