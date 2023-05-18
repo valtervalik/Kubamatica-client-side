@@ -22,7 +22,7 @@ import SnackBarContext from '@/context/SnackBarContext';
 import Cookies from 'js-cookie';
 import SessionContext from '@/context/SessionContext';
 
-const pages = ['Reparaciones', 'Ventas', 'Compras', 'Inventario', 'Usuarios'];
+const pages = ['Reparaciones', 'Ventas', 'Compras', 'Inventario'];
 const urls = [
 	'/managment/administration/services/repairs',
 	'/managment/administration/services/sells',
@@ -113,12 +113,14 @@ const NavBar = () => {
 							}}>
 							{pages.map((page, i) => (
 								<Link key={page} className='links' href={urls[i]}>
-									<MenuItem onClick={handleCloseNavMenu}>
-										{page}
-										{/* <Typography textAlign='center'>{page}</Typography> */}
-									</MenuItem>
+									<MenuItem onClick={handleCloseNavMenu}>{page}</MenuItem>
 								</Link>
 							))}
+							{currentUser.role === 'Administrador' && (
+								<Link className='links' href={urls[4]}>
+									<MenuItem onClick={handleCloseNavMenu}>Usuarios</MenuItem>
+								</Link>
+							)}
 						</Menu>
 					</Box>
 					<Typography
@@ -202,6 +204,7 @@ const NavBar = () => {
 										.post('http://127.0.0.1:5000/users/logout')
 										.then((res) => {
 											Cookies.remove('currentUser');
+											localStorage.clear();
 											router.push('/managment/session/login');
 											setMsg(res.message);
 											setOpenSuccessSnack(true);

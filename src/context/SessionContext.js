@@ -1,5 +1,5 @@
 'use client';
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import forge from 'node-forge';
 
@@ -19,8 +19,11 @@ const SessionProvider = ({ children }) => {
 		decipher.start({ iv: iv });
 		decipher.update(forge.util.createBuffer(encrypted));
 		decipher.finish();
-		currentUser = JSON.parse(decipher.output.getBytes());
+		const user = JSON.parse(decipher.output.getBytes());
+		localStorage.setItem('session', JSON.stringify(user));
 	}
+
+	currentUser = JSON.stringify(localStorage.getItem('session'));
 
 	const data = {
 		key,

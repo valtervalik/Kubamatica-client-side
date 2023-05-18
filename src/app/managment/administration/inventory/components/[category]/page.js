@@ -10,6 +10,10 @@ import ComponentDataTable from '@/components/ComponentDataTable';
 import SearchInput from '@/components/SearchInput';
 import SessionContext from '@/context/SessionContext';
 
+const initialForm = {
+	search: '',
+};
+
 export default function CategoryPage({ params }) {
 	const [openComponent, setOpenComponent] = useState(false);
 	const handleOpenComponent = () => setOpenComponent(true);
@@ -17,6 +21,8 @@ export default function CategoryPage({ params }) {
 
 	const [categoryData, setCategoryData] = useState([]);
 	const [componentData, setComponentData] = useState([]);
+
+	const [form, setForm] = useState(initialForm);
 
 	const { openSuccessSnack, openWarningSnack, msg } =
 		useContext(SnackBarContext);
@@ -45,13 +51,21 @@ export default function CategoryPage({ params }) {
 			});
 	}, [openSuccessSnack, msg, params]);
 
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setForm({
+			...form,
+			[name]: value,
+		});
+	};
+
 	return (
 		<div className='mainh1 px-5'>
 			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
 				<div className='d-flex justify-content-between'>
 					<ComponentNavTabs categories={categoryData} />
-					<SearchInput />
+					<SearchInput value={form.search} handleChange={handleChange} />
 				</div>
 
 				<ComponentDataTable

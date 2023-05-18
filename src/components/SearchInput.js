@@ -3,7 +3,7 @@ import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
-export default function SearchInput() {
+export default function SearchInput({ value, handleChange }) {
 	const Search = styled('div')(({ theme }) => ({
 		position: 'relative',
 		borderRadius: theme.shape.borderRadius,
@@ -53,6 +53,9 @@ export default function SearchInput() {
 					<SearchIcon />
 				</SearchIconWrapper>
 				<StyledInputBase
+					name='search'
+					value={value}
+					onChange={handleChange}
 					placeholder='Buscar…'
 					inputProps={{ 'aria-label': 'search' }}
 				/>
