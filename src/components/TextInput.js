@@ -47,6 +47,13 @@ export default function TextInput({
 				onBlur={handleBlur}
 				disabled={disabled}
 				required
+				inputProps={
+					type === 'number'
+						? { min: 0 }
+						: type === 'text' && !isMultiline
+						? { maxLength: 55 }
+						: {}
+				}
 			/>
 		</Box>
 	);
