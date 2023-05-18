@@ -23,6 +23,7 @@ export default function ComponentDataTable({
 	cdata,
 	maxHeight = 350,
 	role,
+	search,
 }) {
 	const [openDelete, setOpenDelete] = useState(false);
 	const handleOpenDelete = () => setOpenDelete(true);
@@ -55,6 +56,18 @@ export default function ComponentDataTable({
 			});
 	};
 
+	const filteredData = cdata.filter(
+		(component) =>
+			component.box.toString().includes(search) ||
+			component.brand.toLowerCase().includes(search.toLowerCase()) ||
+			component.model.toLowerCase().includes(search.toLowerCase()) ||
+			component.serial.toLowerCase().includes(search.toLowerCase()) ||
+			component.status.toLowerCase().includes(search.toLowerCase()) ||
+			component.properties.toLowerCase().includes(search.toLowerCase()) ||
+			component.price.toString().includes(search) ||
+			component.currency.toLowerCase().includes(search.toLowerCase())
+	);
+
 	return (
 		<Paper sx={{ width: '100%', overflow: 'hidden' }}>
 			<TableContainer sx={{ maxHeight: { maxHeight } }}>
@@ -82,7 +95,7 @@ export default function ComponentDataTable({
 					</TableHead>
 					<TableBody>
 						{cdata &&
-							cdata.map((component, i) => {
+							filteredData.map((component, i) => {
 								return (
 									<TableRow
 										role='checkbox'

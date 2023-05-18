@@ -91,6 +91,7 @@ export default function CategoryPage({ params }) {
 					cdata={componentData}
 					params={params.category}
 					role={currentUser.role}
+					search={form.search}
 				/>
 			</div>
 
