@@ -59,13 +59,21 @@ export default function CategoryPage({ params }) {
 		});
 	};
 
+	const handleBlur = (e) => {
+		handleChange(e);
+	};
+
 	return (
 		<div className='mainh1 px-5'>
 			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
 				<div className='d-flex justify-content-between'>
 					<ComponentNavTabs categories={categoryData} />
-					<SearchInput value={form.search} handleChange={handleChange} />
+					<SearchInput
+						value={form.search}
+						handleChange={handleChange}
+						handleBlur={handleBlur}
+					/>
 				</div>
 
 				<ComponentDataTable

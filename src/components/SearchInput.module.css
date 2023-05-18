@@ -1,21 +1,30 @@
-/* #searchinput {
-	position: fixed;
-	top: 25px;
-	right: 80px;
+.search {
+	position: relative;
+	width: auto;
 }
 
-#input {
-	background-color: rgba(240, 248, 255, 0);
-	height: 2em;
-	border: 1px solid gray;
-	font-size: small;
-	color: azure;
+.search input {
+	border-radius: 5px;
+	border: none;
+	padding: 0.3rem 0.5rem;
+	padding-left: 2rem;
+	background: lightgray;
+	width: 100%;
+	color: rgb(99, 99, 99);
 }
 
-#input:hover {
-	box-shadow: 0 0 6px 1px;
+.search input:hover {
+	background: rgb(173, 173, 173);
 }
 
-#input::placeholder {
-	color: azure;
-} */
+.search input:focus {
+	outline: none;
+}
+
+.search svg {
+	position: absolute;
+	left: 2%;
+	top: 11%;
+	color: gray;
+	background: inherit;
+}
