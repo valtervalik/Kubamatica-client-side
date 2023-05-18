@@ -157,7 +157,7 @@ const AddRepairsForm = ({ handleClose }) => {
 								<FormError>{error.technic}</FormError>
 							)}
 							<TextInput
-								label='Garantía'
+								label='Garantía (días)'
 								handleChange={handleChange}
 								handleBlur={handleBlur}
 								name='warranty'

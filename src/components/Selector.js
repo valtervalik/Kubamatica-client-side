@@ -21,7 +21,7 @@ export default function Selector({
 				<InputLabel
 					style={{ color: '#0066cc', fontSize: fontSize, fontWeight: 'bold' }}
 					id='demo-simple-select-standard-label'>
-					{label}
+					{label}*
 				</InputLabel>
 				<Select
 					name={name}

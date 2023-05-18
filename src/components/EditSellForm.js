@@ -137,7 +137,7 @@ const EditSellForm = ({ handleClose, sell }) => {
 							<TextInput
 								handleChange={handleChange}
 								handleBlur={handleBlur}
-								label='Garantía'
+								label='Garantía (días)'
 								name='warranty'
 								type='number'
 								value={form.warranty}

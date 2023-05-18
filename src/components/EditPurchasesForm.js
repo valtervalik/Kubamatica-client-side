@@ -226,7 +226,7 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 								value={form.warranty}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
-								label='Garantía'
+								label='Garantía (días)'
 								name='warranty'
 								type='number'
 							/>
