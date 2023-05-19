@@ -140,15 +140,29 @@ export default function ComponentDataTable({
 											align='center'>
 											{component.model}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-3 px-2'
-											align='center'>
-											{component.serial}
-										</TableCell>
+										{component.serial.length > 20 ? (
+											<Tooltip title={component.serial}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-3 px-2'
+													align='center'>
+													{component.serial.substring(0, 20) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-3 px-2'
+												align='center'>
+												{component.serial}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -158,15 +172,29 @@ export default function ComponentDataTable({
 											align='center'>
 											{component.status}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-3 px-2'
-											align='center'>
-											{component.properties}
-										</TableCell>
+										{component.properties.length > 15 ? (
+											<Tooltip title={component.properties}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-3 px-2'
+													align='center'>
+													{component.properties.substring(0, 20) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-3 px-2'
+												align='center'>
+												{component.properties}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',

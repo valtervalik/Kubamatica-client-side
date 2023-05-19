@@ -73,15 +73,29 @@ export default function SellDataTable({
 											align='center'>
 											{i + 1}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{sell.client}
-										</TableCell>
+										{sell.client.length > 15 ? (
+											<Tooltip title={sell.client}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{sell.client.substring(0, 15) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{sell.client}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -91,15 +105,29 @@ export default function SellDataTable({
 											align='center'>
 											+53 {sell.phone}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{sell.technic}
-										</TableCell>
+										{sell.technic.length > 15 ? (
+											<Tooltip title={sell.technic}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{sell.technic.substring(0, 15) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{sell.technic}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -109,24 +137,52 @@ export default function SellDataTable({
 											align='center'>
 											{sell.brand}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{sell.model}
-										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{sell.serial}
-										</TableCell>
+										{sell.model.length > 15 ? (
+											<Tooltip title={sell.model}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{sell.model.substring(0, 15) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{sell.model}
+											</TableCell>
+										)}
+										{sell.serial.length > 15 ? (
+											<Tooltip title={sell.serial}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{sell.serial.substring(0, 15) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{sell.serial}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -145,15 +201,29 @@ export default function SellDataTable({
 											align='center'>
 											{sell.status}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{sell.properties}
-										</TableCell>
+										{sell.properties.length > 15 ? (
+											<Tooltip title={sell.properties}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{sell.properties.substring(0, 15) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{sell.properties}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',

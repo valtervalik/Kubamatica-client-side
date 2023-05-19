@@ -82,15 +82,29 @@ export default function RepairDataTable({
 											align='center'>
 											{repair.box}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{repair.client}
-										</TableCell>
+										{repair.client.length > 20 ? (
+											<Tooltip title={repair.client}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{repair.client.substring(0, 20) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{repair.client}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -100,33 +114,75 @@ export default function RepairDataTable({
 											align='center'>
 											+53 {repair.phone}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{repair.technic}
-										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{repair.device}
-										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{repair.description}
-										</TableCell>
+										{repair.technic.length > 20 ? (
+											<Tooltip title={repair.technic}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{repair.technic.substring(0, 20) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{repair.technic}
+											</TableCell>
+										)}
+										{repair.device.length > 20 ? (
+											<Tooltip title={repair.device}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{repair.device.substring(0, 20) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{repair.device}
+											</TableCell>
+										)}
+										{repair.description.length > 20 ? (
+											<Tooltip title={repair.description}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{repair.description.substring(0, 20) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{repair.description}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',

@@ -82,15 +82,29 @@ export default function PurchaseDataTable({
 											align='center'>
 											{purchase.box}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{purchase.supplier}
-										</TableCell>
+										{purchase.supplier.length > 10 ? (
+											<Tooltip title={purchase.supplier}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{purchase.supplier.substring(0, 10) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{purchase.supplier}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -109,24 +123,52 @@ export default function PurchaseDataTable({
 											align='center'>
 											{purchase.brand}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{purchase.model}
-										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{purchase.serial}
-										</TableCell>
+										{purchase.model.length > 10 ? (
+											<Tooltip title={purchase.model}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{purchase.model.substring(0, 10) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{purchase.model}
+											</TableCell>
+										)}
+										{purchase.serial.length > 10 ? (
+											<Tooltip title={purchase.serial}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{purchase.serial.substring(0, 10) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{purchase.serial}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',
@@ -145,15 +187,29 @@ export default function PurchaseDataTable({
 											align='center'>
 											{purchase.status}
 										</TableCell>
-										<TableCell
-											style={{
-												fontSize: '12px',
-												fontWeight: 'bold',
-											}}
-											className='py-2 px-2'
-											align='center'>
-											{purchase.properties}
-										</TableCell>
+										{purchase.properties.length > 10 ? (
+											<Tooltip title={purchase.properties}>
+												<TableCell
+													style={{
+														fontSize: '12px',
+														fontWeight: 'bold',
+													}}
+													className='py-2 px-2'
+													align='center'>
+													{purchase.properties.substring(0, 10) + '...'}
+												</TableCell>
+											</Tooltip>
+										) : (
+											<TableCell
+												style={{
+													fontSize: '12px',
+													fontWeight: 'bold',
+												}}
+												className='py-2 px-2'
+												align='center'>
+												{purchase.properties}
+											</TableCell>
+										)}
 										<TableCell
 											style={{
 												fontSize: '12px',

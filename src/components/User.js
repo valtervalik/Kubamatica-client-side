@@ -10,6 +10,7 @@ import { helpHttp } from '@/helpers/helpHttp';
 import SnackBarContext from '@/context/SnackBarContext';
 import ConfirmDeleteUserModal from './ConfirmDeleteUserModal';
 import EditUserModal from './EditUserModal';
+import { Tooltip } from '@mui/material';
 
 export default function User({ user }) {
 	const [openDelete, setOpenDelete] = React.useState(false);
@@ -71,7 +72,15 @@ export default function User({ user }) {
 									{user.username}
 								</Typography>
 								<Typography className='text-dark' color='text.secondary'>
-									<i>{user.email}</i>
+									<Tooltip title={user.email}>
+										<i>
+											{user.email.split('@')[0][0] +
+												'...' +
+												user.email.split('@')[0].slice(-3) +
+												'@' +
+												user.email.split('@')[1]}
+										</i>
+									</Tooltip>
 								</Typography>
 							</div>
 							<div>
