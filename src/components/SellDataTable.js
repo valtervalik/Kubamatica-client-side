@@ -13,7 +13,7 @@ import EditSellsModal from './EditSellsModal';
 export default function SellDataTable({
 	columns,
 	sdata,
-	maxHeight = 350,
+	maxHeight = 400,
 	month,
 	year,
 	role,

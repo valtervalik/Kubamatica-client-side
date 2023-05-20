@@ -13,7 +13,7 @@ import EditPurchaseModal from './EditPurchaseModal';
 export default function PurchaseDataTable({
 	columns,
 	pdata,
-	maxHeight = 350,
+	maxHeight = 400,
 	month,
 	year,
 	role,

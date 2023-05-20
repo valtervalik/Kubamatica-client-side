@@ -21,7 +21,7 @@ export default function ComponentDataTable({
 	params,
 	columns,
 	cdata,
-	maxHeight = 350,
+	maxHeight = 400,
 	role,
 	search,
 }) {

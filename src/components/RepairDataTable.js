@@ -13,7 +13,7 @@ import EditRepairModal from './EditRepairModal';
 export default function RepairDataTable({
 	columns,
 	rdata,
-	maxHeight = 350,
+	maxHeight = 400,
 	month,
 	year,
 	role,
