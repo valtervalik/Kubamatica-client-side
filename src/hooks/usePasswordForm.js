@@ -17,7 +17,6 @@ export const usePasswordForm = (initialForm, validateForm, url) => {
 		setOpenWarningSnack,
 		setOpenErrorSnack,
 		setMsg,
-		setLoading,
 	} = useContext(SnackBarContext);
 
 	const handleChange = (e) => {
@@ -37,7 +36,6 @@ export const usePasswordForm = (initialForm, validateForm, url) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
 			setForm(form);
-			setLoading(true);
 			await helpHttp()
 				.post(url, {
 					body: form,
@@ -64,7 +62,6 @@ export const usePasswordForm = (initialForm, validateForm, url) => {
 						}, 3000);
 					}
 				});
-			setLoading(false);
 		} else {
 			e.preventDefault();
 			setError(validateForm(form));
