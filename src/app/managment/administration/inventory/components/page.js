@@ -36,11 +36,13 @@ const Components = () => {
 		<div>
 			<div className={`container mb-5 mainh1 ${styles.grid}`}>
 				{categoryData &&
-					categoryData.map((category, i) => (
-						<div key={i}>
-							<CategoryCard category={category} role={currentUser.role} />
-						</div>
-					))}
+					categoryData
+						.sort((a, b) => a.category.localeCompare(b.category))
+						.map((category, i) => (
+							<div key={i}>
+								<CategoryCard category={category} role={currentUser.role} />
+							</div>
+						))}
 			</div>
 
 			<CategoryModal
