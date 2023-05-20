@@ -13,6 +13,7 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 		setOpenErrorSnack,
 		setOpenWarningSnack,
 		setMsg,
+		setLoading,
 	} = useContext(SnackBarContext);
 
 	const handleChange = (e) => {
@@ -30,7 +31,8 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
 			setForm(form);
-
+			setLoading(true);
+			handleClose();
 			await helpHttp()
 				.post(url, {
 					body: form,
@@ -40,7 +42,6 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 				.then((res) => {
 					if (res.error) {
 						setMsg(res.error);
-						handleClose();
 						setOpenErrorSnack(true);
 						setTimeout(() => {
 							setOpenErrorSnack(false);
@@ -48,7 +49,6 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 						}, 3000);
 					} else {
 						setMsg(res.message);
-						handleClose();
 						// localStorage.setItem('currentUser', JSON.stringify(res));
 						// Cookies.set('currentUser', res);
 						// router.push('/managment/administration/services/repairs');
@@ -59,6 +59,7 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 						}, 3000);
 					}
 				});
+			setLoading(false);
 		} else {
 			e.preventDefault();
 			setError(validateForm(form));

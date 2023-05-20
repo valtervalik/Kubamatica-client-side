@@ -13,7 +13,7 @@ export const useSessionForm = (initialForm, url) => {
 
 	const router = useRouter();
 
-	const { setOpenSuccessSnack, setOpenErrorSnack, setMsg } =
+	const { setOpenSuccessSnack, setOpenErrorSnack, setMsg, setLoading } =
 		useContext(SnackBarContext);
 
 	const { setKey, setIv } = useContext(SessionContext);
@@ -33,6 +33,7 @@ export const useSessionForm = (initialForm, url) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setForm(form);
+		setLoading(true);
 
 		await helpHttp()
 			.post(url, {
@@ -61,6 +62,7 @@ export const useSessionForm = (initialForm, url) => {
 					}, 3000);
 				}
 			});
+		setLoading(false);
 	};
 
 	return {

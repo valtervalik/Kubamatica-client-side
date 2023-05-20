@@ -8,16 +8,19 @@ export const useEditForm = (initialForm, validateForm, url, handleClose) => {
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
 
-	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg } =
+	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg, setLoading } =
 		useContext(SnackBarContext);
 
 	const submitData = async (url, form) => {
+		setLoading(true);
+		handleClose();
 		await helpHttp()
 			.put(url, {
 				body: form,
 				headers: { 'content-type': 'application/json' },
 			})
 			.then((res) => setMsg(res.message));
+		setLoading(false);
 	};
 
 	const handleChange = (e) => {
@@ -37,7 +40,6 @@ export const useEditForm = (initialForm, validateForm, url, handleClose) => {
 			setForm(form);
 
 			submitData(url, form).then(() => {
-				handleClose();
 				setOpenSuccessSnack(true);
 			});
 
