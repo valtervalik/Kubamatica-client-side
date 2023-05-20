@@ -178,7 +178,8 @@ export default function PurchaseDataTable({
 												}}
 												className='py-2 px-2'
 												align='center'>
-												{purchase.category}
+												{purchase.category[0].toUpperCase() +
+													purchase.category.substring(1)}
 											</TableCell>
 											<TableCell
 												style={{

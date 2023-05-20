@@ -154,12 +154,14 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 
 	const options = [];
 	categories &&
-		categories.map((cat) => {
-			options.push({
-				option: cat.category[0].toUpperCase() + cat.category.substring(1),
-				value: cat.category,
+		categories
+			.sort((a, b) => a.category.localeCompare(b.category))
+			.map((cat) => {
+				options.push({
+					option: cat.category[0].toUpperCase() + cat.category.substring(1),
+					value: cat.category,
+				});
 			});
-		});
 
 	return (
 		<div>
