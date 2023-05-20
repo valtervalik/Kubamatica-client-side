@@ -1,10 +1,11 @@
 'use client';
+import Loader from '@/components/Loader';
 import MySnackbar from '@/components/MySnackBar';
 import SnackBarContext from '@/context/SnackBarContext';
 import { useContext } from 'react';
 
 export default function ManagmentLayout({ children }) {
-	const { openSuccessSnack, openWarningSnack, openErrorSnack, msg } =
+	const { openSuccessSnack, openWarningSnack, openErrorSnack, msg, loading } =
 		useContext(SnackBarContext);
 	return (
 		<>
@@ -24,6 +25,7 @@ export default function ManagmentLayout({ children }) {
 				text={msg}
 				openWarningSnack={openWarningSnack}
 			/>
+			{loading && <Loader />}
 		</>
 	);
 }
