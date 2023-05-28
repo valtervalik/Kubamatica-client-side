@@ -14,20 +14,13 @@ export const useForm = (
 	const [form, setForm] = useState(initialForm);
 	const [error, setError] = useState({});
 
-	const { setOpenSuccessSnack, setOpenWarningSnack, setMsg, setLoading } =
-		useContext(SnackBarContext);
-
-	const submitData = async (url, form) => {
-		setLoading(true);
-		handleClose();
-		await helpHttp()
-			.post(url, {
-				body: form,
-				headers: { 'content-type': 'application/json' },
-			})
-			.then((res) => setMsg(res.message));
-		setLoading(false);
-	};
+	const {
+		setOpenSuccessSnack,
+		setOpenErrorSnack,
+		setOpenWarningSnack,
+		setMsg,
+		setLoading,
+	} = useContext(SnackBarContext);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -40,19 +33,37 @@ export const useForm = (
 		handleChange(e);
 		setError(validateForm(form));
 	};
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
 			setForm(form);
 
-			submitData(url, form).then(() => {
-				action && action();
-				setOpenSuccessSnack(true);
-				setTimeout(() => {
-					setOpenSuccessSnack(false);
-					setMsg('');
-				}, 3000);
-			});
+			setLoading(true);
+			handleClose();
+			await helpHttp()
+				.post(url, {
+					body: form,
+					headers: { 'content-type': 'application/json' },
+				})
+				.then((res) => {
+					if (res.error) {
+						setMsg(res.error);
+						setOpenErrorSnack(true);
+						setTimeout(() => {
+							setOpenErrorSnack(false);
+							setMsg('');
+						}, 3000);
+					} else {
+						setMsg(res.message);
+						action && action();
+						setOpenSuccessSnack(true);
+						setTimeout(() => {
+							setOpenSuccessSnack(false);
+							setMsg('');
+						}, 3000);
+					}
+				});
+			setLoading(false);
 		} else {
 			e.preventDefault();
 			setError(validateForm(form));
