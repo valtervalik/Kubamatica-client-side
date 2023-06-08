@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import styles from './ComponentNavTabs.module.css';
 
-const ComponentNavTabs = ({ categories }) => {
+const ComponentNavTabs = ({ categories, params }) => {
 	return (
 		<div id={styles.compnavtab}>
 			{categories &&
@@ -9,7 +9,9 @@ const ComponentNavTabs = ({ categories }) => {
 					.sort((a, b) => a.category.localeCompare(b.category))
 					.map((category) => (
 						<Link
-							className={`me-3 ${styles.compnavtab}`}
+							className={`me-3 ${styles.compnavtab} ${
+								params === category.category && styles.active
+							}`}
 							href={`/managment/administration/inventory/components/${category.category}`}
 							key={category._id}>
 							{category.category[0].toUpperCase() +

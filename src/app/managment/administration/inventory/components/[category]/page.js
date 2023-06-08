@@ -68,7 +68,10 @@ export default function CategoryPage({ params }) {
 			<h2 className='text-center mb-4'>Componentes de Hardware</h2>
 			<div>
 				<div className='d-flex justify-content-between'>
-					<ComponentNavTabs categories={categoryData} />
+					<ComponentNavTabs
+						params={params.category}
+						categories={categoryData}
+					/>
 					<SearchInput
 						value={form.search}
 						handleChange={handleChange}

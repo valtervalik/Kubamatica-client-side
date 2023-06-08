@@ -7,4 +7,19 @@
 	text-decoration: none;
 	font-size: small;
 	font-weight: bold;
+	position: relative;
+}
+
+.active {
+	color: #000814;
+}
+
+.active::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: calc(100% + 2px);
+	height: 2px;
+	width: 100%;
+	background: #000814;
 }
