@@ -50,12 +50,12 @@ export default function ComponentModal({
 							component='h2'>
 							Añadir a{' '}
 							{(params.slice(0, 1).toUpperCase() + params.slice(1))
-								.replace('%20', ' ')
-								.replace('%C3%A1', 'á')
-								.replace('%C3%A9', 'é')
-								.replace('%C3%AD', 'í')
-								.replace('%C3%B3', 'ó')
-								.replace('%C3%BA', 'ú')}
+								.replaceAll('%C3%A1', 'á')
+								.replaceAll('%C3%A9', 'é')
+								.replaceAll('%C3%AD', 'í')
+								.replaceAll('%20', ' ')
+								.replaceAll('%C3%B3', 'ó')
+								.replaceAll('%C3%BA', 'ú')}
 						</Typography>
 						<div className='mt-3'>
 							<AddComponentForm

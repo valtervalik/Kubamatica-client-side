@@ -10,7 +10,8 @@ const ComponentNavTabs = ({ categories, params }) => {
 					.map((category) => (
 						<Link
 							className={`me-3 ${styles.compnavtab} ${
-								params === category.category && styles.active
+								params.replaceAll('%20', ' ') === category.category &&
+								styles.active
 							}`}
 							href={`/managment/administration/inventory/components/${category.category}`}
 							key={category._id}>
