@@ -81,7 +81,7 @@ const AddUserForm = ({ handleClose }) => {
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit} action='/admin/users'>
+			<form onSubmit={handleSubmit} action='/admin/users' noValidate>
 				<TextInput
 					value={form.fullname}
 					handleChange={handleChange}

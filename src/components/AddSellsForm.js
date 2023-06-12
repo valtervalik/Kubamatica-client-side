@@ -54,13 +54,13 @@ const validateForm = (form) => {
 	if (!form.warranty.trim()) {
 		error.warranty = `El campo 'Garantía' es requerido`;
 	} else if (!regexNumber.test(form.warranty.trim())) {
-		error.warranty = `El campo 'Garantía' debe ser mayor o igual a cero`;
+		error.warranty = `El campo 'Garantía' debe ser un número entero`;
 	}
 
 	if (!form.box.trim()) {
 		error.box = `El campo 'No. Caja' es requerido`;
 	} else if (!regexNumber.test(form.box.trim())) {
-		error.box = `El campo 'No. Caja' debe ser mayor o igual a cero`;
+		error.box = `El campo 'No. Caja' debe ser un número entero`;
 	}
 
 	if (!form.brand.trim()) {
@@ -93,8 +93,6 @@ const validateForm = (form) => {
 
 	if (!form.price.trim()) {
 		error.price = `El campo 'Precio' es requerido`;
-	} else if (!regexNumber.test(form.price.trim())) {
-		error.price = `El campo 'Precio' debe ser mayor o igual a cero`;
 	}
 
 	return error;
@@ -174,7 +172,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 
 	return (
 		<div>
-			<form onSubmit={handleSubmit} action='/admin/services/sells'>
+			<form onSubmit={handleSubmit} action='/admin/services/sells' noValidate>
 				<div className='container text-center'>
 					<div className='row'>
 						<div className='col'>

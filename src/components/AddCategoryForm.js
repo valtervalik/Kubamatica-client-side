@@ -33,7 +33,10 @@ const AddCategoryForm = ({ handleClose }) => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit} action='/admin/inventory/components'>
+			<form
+				onSubmit={handleSubmit}
+				action='/admin/inventory/components'
+				noValidate>
 				<div className='d-flex flex-column justify-content-center'>
 					<TextInput
 						handleChange={handleChange}
