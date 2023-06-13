@@ -15,6 +15,14 @@ const validateForm = (form) => {
 	let regexPassword =
 		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%/*?&])[A-Za-z\d@$/!%*?&]{8,}$/;
 
+	if (!form.username.trim()) {
+		error.username = `El campo 'Usuario' es requerido`;
+	}
+
+	if (!form.password.trim()) {
+		error.password = `El campo 'Contraseña' es requerido`;
+	}
+
 	if (!form.newpassword.trim()) {
 		error.newpassword = `El campo 'Nueva Contraseña' es requerido`;
 	} else if (form.newpassword.trim() === form.password.trim()) {
