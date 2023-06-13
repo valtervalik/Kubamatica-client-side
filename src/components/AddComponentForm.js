@@ -72,12 +72,8 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 		price: '',
 		currency: 'cup',
 	};
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
+		useForm(initialForm, validateForm, url, handleClose);
 
 	return (
 		<div>
@@ -89,9 +85,11 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 								value={form.brand}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleFocus={handleFocus}
 								label='Marca'
 								name='brand'
 								type='text'
+								focused={true}
 							/>
 							{error.brand && <FormError>{error.brand}</FormError>}
 							<TextInput

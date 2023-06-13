@@ -121,12 +121,8 @@ const AddPurchasesForm = ({ handleClose }) => {
 		currency: 'cup',
 	};
 
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
+		useForm(initialForm, validateForm, url, handleClose);
 
 	useEffect(() => {
 		helpHttp()
@@ -173,9 +169,11 @@ const AddPurchasesForm = ({ handleClose }) => {
 								value={form.supplier}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleFocus={handleFocus}
 								label='Proveedor'
 								name='supplier'
 								type='text'
+								focused={true}
 							/>
 							{error.supplier && <FormError>{error.supplier}</FormError>}
 							<TextInput

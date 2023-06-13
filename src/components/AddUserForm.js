@@ -72,12 +72,8 @@ const validateForm = (form) => {
 const url = 'http://127.0.0.1:5000/users/register';
 
 const AddUserForm = ({ handleClose }) => {
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
+		useForm(initialForm, validateForm, url, handleClose);
 
 	return (
 		<div>
@@ -86,9 +82,11 @@ const AddUserForm = ({ handleClose }) => {
 					value={form.fullname}
 					handleChange={handleChange}
 					handleBlur={handleBlur}
+					handleFocus={handleFocus}
 					label='Nombre y Apellidos'
 					type='text'
 					name='fullname'
+					focused={true}
 				/>
 				{error.fullname && <FormError>{error.fullname}</FormError>}
 				<TextInput

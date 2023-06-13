@@ -132,13 +132,8 @@ const AddSellsForm = ({ handleClose, component }) => {
 		currency: `${component.currency}`,
 	};
 
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose,
-		action
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
+		useForm(initialForm, validateForm, url, handleClose, action);
 
 	useEffect(() => {
 		helpHttp()
@@ -179,10 +174,12 @@ const AddSellsForm = ({ handleClose, component }) => {
 							<TextInput
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleFocus={handleFocus}
 								label='Cliente'
 								name='client'
 								type='text'
 								value={form.client}
+								focused={true}
 							/>
 							{error.client && <FormError>{error.client}</FormError>}
 							<TextInput
@@ -227,7 +224,7 @@ const AddSellsForm = ({ handleClose, component }) => {
 								type='number'
 								value={form.warranty}
 							/>
-							{!error.category && error.warranty && (
+							{!error.technic && error.warranty && (
 								<FormError>{error.warranty}</FormError>
 							)}
 							<TextInput

@@ -13,7 +13,7 @@ const initialForm = {
 const validateForm = (form) => {
 	let error = {};
 	let regexPassword =
-		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%/*?&])[A-Za-z\d@$/!%*?&]{8,}$/;
 
 	if (!form.newpassword.trim()) {
 		error.newpassword = `El campo 'Nueva Contraseña' es requerido`;
@@ -38,7 +38,11 @@ const ChangePasswordForm = () => {
 		usePasswordForm(initialForm, validateForm, url);
 
 	return (
-		<form onSubmit={handleSubmit} className='w-50' action='/session/login'>
+		<form
+			onSubmit={handleSubmit}
+			className='w-50'
+			action='/session/login'
+			noValidate>
 			<div className='form-floating pb-3'>
 				<input
 					value={form.username}
@@ -51,6 +55,7 @@ const ChangePasswordForm = () => {
 					placeholder='name@example.com'
 					required
 					minLength={2}
+					autoFocus
 				/>
 				<label htmlFor='floatingInput'>Usuario</label>
 			</div>

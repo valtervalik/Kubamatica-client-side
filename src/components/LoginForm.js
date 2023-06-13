@@ -31,7 +31,8 @@ const LoginForm = () => {
 				<form
 					onSubmit={handleSubmit}
 					className='w-50'
-					action='/admin/services/repairs'>
+					action='/admin/services/repairs'
+					noValidate>
 					<div className='form-floating mb-3'>
 						<input
 							value={form.username}

@@ -29,10 +29,17 @@ export const useForm = (
 			[name]: value,
 		});
 	};
+
 	const handleBlur = (e) => {
 		handleChange(e);
 		setError(validateForm(form));
 	};
+
+	const handleFocus = (e) => {
+		handleChange(e);
+		setError(validateForm(form));
+	};
+
 	const handleSubmit = async (e) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
@@ -82,5 +89,6 @@ export const useForm = (
 		handleChange,
 		handleBlur,
 		handleSubmit,
+		handleFocus,
 	};
 };

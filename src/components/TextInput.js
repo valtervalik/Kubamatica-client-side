@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 export default function TextInput({
 	handleChange,
 	handleBlur,
+	handleFocus,
 	label,
 	type,
 	name,
@@ -13,6 +14,7 @@ export default function TextInput({
 	multiline,
 	width = '47ch',
 	fontSize = '16px',
+	focused,
 }) {
 	const isMultiline = multiline;
 	return (
@@ -49,10 +51,12 @@ export default function TextInput({
 				type={type}
 				name={name}
 				value={value}
+				onFocus={handleFocus}
 				onChange={handleChange}
 				onBlur={handleBlur}
 				disabled={disabled}
 				required
+				autoFocus={focused}
 				inputProps={
 					type === 'number'
 						? { min: 0 }

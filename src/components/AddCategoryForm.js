@@ -24,12 +24,8 @@ const validateForm = (form) => {
 const url = 'http://127.0.0.1:5000/categories';
 
 const AddCategoryForm = ({ handleClose }) => {
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
+		useForm(initialForm, validateForm, url, handleClose);
 
 	return (
 		<>
@@ -41,10 +37,12 @@ const AddCategoryForm = ({ handleClose }) => {
 					<TextInput
 						handleChange={handleChange}
 						handleBlur={handleBlur}
+						handleFocus={handleFocus}
 						label='Nueva Categoría'
 						name='category'
 						width='43ch'
 						value={form.category.toLowerCase()}
+						focused={true}
 					/>
 					{error.category && (
 						<FormError className='text-center'>{error.category}</FormError>

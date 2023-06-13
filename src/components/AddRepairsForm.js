@@ -101,12 +101,8 @@ const AddRepairsForm = ({ handleClose }) => {
 		currency: 'cup',
 	};
 
-	const { form, error, handleChange, handleBlur, handleSubmit } = useForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
+		useForm(initialForm, validateForm, url, handleClose);
 
 	useEffect(() => {
 		form.date = {
@@ -127,9 +123,11 @@ const AddRepairsForm = ({ handleClose }) => {
 								label='Cliente'
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleFocus={handleFocus}
 								name='client'
 								type='text'
 								value={form.client}
+								focused={true}
 							/>
 							{error.client && <FormError>{error.client}</FormError>}
 							<TextInput
