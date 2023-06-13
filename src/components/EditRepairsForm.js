@@ -45,10 +45,10 @@ const validateForm = (form) => {
 
 	if (!form.warranty.trim()) {
 		error.warranty = `El campo 'Garantía' es requerido`;
-	} else if (!regexNumber.test(form.warranty.trim())) {
-		error.warranty = `El campo 'Garantía' debe ser un número entero`;
 	} else if (form.warranty < 0) {
 		error.warranty = `El campo 'Garantía' debe ser mayor o igual a cero`;
+	} else if (!regexNumber.test(form.warranty.trim())) {
+		error.warranty = `El campo 'Garantía' debe ser un número entero`;
 	}
 
 	if (!form.device.trim()) {
@@ -59,10 +59,10 @@ const validateForm = (form) => {
 
 	if (!form.box.trim()) {
 		error.box = `El campo 'No. Caja' es requerido`;
-	} else if (!regexNumber.test(form.box.trim())) {
-		error.box = `El campo 'No. Caja' debe ser un número entero`;
 	} else if (form.box < 0) {
 		error.box = `El campo 'No. Caja' debe ser mayor o igual a cero`;
+	} else if (!regexNumber.test(form.box.trim())) {
+		error.box = `El campo 'No. Caja' debe ser un número entero`;
 	}
 
 	if (!form.description.trim()) {
