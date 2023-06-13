@@ -13,7 +13,7 @@ const initialForm = {
 const validateForm = (form) => {
 	let error = {};
 	let regexPassword =
-		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%/*?&])[A-Za-z\d@$/!%*?&]{8,}$/;
+		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!|%/*?&])[A-Za-z\d@$/!%|*?&]{8,}$/;
 
 	if (!form.username.trim()) {
 		error.username = `El campo 'Usuario' es requerido`;

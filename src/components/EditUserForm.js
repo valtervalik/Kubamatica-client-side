@@ -14,7 +14,7 @@ const validateForm = (form) => {
 	let regexDescription = /^.{1,155}$/;
 	let regexInput = /^.{1,55}$/;
 	let regexPassword =
-		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+		/^(?=.*[A-Z])(?=.*\d)(?=.*[@$!|%/*?&])[A-Za-z\d@$/!%|*?&]{8,}$/;
 
 	if (!form.fullname.trim()) {
 		error.fullname = `El campo 'Nombre y Apellidos' es requerido`;
