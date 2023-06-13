@@ -6,12 +6,12 @@ import ModalEditButtons from './ModalEditButtons';
 
 const validateForm = (form) => {
 	let error = {};
-	let regexInput = /^.{1,55}$/;
+	let regexInput = /^[a-z]$/;
 
 	if (!form.category.trim()) {
 		error.category = `El campo 'Categoría' es requerido`;
 	} else if (!regexInput.test(form.category.trim())) {
-		error.category = `El campo 'Categoría' debe tener un máximo de 55 caracteres`;
+		error.category = `El campo 'Categoría' solo debe estar compuesto por letras en minúscula`;
 	}
 
 	return error;
