@@ -16,6 +16,7 @@ const initialForm = {
 const url = 'http://127.0.0.1:5000/users/login';
 
 const LoginForm = () => {
+	const [disabled, setDisabled] = useState(false);
 	const [openRecover, setOpenRecover] = useState(false);
 	const handleOpenRecover = () => setOpenRecover(true);
 	const handleCloseRecover = () => setOpenRecover(false);
@@ -70,7 +71,15 @@ const LoginForm = () => {
 							className='text-light'>
 							¿Ha olvidado su contraseña?
 						</Button>
-						<LoginBtn />
+						<LoginBtn
+							disabled={
+								!form.username.trim()
+									? true
+									: !form.password.trim()
+									? true
+									: false
+							}
+						/>
 					</div>
 					<Link
 						href='/managment/session/changepassword'

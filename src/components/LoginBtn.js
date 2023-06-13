@@ -1,4 +1,4 @@
-const LoginBtn = () => {
+const LoginBtn = ({ disabled }) => {
 	return (
 		<div className='d-flex justify-content-end mb-3 '>
 			<input
@@ -6,6 +6,7 @@ const LoginBtn = () => {
 				value='Iniciar Sesión'
 				className='btn login-button text-light'
 				id='sesionBtn'
+				disabled={disabled}
 			/>
 		</div>
 	);
