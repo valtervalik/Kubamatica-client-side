@@ -24,6 +24,7 @@ const validateForm = (form) => {
 	let regexNumber = /^\d+$/;
 	let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
 	let regexDescription = /^.{1,155}$/;
+	let regexInput = /^.{1,55}$/;
 
 	if (!form.client.trim()) {
 		error.client = `El campo 'Cliente' es requerido`;
@@ -53,7 +54,7 @@ const validateForm = (form) => {
 
 	if (!form.device.trim()) {
 		error.device = `El campo 'Equipo' es requerido`;
-	} else if (!regexName.test(form.device.trim())) {
+	} else if (!regexInput.test(form.device.trim())) {
 		error.device = `El campo 'Equipo' solo debe estar compuesto por letras`;
 	}
 
