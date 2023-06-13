@@ -47,10 +47,14 @@ const validateForm = (form) => {
 		error.warranty = `El campo 'Garantía' es requerido`;
 	} else if (!regexNumber.test(form.warranty.trim())) {
 		error.warranty = `El campo 'Garantía' debe ser un número entero`;
+	} else if (form.warranty < 0) {
+		error.warranty = `El campo 'Garantía' debe ser mayor o igual a cero`;
 	}
 
 	if (!form.price.trim()) {
 		error.price = `El campo 'Precio' es requerido`;
+	} else if (form.price < 0) {
+		error.price = `El campo 'Precio' debe ser mayor o igual a cero`;
 	}
 
 	return error;

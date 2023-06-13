@@ -49,10 +49,14 @@ const validateForm = (form) => {
 		error.box = `El campo 'No. Caja' es requerido`;
 	} else if (!regexNumber.test(form.box.trim())) {
 		error.box = `El campo 'No. Caja' debe ser un número entero`;
+	} else if (form.box < 0) {
+		error.box = `El campo 'No. Caja' debe ser mayor o igual a cero`;
 	}
 
 	if (!form.price.trim()) {
 		error.price = `El campo 'Precio' es requerido`;
+	} else if (form.price < 0) {
+		error.price = `El campo 'Precio' debe ser mayor o igual a cero`;
 	}
 
 	return error;
