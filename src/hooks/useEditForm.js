@@ -34,6 +34,12 @@ export const useEditForm = (initialForm, validateForm, url, handleClose) => {
 		setError(validateForm(form));
 	};
 
+	const handleKeyDown = (e) => {
+		if (['e', 'E', '+', '-'].includes(e.key)) {
+			e.preventDefault();
+		}
+	};
+
 	const handleSubmit = async (e) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
@@ -82,5 +88,6 @@ export const useEditForm = (initialForm, validateForm, url, handleClose) => {
 		handleBlur,
 		handleSubmit,
 		handleFocus,
+		handleKeyDown,
 	};
 };

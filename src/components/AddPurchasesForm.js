@@ -127,8 +127,15 @@ const AddPurchasesForm = ({ handleClose }) => {
 		currency: 'cup',
 	};
 
-	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
-		useForm(initialForm, validateForm, url, handleClose);
+	const {
+		form,
+		error,
+		handleChange,
+		handleBlur,
+		handleSubmit,
+		handleFocus,
+		handleKeyDown,
+	} = useForm(initialForm, validateForm, url, handleClose);
 
 	useEffect(() => {
 		helpHttp()
@@ -232,6 +239,7 @@ const AddPurchasesForm = ({ handleClose }) => {
 								value={form.warranty}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='Garantía (días)'
 								name='warranty'
 								type='number'
@@ -243,6 +251,7 @@ const AddPurchasesForm = ({ handleClose }) => {
 								value={form.box}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='No. Caja'
 								name='box'
 								type='number'
@@ -303,6 +312,7 @@ const AddPurchasesForm = ({ handleClose }) => {
 										value={form.price}
 										handleChange={handleChange}
 										handleBlur={handleBlur}
+										handleKeyDown={handleKeyDown}
 										label='Precio'
 										name='price'
 										type='number'

@@ -128,12 +128,8 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 
 	const url = `http://127.0.0.1:5000/purchases/${purchase._id}`;
 
-	const { form, error, handleChange, handleBlur, handleSubmit } = useEditForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleKeyDown } =
+		useEditForm(initialForm, validateForm, url, handleClose);
 
 	useEffect(() => {
 		helpHttp()
@@ -235,6 +231,7 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 								value={form.warranty}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='Garantía (días)'
 								name='warranty'
 								type='number'
@@ -246,6 +243,7 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 								value={form.box}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='No. Caja'
 								name='box'
 								type='number'
@@ -306,6 +304,7 @@ const EditPurchasesForm = ({ handleClose, purchase }) => {
 										value={form.price}
 										handleChange={handleChange}
 										handleBlur={handleBlur}
+										handleKeyDown={handleKeyDown}
 										label='Precio'
 										name='price'
 										type='number'

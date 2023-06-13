@@ -72,12 +72,8 @@ const EditComponentForm = ({ handleClose, params, component }) => {
 		price: `${component.price}`,
 		currency: `${component.currency}`,
 	};
-	const { form, error, handleChange, handleBlur, handleSubmit } = useEditForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleKeyDown } =
+		useEditForm(initialForm, validateForm, url, handleClose);
 
 	return (
 		<div>
@@ -158,6 +154,7 @@ const EditComponentForm = ({ handleClose, params, component }) => {
 								value={form.box}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='No. Caja'
 								name='box'
 								type='number'
@@ -169,6 +166,7 @@ const EditComponentForm = ({ handleClose, params, component }) => {
 										value={form.price}
 										handleChange={handleChange}
 										handleBlur={handleBlur}
+										handleKeyDown={handleKeyDown}
 										label='Precio'
 										name='price'
 										type='number'

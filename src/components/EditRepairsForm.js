@@ -106,12 +106,8 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 		currency: `${repair.currency}`,
 	};
 
-	const { form, error, handleChange, handleBlur, handleSubmit } = useEditForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleKeyDown } =
+		useEditForm(initialForm, validateForm, url, handleClose);
 
 	useEffect(() => {
 		form.date = {
@@ -163,6 +159,7 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 								label='Garantía (días)'
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								name='warranty'
 								type='number'
 								value={form.warranty}
@@ -188,6 +185,7 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 								label='No. Caja'
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								name='box'
 								type='number'
 								value={form.box}
@@ -211,6 +209,7 @@ const EditRepairsForm = ({ handleClose, repair }) => {
 										label='Precio'
 										handleChange={handleChange}
 										handleBlur={handleBlur}
+										handleKeyDown={handleKeyDown}
 										name='price'
 										type='number'
 										width='40ch'

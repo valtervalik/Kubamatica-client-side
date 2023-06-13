@@ -6,6 +6,7 @@ export default function TextInput({
 	handleChange,
 	handleBlur,
 	handleFocus,
+	handleKeyDown,
 	label,
 	type,
 	name,
@@ -54,6 +55,7 @@ export default function TextInput({
 				onFocus={handleFocus}
 				onChange={handleChange}
 				onBlur={handleBlur}
+				onKeyDown={handleKeyDown}
 				disabled={disabled}
 				required
 				autoFocus={focused}

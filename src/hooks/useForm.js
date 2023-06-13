@@ -40,6 +40,12 @@ export const useForm = (
 		setError(validateForm(form));
 	};
 
+	const handleKeyDown = (e) => {
+		if (['e', 'E', '+', '-'].includes(e.key)) {
+			e.preventDefault();
+		}
+	};
+
 	const handleSubmit = async (e) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
@@ -90,5 +96,6 @@ export const useForm = (
 		handleBlur,
 		handleSubmit,
 		handleFocus,
+		handleKeyDown,
 	};
 };

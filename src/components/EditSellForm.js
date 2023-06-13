@@ -82,12 +82,8 @@ const EditSellForm = ({ handleClose, sell }) => {
 		currency: `${sell.currency}`,
 	};
 
-	const { form, error, handleChange, handleBlur, handleSubmit } = useEditForm(
-		initialForm,
-		validateForm,
-		url,
-		handleClose
-	);
+	const { form, error, handleChange, handleBlur, handleSubmit, handleKeyDown } =
+		useEditForm(initialForm, validateForm, url, handleClose);
 
 	useEffect(() => {
 		form.date = {
@@ -139,6 +135,7 @@ const EditSellForm = ({ handleClose, sell }) => {
 							<TextInput
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='Garantía (días)'
 								name='warranty'
 								type='number'
@@ -152,6 +149,7 @@ const EditSellForm = ({ handleClose, sell }) => {
 									<TextInput
 										handleChange={handleChange}
 										handleBlur={handleBlur}
+										handleKeyDown={handleKeyDown}
 										label='Precio'
 										name='price'
 										type='number'

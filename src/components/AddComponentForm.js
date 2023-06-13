@@ -76,8 +76,15 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 		price: '',
 		currency: 'cup',
 	};
-	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
-		useForm(initialForm, validateForm, url, handleClose);
+	const {
+		form,
+		error,
+		handleChange,
+		handleBlur,
+		handleSubmit,
+		handleFocus,
+		handleKeyDown,
+	} = useForm(initialForm, validateForm, url, handleClose);
 
 	return (
 		<div>
@@ -160,6 +167,7 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 								value={form.box}
 								handleChange={handleChange}
 								handleBlur={handleBlur}
+								handleKeyDown={handleKeyDown}
 								label='No. Caja'
 								name='box'
 								type='number'
@@ -171,6 +179,7 @@ const AddComponentForm = ({ handleClose, categories, params }) => {
 										value={form.price}
 										handleChange={handleChange}
 										handleBlur={handleBlur}
+										handleKeyDown={handleKeyDown}
 										label='Precio'
 										name='price'
 										type='number'
