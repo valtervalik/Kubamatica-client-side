@@ -25,7 +25,7 @@ const validateForm = (form) => {
 const url = 'http://127.0.0.1:5000/users/recoverpassword';
 
 const RecoverPasswordForm = ({ handleClose }) => {
-	const { form, error, handleChange, handleBlur, handleSubmit } =
+	const { form, error, handleChange, handleBlur, handleSubmit, handleFocus } =
 		useRecoverForm(initialForm, validateForm, url, handleClose);
 
 	return (
@@ -39,9 +39,11 @@ const RecoverPasswordForm = ({ handleClose }) => {
 						value={form.email}
 						handleChange={handleChange}
 						handleBlur={handleBlur}
+						handleFocus={handleFocus}
 						label='Email'
 						type='email'
 						name='email'
+						focused={true}
 					/>
 					{error.email && <FormError>{error.email}</FormError>}
 				</div>

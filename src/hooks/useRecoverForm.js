@@ -23,10 +23,17 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 			[name]: value,
 		});
 	};
+
 	const handleBlur = (e) => {
 		handleChange(e);
 		setError(validateForm(form));
 	};
+
+	const handleFocus = (e) => {
+		handleChange(e);
+		setError(validateForm(form));
+	};
+
 	const handleSubmit = async (e) => {
 		if (Object.keys(error).length === 0) {
 			e.preventDefault();
@@ -78,5 +85,6 @@ export const useRecoverForm = (initialForm, validateForm, url, handleClose) => {
 		handleChange,
 		handleBlur,
 		handleSubmit,
+		handleFocus,
 	};
 };
